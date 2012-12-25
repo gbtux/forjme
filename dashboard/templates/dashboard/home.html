@@ -1,0 +1,19 @@
+{% extends "dashboard/base.html" %}
+
+{% block menu %}
+	{% include "dashboard/general_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="#">Home</a></li>
+	<li><a href="{% url home %}">Dashboard</a></li>
+{% endblock %}
+
+{% block content %}
+#home
+	{% if user.is_authenticated %}
+		<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+	{% else %}
+	    <p>Welcome, new user. Please log in.</p>
+	{% endif %}
+{% endblock %}

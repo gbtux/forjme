@@ -1,0 +1,65 @@
+<!-- sidebar -->
+<div id="sidebar" class="span2">			
+	<div class="accordion custom-acc" id="accordionSB">
+		<!-- DASHBOARD -->
+		<div class="accordion-group fs">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#dashboardsb">
+					<i class="icon-large icon-th-large head_icon"></i> Dashboard
+				</a>
+			</div>
+			<div id="dashboardsb" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="index.html">
+								<i class="icon-large icon-th"></i> Dashboard
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- PROJECTS -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#articlesb">
+					<i class="icon-large icon-th-large head_icon"></i> Projects
+				</a>
+			</div>
+			<div id="articlesb" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="{% url projects %}">
+								<i class="icon-large icon-th"></i> List
+							</a>
+						</li>
+						<li>
+							<a id="new_project" data-form="{% url project_new %}" href="#">
+								<i class="icon-large icon-th"></i> Add New
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div> <!-- /accordionSB -->
+</div><!-- sidebar -->
+
+<script type="text/javascript">
+		$(document).ready(function () {
+			$('#new_project').on('click', function(){
+				console.log('click new project');
+				var url = $(this).data("form");
+				$("#formModal").load(url, function() { // load the url into the modal
+            		$(this).modal('show'); // display the modal on url load
+            		$(this).removeClass('hide');
+            		form.init($("#formnewproject"), url, $(this), $('#projects'));
+        		});
+        		return false;
+			});
+		});
+	</script>

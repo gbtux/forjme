@@ -1,0 +1,197 @@
+{% load i18n staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+	    <title>Forjme!</title>
+		
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	    <!-- CSS -->
+	    <link href="{% static 'dashboard/assets/css/bootstrap.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/css/combine_fonts.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/plugins/datepicker/css/datepicker.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/plugins/colorpicker/css/colorpicker.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/plugins/wysiwyg/bootstrap-wysihtml5.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' %}" rel="stylesheet" />
+		
+		<link href="{% static 'dashboard/css/buttons.css' %}" rel="stylesheet" />
+		<link href="{% static 'dashboard/style.css' %}" rel="stylesheet" />
+		
+		<!-- color style -->
+		
+		
+		<link href="{% static 'dashboard/css/cms.css' %}" rel="stylesheet" />
+	    <link href="{% static 'dashboard/assets/css/bootstrap-responsive.css' %}" rel="stylesheet" />
+	    <link href="{% static 'dashboard/css/dark.css' %}" rel="stylesheet" />
+	    <link href="{% static 'dashboard/css/font-awesome.css' %}" rel="stylesheet" />
+
+	    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	    <!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+
+	    <!-- bootstrap fav and touch icons, replace with your own -->
+	    <link rel="shortcut icon" href="{% static 'dashboard/assets/ico/favicon.ico' %}">
+	    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'dashboard/assets/ico/apple-touch-icon-144-precomposed.png' %}">
+	    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'dashboard/assets/ico/apple-touch-icon-114-precomposed.png' %}">
+	    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'dashboard/assets/ico/apple-touch-icon-72-precomposed.png' %}">
+	    <link rel="apple-touch-icon-precomposed" href="{% static 'dashboard/assets/ico/apple-touch-icon-57-precomposed.png' %}">
+
+	    <script type="text/javascript" src="{% static 'dashboard/assets/js/jquery.js' %}"></script>
+	
+  </head>
+  <body>
+	
+	<!-- top fixed navbar -->
+	<div id="header" class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="brand" href="index.html" style="margin-top: 8px; color: #0088CC;">
+					<!-- <img src="examples/logo.png" /> -->
+					<i class="icon-share-1"></i>
+
+				</a>
+				<a class="brand" href="">
+					<h3 style="margin-top: 8px; margin-left: -18px; color: #0088CC;">Forjme!</h3>
+				</a>
+				<div class="btn-toolbar pull-right">
+					<div class="btn-group">
+						<a class="btn dropdown-toggle rel" data-toggle="dropdown" href="#">
+							<i class="icon-large icon-th-2"></i>
+							<span class="badge badge-important abs">20</span>
+						</a>
+						<ul class="dropdown-menu fb-one">
+							<li class="heading">
+								<h3>Friend Requests</h3>
+								<a href="#">Find Friends</a>
+							</li>
+							<li class="confirm_fb">
+								<ul class="content">
+									<li class="fb_avatar">
+										<img src="{% static 'dashboard/examples/avatar-sample-01.jpg' %}">
+									</li>
+									<li class="fb_uname">
+										<h4>
+											<a href="#">Esther</a>
+										</h4>
+										<span>10 Mutual Friends</span>
+									</li>
+									<li class="fb_action">
+										<button class="btn btn-small">
+											<i class="icon-ok"></i> Friends
+										</button>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul class="content">
+									<li class="fb_avatar">
+										<img src="{% static 'dashboard/examples/avatar-sample-02.jpg' %}">
+									</li>
+									<li class="fb_uname">
+										<h4>
+											<a href="#">Nadya</a>
+										</h4>
+										<span>5 Mutual Friends</span>
+									</li>
+									<li class="fb_action">
+										<button class="btn btn-small btn-primary">Confirm</button>
+										<button class="btn btn-small">Not Now</button>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /btn-group -->
+				
+					<div class="btn-group">
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="icon-user-1"></i> {{ user.username }}
+							<span class="caret"></span>
+						</a>
+					
+						<ul class="dropdown-menu megamenu col2 ud">
+							<li class="sub">
+								<div class="img_round img_c_margin">
+									<img width="70" height="70" src="{% static 'dashboard/examples/avatar-sample.png' %}" />
+								</div>
+							</li>
+							<li class="sub">
+								<ul>
+									<li>
+										<a href="#">
+											<i class="icon-large icon-cog-2"></i> Profile
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="icon-large icon-key"></i> Privacy Settings
+										</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="#">
+											<i class="icon-large icon-logout-1"></i> Logout
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /btn-group -->
+				</div><!-- /btn-toolbar pull-right -->
+			</div><!-- /container-fluid -->
+		</div><!-- /navbar-inner -->
+	</div> <!-- #header navbar-fixed-top -->
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			{% block menu %}{% endblock %}
+
+			<!-- main content -->
+			<div id="main_content" class="span10">
+				<!-- MODAL -->
+				<div class="modal hide" id="formModal">
+				</div>
+				<div class="widget_container">
+					<div class="well nomargin">
+						<ul class="breadcrumbs-custom in-well">
+							{% block breadcrumb %}{% endblock %}			
+						</ul>
+					</div>
+				</div>
+				{% block content %}{% endblock %}
+			</div> <!-- /main-content -->
+		</div> <!-- /row-fluid -->
+	</div> <!-- /container-fluid -->
+
+
+
+	<!-- JS Files
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- <script src="https://www.google.com/jsapi"></script>	 -->
+    
+	<script type="text/javascript" src="{% static 'dashboard/plugins/wysiwyg/wysihtml5-0.3.0_rc3.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/assets/js/bootstrap.js' %}"></script>	
+	
+	<script type="text/javascript" src="{% static 'dashboard/plugins/datepicker/js/bootstrap-datepicker.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/plugins/colorpicker/js/bootstrap-colorpicker.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/plugins/wysiwyg/bootstrap-wysihtml5.js' %}"></script>
+	
+	<!-- <script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script> -->
+	<script type="text/javascript" src="{% static 'dashboard/plugins/plupload/js/plupload.full.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js' %}"></script>
+	
+	<script type="text/javascript" src="{% static 'dashboard/js/demo.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/js/google-chart-index.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/assets/js/jquery-ui-1.8.16.custom.min.js' %}"></script>
+
+	<!-- PORTLETS -->
+	<script type="text/javascript" src="{% static 'dashboard/js/portlet.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dashboard/js/forms.js' %}"></script>
+
+	
+</html>

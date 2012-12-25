@@ -1,0 +1,18 @@
+{% extends "dashboard/base.html" %}
+
+{% block menu %}
+	{% include "dashboard/general_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+{% endblock %}
+
+{% block content %}
+<ul id="projects">
+	{% for project in projects %}
+		{% include "dashboard/project.html" %}
+	{% endfor %}
+</ul>
+{% endblock %}

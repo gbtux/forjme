@@ -1,0 +1,80 @@
+{% load i18n staticfiles %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Fortuna CMS Admin</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="" name="description">
+		<meta content="" name="author">
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="{% static 'dashboard/assets/css/bootstrap.css' %}">	
+		<link rel="stylesheet" href="{% static 'dashboard/css/combine_fonts.css' %}">	
+		<link rel="stylesheet" href="{% static 'dashboard/css/buttons.css' %}">
+		<link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+
+		<!-- color style -->
+		<link rel="stylesheet" href="{% static 'dashboard/css/dark.css' %}">
+
+		<link rel="stylesheet" href="{% static 'dashboard/assets/css/bootstrap-responsive.css' %}">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="{% static 'dashboard/plugins/html5.js' %}"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div style="width:40%;margin:auto auto;" class="well">
+					<div class="navbar navbar-static navbar_as_heading">
+						<div class="navbar-inner">
+							<div style="width: auto;" class="container">
+								<a class="brand">Forjme!</a>
+							</div>
+						</div>
+					</div>
+					{% if form.errors %}
+						<p>Your username and password didn't match. Please try again.</p>
+					{% endif %}
+					<form method="post" action="{% url django.contrib.auth.views.login %}">
+						{% csrf_token %}
+						<fieldset>
+							<div class="control-group">
+								<label for="prependedInput" class="control-label">Username:</label>
+								<div class="controls">
+									<div class="input-prepend">
+										<span class="add-on" style="margin-right: -4px;">
+											<i class="icon-large icon-user-1"></i>
+										</span>
+										<input type="text" value="admin" size="16" id="username" name="username" class="input-xlarge-fluid" style="height: 28px">
+									</div>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label for="prependedInput" class="control-label">Password:</label>
+								<div class="controls">
+									<div class="input-prepend">
+										<span class="add-on" style="margin-right: -4px;">
+											<i class="icon-large icon-lock-1"></i>
+										</span>
+										<input type="password" name="password" value="password" size="16" id="password" class="input-xlarge-fluid" style="height: 28px">
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<input class="btn btn-large btn-primary" type="submit" value="Login"/>
+								<input type="hidden" name="next" value="{{ next }}" />
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="{% static 'dashboard/assets/js/jquery.js' %}"></script>
+		<script src="{% static 'dashboard/assets/js/bootstrap.js' %}"></script>	
+	
+	</body>
+</html>
