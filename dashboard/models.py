@@ -5,12 +5,12 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     name = models.CharField(_(u'name'), max_length=255)
     description = models.TextField(_(u'description'))
-    is_archived = models.BooleanField(_(u'archived?'))
-    creator = models.ForeignKey(User, related_name="creator")
+    is_archived = models.BooleanField(_(u'archived?'), default=False)
+    creator = models.ForeignKey(User, related_name="project_creator")
     creation_date = models.DateField(_(u'creation_date'))
-    admins = models.ManyToManyField(User, related_name='admins')
-    contribs = models.ManyToManyField(User, related_name='contribs')
-    readers = models.ManyToManyField(User, related_name='readers')
+    admins = models.ManyToManyField(User, related_name='admins', blank=True, null=True,)
+    contribs = models.ManyToManyField(User, related_name='contribs', blank=True, null=True,)
+    readers = models.ManyToManyField(User, related_name='readers', blank=True, null=True,)
 
     def __unicode__(self):
         return u'Project %d : %s' % (self.id, self.name)
@@ -35,7 +35,7 @@ class UseCase(models.Model):
 class Milestone(models.Model):
 	version = models.CharField(_(u'version'), max_length=25)
 	project = models.ForeignKey(Project, related_name="projectId")
-	usecases = models.ManyToManyField(UseCase, related_name="usecases")
+	usecases = models.ManyToManyField(UseCase, related_name="usecases", blank=True, null=True,)
 
 	def __unicode__(self):
 		return u'Milestone %d : %s' % (self.id, self.version)
@@ -44,17 +44,17 @@ class Task(models.Model):
 	title = models.CharField(_(u'title'), max_length=255)
 	creation_date = models.DateField(_(u'creation_date'))
 	description = models.TextField(_(u'description'))
-	estimation_days = models.IntegerField(_(u'estimationInDays'))
-	date_start = models.DateTimeField(_(u'Date start'))
-	date_end = models.DateTimeField(_(u'Date end'))
-	assigned_to = models.ForeignKey(User, related_name="assigned_to")
+	estimation_days = models.IntegerField(_(u'estimationInDays'), default=0)
+	date_start = models.DateTimeField(_(u'Date start'), blank=True, null=True,)
+	date_end = models.DateTimeField(_(u'Date end'), blank=True, null=True,)
+	assigned_to = models.ForeignKey(User, related_name="assigned_to", blank=True, null=True,)
 	use_case = models.ForeignKey(UseCase, related_name="use_case")
 	created_by = models.ForeignKey(User, related_name="created_by")
 	STAT_CHOICES = (('new','new'),('accepted','accepted'),('in progress','in progress'),('rejected','rejected'),('fixed','fixed'),('closed','closed'))
 	status = models.CharField(_(u'status'), max_length=11, choices=STAT_CHOICES, default="new")
 	TYPE_TASK_CHOICES = (('feature','feature'),('bug','bug'),('evolution','evolution'),('test','test'),('conception','conception'),('request','request'),('42','42'))
 	typeTask = models.CharField(_(u'type'), max_length=10, choices=TYPE_TASK_CHOICES, default="feature")
-	
+
 
 
 

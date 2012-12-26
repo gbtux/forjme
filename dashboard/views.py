@@ -10,6 +10,7 @@ import django.utils.simplejson as json
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import loader, Context
+from django.http import Http404
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -21,10 +22,13 @@ def projects(request):
 	return render_to_response('dashboard/projects.html',{'projects':projects}, context_instance=RequestContext(request))	
 
 @login_required(login_url='/accounts/login/')
-def project_edit(request, projectId = None):
-	if projectId is None:
-		project = Project()
-        template_title = _(u'Add Project')
+def project_edit(request, project_id = None):
+	try:
+		project = Project.objects.get(pk=project_id)
+		return render_to_response('dashboard/show_project.html',{'project':project}, context_instance=RequestContext(request))        
+	except Project.DoesNotExist:
+		raise Http404	
+	
 
 @login_required(login_url='/accounts/login/')
 def project_new(request):
@@ -33,7 +37,7 @@ def project_new(request):
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			description = form.cleaned_data['description']
-			project = Project.objects.create(name=name, description=description, is_archived = False, creation_date=datetime.now())
+			project = Project.objects.create(name=name, description=description, is_archived = False, creation_date=datetime.now(), creator=request.user)
 			project.save()
 			tmpl = loader.get_template('dashboard/project.html')
 			ctx = Context({ 'project': project })
