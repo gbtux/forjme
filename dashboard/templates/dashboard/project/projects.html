@@ -1,0 +1,46 @@
+{% extends "dashboard/base.html" %}
+
+{% block menu %}
+	{% include "dashboard/general_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<!--<div class="row-fluid"> -->
+		<input type="text" class="input-medium search-query pull-right" placeholder="filter projects" style="margin-top: -20px; margin-bottom: 7px;" id="filter">
+	<!-- </div> -->
+	
+</div>
+<ul id="projects">
+	{% for project in projects %}
+		{% include "dashboard/project/project.html" %}
+	{% endfor %}
+</ul>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#filter')
+	    	.change( function () {
+	        	var filter = $(this).val();
+		        if(filter) {
+		          // this finds all links in a list that contain the input,
+		          // and hide the ones not containing the input while showing the ones that do
+		          $('#projects').find("h4:not(:contains(" + filter + "))").parents('div.hero-unit').slideUp();
+		          $('projects').find("h4:contains(" + filter + ")").parents('div.hero-unit').slideDown();
+		    	}else{
+		    		$('#projects').find('div.hero-unit').slideDown();
+		    	}
+		        return false;
+	      	})
+		    .keyup( function () {
+		        // fire the above change event after every letter
+		        $(this).change();
+		    });
+	});
+</script>
+{% endblock %}

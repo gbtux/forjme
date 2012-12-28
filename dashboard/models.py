@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Project(models.Model):
     name = models.CharField(_(u'name'), max_length=255)
@@ -55,6 +56,75 @@ class Task(models.Model):
 	TYPE_TASK_CHOICES = (('feature','feature'),('bug','bug'),('evolution','evolution'),('test','test'),('conception','conception'),('request','request'),('42','42'))
 	typeTask = models.CharField(_(u'type'), max_length=10, choices=TYPE_TASK_CHOICES, default="feature")
 
+class Room(models.Model):
+	title = models.CharField(_(u'title'), max_length=255)
+	#creator = models.ForeignKey(User, related_name='room_creator', blank=True, null=True)
+	created = models.DateTimeField(default=datetime.now())
+	project = models.ForeignKey(Project, related_name="project_room")
+
+	def add_message(self, atype, sender, message=None):
+		m = Message(room=self, type=atype, author=sender, message=message)
+		m.save()
+		return m
+
+	def say(self, sender, message):
+		return self.add_message('m', sender, message)
+
+	def join(self, user):
+		return sel.add_message('j', user)
+
+	def leave(self, user):
+		return self.add_message('l', user)
+
+	def messages(self, after_pk=None, after_date=None):
+		m = Message.objects.filter(room=self)
+		if after_pk:
+			m = m.filter(pk__gt=after_pk)
+		if after_date:
+			m = m.filter(timestamp__gte=after_date)
+		return m.order_by('pk')
+
+	def last_message_id(self):
+		m = Message.objects.filter(room=self).order_by('pk')
+		if m:
+			return m[0].id
+		else:
+			return 0
+
+	def __unicode__(self):
+		return 'Chat for %s %d' % (self.id, self.title)
+
+MESSAGE_TYPE_CHOICES = (
+    ('s','system'),
+    ('a','action'),
+    ('m', 'message'),
+    ('j','join'),
+    ('l','leave'),
+    ('n','notification')
+)
+
+class Message(models.Model):
+    '''A message that belongs to a chat room'''
+    room = models.ForeignKey(Room)
+    type = models.CharField(max_length=1, choices=MESSAGE_TYPE_CHOICES)
+    author = models.ForeignKey(User, related_name='author', blank=True, null=True)
+    message = models.CharField(max_length=255, blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        '''Each message type has a special representation, return that representation.
+        This will also be translator AKA i18l friendly.'''
+        if self.type == 's':
+            return u'SYSTEM: %s' % self.message
+        if self.type == 'n':
+            return u'NOTIFICATION: %s' % self.message
+        elif self.type == 'j':
+            return 'JOIN: %s' % self.author
+        elif self.type == 'l':
+            return 'LEAVE: %s' % self.author
+        elif self.type == 'a':
+            return 'ACTION: %s > %s' % (self.author, self.message)
+        return self.message
 
 
 

@@ -16,10 +16,13 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'dashboard.views.home', name='home'), #HomeView.as_view()
-    url(r'^projects/', 'dashboard.views.projects', name='projects'),
+
+    url(r'^projects/', projects, name='projects'),
     url(r'^project/new', project_new, name="project_new"),
-    url(r'^project/info/(?P<project_id>\d+)/$', project_info, name="project_info"),
     url(r'^project/(?P<project_id>\d+)/$', project_edit, name="project_edit"),
+
+    url(r'^project/(?P<project_id>\d+)/chats', chats, name="chat_list"),
+
     url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/login.html'}),
 
     #for django-git

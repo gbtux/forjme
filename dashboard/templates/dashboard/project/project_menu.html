@@ -1,0 +1,220 @@
+<!-- sidebar -->
+<div id="sidebar" class="span2">			
+	<div class="accordion custom-acc" id="accordionSB">
+		<!-- DASHBOARD -->
+		<div class="accordion-group fs">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#dashboardsb">
+					<i class="icon-large icon-th-large head_icon"></i> Project
+				</a>
+			</div>
+			<div id="dashboardsb" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="">
+								<i class="icon-large icon-th"></i> Dashboard
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Blog -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#blog">
+					<i class="icon-large icon-th-large head_icon"></i> News
+				</a>
+			</div>
+			<div id="blog" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Blog
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Add news
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- BACKLOG -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#backlog">
+					<i class="icon-large icon-th-large head_icon"></i> Backlog
+				</a>
+			</div>
+			<div id="backlog" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Use cases
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> New case
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+						
+		<!-- Tasks -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#tasks">
+					<i class="icon-large icon-th-large head_icon"></i> Tasks
+				</a>
+			</div>
+			<div id="tasks" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Tasks list
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> New task
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- WIKI -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#wiki">
+					<i class="icon-large icon-th-large head_icon"></i> Wiki
+				</a>
+			</div>
+			<div id="wiki" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Pages
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> New page
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Calendar -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#calendar">
+					<i class="icon-large icon-th-large head_icon"></i> Calendar
+				</a>
+			</div>
+			<div id="calendar" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Calendar
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> New event
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>					
+						
+		<!--- CHAT -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#chat">
+					<i class="icon-large icon-th-large head_icon"></i> Chat
+				</a>
+			</div>
+			<div id="chat" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="{% url chat_list project.id %}">
+								<i class="icon-large icon-th"></i> Chat list
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> New chat
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- SOURCES -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#sources">
+					<i class="icon-large icon-th-large head_icon"></i> Sources
+				</a>
+			</div>
+			<div id="sources" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Source Tree
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="icon-large icon-th"></i> Last commit
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- ADMIN -->
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSB" href="#admin">
+					<i class="icon-large icon-th-large head_icon"></i> Admin
+				</a>
+			</div>
+			<div id="admin" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<ul class="nav nav-list">
+						<li>
+							<a href="{% url projects %}">
+								<i class="icon-large icon-th"></i> Users
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div> <!-- /accordionSB -->
+</div>
+<!-- sidebar -->

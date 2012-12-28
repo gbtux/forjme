@@ -1,0 +1,473 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"pro",
+				"projectId"
+			],
+			[
+				"T",
+				"TYPE_TASK_STATUS"
+			],
+			[
+				"re",
+				"rejected"
+			],
+			[
+				"F",
+				"ForeignKey"
+			],
+			[
+				"de",
+				"delivered"
+			],
+			[
+				"cre",
+				"creation_date"
+			],
+			[
+				"fo",
+				"forjme"
+			],
+			[
+				"input",
+				"inputs"
+			],
+			[
+				"for",
+				"form"
+			],
+			[
+				"pr",
+				"projects"
+			],
+			[
+				"i",
+				"i	Tag"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"ver",
+				"verbose_name"
+			],
+			[
+				"p",
+				"progress"
+			],
+			[
+				"diffc",
+				"difficulty"
+			],
+			[
+				"Use",
+				"UseCase"
+			],
+			[
+				"C",
+				"CharField"
+			],
+			[
+				"M",
+				"Model"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"con",
+				"contentSelector"
+			],
+			[
+				"t",
+				"this"
+			],
+			[
+				"handl",
+				"handleSelector"
+			],
+			[
+				"co",
+				"columns"
+			],
+			[
+				"wi",
+				"widgetSelector"
+			],
+			[
+				"s",
+				"settings"
+			],
+			[
+				"wid",
+				"widget_container"
+			],
+			[
+				"sort",
+				"sortableItems"
+			],
+			[
+				"ph",
+				"photoPath"
+			],
+			[
+				"or",
+				"originalPath"
+			],
+			[
+				"car",
+				"carouselPath"
+			],
+			[
+				"icon",
+				"icon-white"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"ex",
+				"exposure"
+			],
+			[
+				"res",
+				"resolution"
+			],
+			[
+				"W",
+				"weight"
+			],
+			[
+				"si",
+				"size"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"thu",
+				"thumb"
+			],
+			[
+				"ga",
+				"galeries"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"pa",
+				"pathThumbs"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"path",
+				"path"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"_",
+				"_FILES"
+			],
+			[
+				"uplo",
+				"uploadPhoto"
+			],
+			[
+				"gal",
+				"galeries"
+			],
+			[
+				"gall",
+				"gallery_admin"
+			],
+			[
+				"g",
+				"gallery"
+			],
+			[
+				"th",
+				"th	Tag"
+			],
+			[
+				"RO",
+				"rootDir"
+			],
+			[
+				"ro",
+				"rootDir"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"margi",
+				"margin-right"
+			],
+			[
+				"ge",
+				"geometries"
+			],
+			[
+				"ne",
+				"newPoint"
+			],
+			[
+				"ma",
+				"markerLocation"
+			],
+			[
+				"addPo",
+				"addPopupMarker"
+			],
+			[
+				"la",
+				"lat"
+			],
+			[
+				"lo",
+				"longitude"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 285.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/gbtux/Projets/Django/forjme/dashboard/models.py",
+		"/home/gbtux/Projets/Django/forjme/forjme/urls.py",
+		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/views.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/show_project.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project_menu.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/projects.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/general_menu.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/newproject.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/login.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/home.html",
+		"/home/gbtux/Projets/RoR/BlackForge/app/assets/stylesheets/dark.css",
+		"/home/gbtux/Projets/RoR/BlackForge/app/assets/stylesheets/assets/combine_fonts.css",
+		"/var/www/MyCommunityMaquetteDark/style.css",
+		"/var/www/MyCommunityMaquetteDark/index.html",
+		"/var/www/MyCommunityMaquetteDark/index_old.html",
+		"/var/www/MyCommunityMaquette/css/chosen.bluenso.css",
+		"/var/www/MyCommunityMaquette/wbpreview.com/previews/WB0LX21H9/dark/index.html",
+		"/var/www/MyCommunityMaquette/css/dark.css",
+		"/var/www/MyCommunityMaquette/index.html",
+		"/var/www/MyCommunityMaquette/css/style.css",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Command/GalleryImportCommand.php",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Utilities/Thumb.php",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/views/Default/adminPhotos.html.twig",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Entity/User.php",
+		"/var/www/MyGallery/app/config/security.yml",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/public/css/style.css",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/public/js/gallery.js",
+		"/var/www/MyGallery/app/AppKernel.php",
+		"/var/www/MyGallery/app/config/routing_dev.yml",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Entity/Gallery.php",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/public/css/elastislide.css",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Utilities/SBImage.php",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/doc/index.rst",
+		"/var/www/MyGallery/app/config/parameters.ini",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/views/layout.html.twig",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/public/css/demo.css",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/views/Security/login.html.twig",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/OpenLvbMyGalleryBundle.php",
+		"/var/www/MyGallery/app/config/config.yml",
+		"/var/www/MyGallery/app/autoload.php",
+		"/var/www/MyGallery/app/config/routing.yml",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/config/services.xml",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Service/XmlManager.php",
+		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/data/mygallery.xml",
+		"/var/www/ResponsiveImageGallery/js/gallery.js",
+		"/var/www/galerie/index.html",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Controller/DefaultController.php",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/template.html.twig",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/Default/index.html.twig",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/Default/monespace.html.twig",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/config/routing.yml",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/public/js/osmLeaflet.jquery.js",
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/public/js/leaflet.js",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/views/layout.html.twig",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/public/js/osmLeaflet.jquery.js",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/config/routing.yml",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/views/Default/monespace.html.twig",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/views/monespace.html.twig",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/doc/index.rst",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/public/css/style.css",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/public/js/bootstrap-dropdown.js",
+		"/var/www/MaRoute/app/config/parameters.ini",
+		"/var/www/MaRoute/app/config/config.yml",
+		"/var/www/MaRoute/app/config/security.yml",
+		"/var/www/MaRoute/app/AppKernel.php",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/OpenLVBMaRouteBundle.php",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Entity/User.php",
+		"/var/www/MaRoute/app/autoload.php",
+		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/views/Default/index.html.twig"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"url",
+			"									\n",
+			"navbar_as_heading",
+			"examp",
+			"box",
+			"example",
+			"					\n",
+			"              \n",
+			"slider"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 295.0,
+	"status_bar_visible": true
+}
