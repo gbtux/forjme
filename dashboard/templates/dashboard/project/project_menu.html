@@ -161,7 +161,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a id="new_chat" data-form="{% url chat_new project.id %}" href="">
 								<i class="icon-large icon-th"></i> New chat
 							</a>
 						</li>
@@ -206,7 +206,7 @@
 				<div class="accordion-inner">
 					<ul class="nav nav-list">
 						<li>
-							<a href="{% url projects %}">
+							<a href="">
 								<i class="icon-large icon-th"></i> Users
 							</a>
 						</li>
@@ -218,3 +218,19 @@
 	</div> <!-- /accordionSB -->
 </div>
 <!-- sidebar -->
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#new_chat').on('click', function(){
+			console.log('click new chat');
+			var url = $(this).data("form");
+			$("#formModal").load(url, function() { // load the url into the modal
+        		$(this).modal('show'); // display the modal on url load
+        		$(this).removeClass('hide');
+        		form.init($("#formnewchat"), url, $(this), $('#table-chat'), 'table');
+    		});
+    		return false;
+		});
+	});
+</script>

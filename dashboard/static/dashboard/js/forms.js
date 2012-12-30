@@ -1,10 +1,20 @@
+/**
+
+adapted from http://tutos-django.com/2012/03/04/un-formulaire-sexy-en-ajax/
+thanks to guillaumecisco, the real author ;-)
+adapted for all my forms by gbtux
+2012-12
+AGPL
+**/
+
 var form = {
     fields : {},
-    init : function(obj, url, modal, addTo){
+    init : function(obj, url, modal, addTo, typeAddTo){
         form.that = obj; // storing form object
-        form.url = url;
-        form.modal = modal;
-        form.addTo = addTo;
+        form.url = url; //url where submit form
+        form.modal = modal; //twitter bootstrap modal object
+        form.addTo = addTo; //id where add the new object created
+        form.typeAddTo = typeAddTo; //  type of the addTo aka 'table' or 'list'
         // init fields with value and validation function
         var $fields = $(":input:not(:submit:, :button)", form.that);
         $.each($fields, function(i, field) {
@@ -41,7 +51,11 @@ var form = {
         else {
             form.modal.modal('hide');
             form.modal.empty();
-            form.addTo.prepend(data['element']);
+            if(form.typeAddTo == 'list'){
+                form.addTo.prepend(data['element']);
+            }else{
+                form.addTo.childs('tbody').prepend(data['element']);
+            }
         }
     },
     error : function(jqXHR, textStatus, errorThrown){

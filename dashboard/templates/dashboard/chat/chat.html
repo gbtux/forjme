@@ -1,0 +1,15 @@
+<tr>
+	<td><input type="checkbox" class="chkbck"></td>
+	<td>
+		<a class="post_title" href="#">{{ room.title }}</a>
+	</td>
+	<td>{{ room.creator }}</td>
+	<td><span class="badge badge-warning">{{ room.nbmessages }}</span></td>
+	<td>{{ room.created }}</td>
+	<td>
+		<a class="btn btn-small" href="{% url show_chat project.id room.id %}">
+			<i class="icon-eye-2"></i>
+			Join
+		</a>
+	</td>	
+</tr>

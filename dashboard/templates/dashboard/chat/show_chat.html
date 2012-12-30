@@ -1,0 +1,77 @@
+{% extends "dashboard/base.html" %}
+
+{% load i18n staticfiles %}
+
+{% block menu %}
+	{% include "dashboard/project/project_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+	<li><a href="{% url project_edit project.id}">{{ project.name }}</a></li>
+	<li><a href="{% url chat_list project.id %}">Chats</a></li>
+	<li><a>{{ room.title }}</a></li>
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'dashboard/css/unicorn-chat.css' %}" rel="stylesheet" />
+<script type="text/javascript" src="{% static 'dashboard/js/chat.js' %}"></script>
+
+<div class="widget-box widget-chat">
+	<div class="widget-title">
+		<span class="icon">
+			<i class="icon-comment"></i>
+		</span>
+		<h5>Support chat</h5>
+		<div class="btn-group pull-right" style="margin-right:3px; margin-top: 3px;">
+		    <a class="btn" href="#">
+		    	<i class="icon-user"></i> Online users
+		    </a>
+		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		    	<span class="caret"></span>
+		    </a>
+		    <ul class="dropdown-menu" id="list-connected">
+			    
+		    </ul>
+	    </div>
+	</div>
+	<div class="widget-content nopadding">
+		<div class="chat-content panel-left span12">                   
+		   <div class="chat-messages" id="chat-messages">
+				<div id="chat-messages-inner"></div>
+		   </div>									
+		   <div id="chat-form" class="chat-message well">
+		   		<!-- <form id="chat-form" class="chat-message well"> -->
+		   			<!-- <input type="submit" value="Send" class="btn btn-success"/> -->
+					<button class="btn btn-success">Send</button>
+					<span class="input-box">
+						<input type="text" name="message" id="msg-box" />
+					</span>
+				
+		   </div>
+		</div>
+	</div>
+</div>
+
+<!-- <script type="text/javascript" src="{% static 'dashboard/js/jchat.js' %}"></script> -->
+<script type="text/javascript">
+	/* chat_id is passed form the view, the init_chat function then does all the magic */
+	$(document).ready(function(){
+		//chat_id, html_el_id, sync_url, join_url, leave_url, send_url, receive_url
+		init_chat( 
+			{{ room.id }},
+			"chat",
+			"{% url sync_chat project.id room.id %}",
+			"{% url join_chat project.id room.id %}",
+			"{% url leave_chat project.id room.id %}",
+			"{% url send_chat project.id room.id %}",
+			"{% url receive_chat project.id room.id %}",
+			"{{ STATIC_URL }}dashboard/images/",
+			"{% csrf_token %}",
+			"{{ user.username }}"
+		);
+	});
+</script>
+
+{% endblock %}

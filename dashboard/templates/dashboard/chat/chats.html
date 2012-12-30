@@ -12,7 +12,24 @@
 {% endblock %}
 
 {% block content %}
-	{% for room in rooms %}
-		{{ room.title }}
-	{% endfor %}
+
+	<table class="table smallfont" style="background-color: #FFF" id="table-chat">
+		<thead>
+			<tr>
+				<td style="width:20px;"><input type="checkbox" id="chkbck"></td>
+				<td>Title</td>
+				<td>Author</td>
+				<td><i class="icon-large icon-comment-alt-1"></i></td>
+				<td>Date</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for room in rooms %}
+				{% include "dashboard/chat/chat.html" %}
+			{% endfor %}		
+							
+		</tbody>
+	</table>
+
 {% endblock %}

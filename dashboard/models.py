@@ -58,9 +58,10 @@ class Task(models.Model):
 
 class Room(models.Model):
 	title = models.CharField(_(u'title'), max_length=255)
-	#creator = models.ForeignKey(User, related_name='room_creator', blank=True, null=True)
+	creator = models.ForeignKey(User, related_name='room_creator', blank=True, null=True)
 	created = models.DateTimeField(default=datetime.now())
 	project = models.ForeignKey(Project, related_name="project_room")
+	connected = []
 
 	def add_message(self, atype, sender, message=None):
 		m = Message(room=self, type=atype, author=sender, message=message)
@@ -71,9 +72,11 @@ class Room(models.Model):
 		return self.add_message('m', sender, message)
 
 	def join(self, user):
-		return sel.add_message('j', user)
+		self.connected.append(user)
+		return self.add_message('j', user)
 
 	def leave(self, user):
+		self.connected.remove(user)
 		return self.add_message('l', user)
 
 	def messages(self, after_pk=None, after_date=None):
@@ -84,12 +87,19 @@ class Room(models.Model):
 			m = m.filter(timestamp__gte=after_date)
 		return m.order_by('pk')
 
+	def nbmessages(self):
+		m = Message.objects.filter(room=self)
+		return len(m)
+
 	def last_message_id(self):
 		m = Message.objects.filter(room=self).order_by('pk')
 		if m:
 			return m[0].id
 		else:
 			return 0
+
+	def list_connected(self):
+		return self.connected
 
 	def __unicode__(self):
 		return 'Chat for %s %d' % (self.id, self.title)

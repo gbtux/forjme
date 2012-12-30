@@ -55,6 +55,7 @@ $(document).ready(function() {
 
 // PLUPLOAD
 	// Convert divs to queue widgets when the DOM is ready
+/*
 	$(function() {
 		$("#uploader").pluploadQueue({
 			// General settings
@@ -101,3 +102,4 @@ $(document).ready(function() {
 			return false;
 		});
 	});
+*/

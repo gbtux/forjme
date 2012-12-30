@@ -50,16 +50,16 @@
 </div><!-- sidebar -->
 
 <script type="text/javascript">
-		$(document).ready(function () {
-			$('#new_project').on('click', function(){
-				console.log('click new project');
-				var url = $(this).data("form");
-				$("#formModal").load(url, function() { // load the url into the modal
-            		$(this).modal('show'); // display the modal on url load
-            		$(this).removeClass('hide');
-            		form.init($("#formnewproject"), url, $(this), $('#projects'));
-        		});
-        		return false;
-			});
+	$(document).ready(function () {
+		$('#new_project').on('click', function(){
+			console.log('click new project');
+			var url = $(this).data("form");
+			$("#formModal").load(url, function() { // load the url into the modal
+        		$(this).modal('show'); // display the modal on url load
+        		$(this).removeClass('hide');
+        		form.init($("#formnewproject"), url, $(this), $('#projects'), 'list');
+    		});
+    		return false;
 		});
-	</script>
+	});
+</script>

@@ -1,0 +1,20 @@
+<form class="well project-form" method="post" id="formnewchat" action="{% url chat_new project.id %}">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Add chat</h3>
+  </div>
+  <div class="modal-body">
+      {% csrf_token %}
+      <!--<form class="form-horizontal">-->
+        <div class="control-group">
+          <label class="control-label" for="id_name">Title</label>
+          <div class="controls">
+            <input type="text" id="id_title" name="title" placeholder="Title for the chat">
+          </div>
+        </div>
+  </div>
+  <div class="modal-footer">
+       <input class="btn btn-primary" type="submit" value="Save" />
+       <input name="cancel" class="btn" type="submit" data-dismiss="modal" value="Cancel"/>
+  </div>
+</form>
