@@ -93,7 +93,7 @@
             type: 'post',
             url: chat_send_url, //'/chat/send/',
             success: function(data) {
-            	add_message(name, msg,clear);
+            	//add_message(name, msg,clear);
             }
         });
 	}

@@ -4,18 +4,22 @@
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
-from dashboard.models import Project, Room
-from dashboard.forms import ProjectForm, ChatForm
+from dashboard.models import Project, Room, News, Event
+from dashboard.forms import ProjectForm, ChatForm, NewsForm
 import django.utils.simplejson as json
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import loader, Context
 from django.http import Http404
+import logging
+
+logger = logging.getLogger('dashboard')
 
 @login_required(login_url='/accounts/login/')
 def home(request):
 	return render_to_response('dashboard/home.html',context_instance=RequestContext(request))
 
+###################################### PROJECTS ################################################
 @login_required(login_url='/accounts/login/')
 def projects(request):
 	projects = Project.objects.all()
@@ -96,7 +100,6 @@ def sync_chat(request, project_id, chat_id):
 	r = Room.objects.get(id=post['id'])
 	lmid = r.last_message_id()
 	return HttpResponse(jsonify({'last_message_id':lmid}))
-	#return HttpResponse(content=json.dumps({'last_message_id':lmid}), mimetype='application/json')
 
 @login_required(login_url='/accounts/login/')
 def send_chat(request, project_id, chat_id):
@@ -137,6 +140,77 @@ def leave_chat(request, project_id, chat_id):
 	r = Room.objects.get(id=int(p['chat_room_id']))
 	r.leave(request.user)
 	return HttpResponse('')
+
+####################################### END CHAT #######################################
+
+####################################### NEWS ###########################################
+@login_required(login_url='/accounts/login/')
+def news(request, project_id = None):
+	logger.debug('les news')
+	project = Project.objects.get(pk=project_id)
+	news = News.objects.filter(project=project).order_by('-date')
+	return render_to_response('dashboard/news/news.html',{'news':news, 'project':project}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
+def news_new(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	logger.debug('ceci est un test !!!')
+	if request.method == 'POST':
+		form = NewsForm(request.POST)
+		if form.is_valid():
+			title = form.cleaned_data['title']
+			content = form.cleaned_data['content']
+			news = News.objects.create(title=title, content=content, author=request.user, project=project)
+			news.save()
+			tmpl = loader.get_template('dashboard/news/new.html')
+			ctx = Context({'new':news, 'project': project})
+			rendered = tmpl.render(ctx)
+			return HttpResponse(content=json.dumps({'success' : 'success', 'element': rendered}), mimetype='application/json')
+		else:
+			errors = json.dumps(form.errors)
+			return HttpResponse(errors, mimetype='application/json')
+	else:
+		form = NewsForm(request)
+	return render_to_response('dashboard/news/newnews.html', {'form': form, 'project': project}, context_instance=RequestContext(request))
+
+@login_required(login_url='/accounts/login/')
+def news_view(request, project_id=None, news_id=None):
+	project = Project.objects.get(pk=project_id)
+	news = News.objects.get(pk=news_id)
+	return render_to_response('dashboard/news/show_news.html',{'news':news, 'project':project}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
+def news_edit(request, project_id=None, news_id=None):
+	logger.debug('FIXME : news edit')
+	#project = Project.objects.get(pk=project_id)
+	#if news_id is None:
+	#	news = News()
+	#else:
+	#	news = News.objects.get(pk=news_id)
+	#
+	#if request.POST:
+	#	raise Http404
+	#else:
+	#	#form = NewsEditForm(instance=news)
+	#	raise Http404
+	#variables = RequestContext(request, {'form':form})
+	#return render_to_response("dashboard/news/new_news.html", variables)
+	raise Http404
+
+
+############################################## CALENDAR ########################################
+@login_required(login_url='/accounts/login/')
+def calendar(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	return render_to_response('dashboard/calendar/calendar.html',{'project':project}, context_instance=RequestContext(request))	
+
+def calendar_events(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	events = Event.objects.filter(project=project)
+	return HttpResponse(jsonify(events, ['id','title','date_start','date_end','color']))
+	#return HttpResponse(jsonify(m, ['id','author','message','type']))
+
+################################# UTILS ###############################################
 
 def jsonify(object, fields=None, to_dict=False):
     '''Simple convert model to json'''

@@ -53,8 +53,12 @@ var form = {
             form.modal.empty();
             if(form.typeAddTo == 'list'){
                 form.addTo.prepend(data['element']);
-            }else{
-                form.addTo.childs('tbody').prepend(data['element']);
+            }
+            if(form.typeAddTo == 'table'){
+                form.addTo.children('tbody').prepend(data['element']);
+            }
+            if(form.typeAddTo == 'div'){
+                form.addTo.prepend(data['element']);
             }
         }
     },

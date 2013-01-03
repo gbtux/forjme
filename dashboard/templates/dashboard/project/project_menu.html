@@ -31,12 +31,12 @@
 				<div class="accordion-inner">
 					<ul class="nav nav-list">
 						<li>
-							<a href="">
+							<a href="{% url news_list project.id %}">
 								<i class="icon-large icon-th"></i> Blog
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a id="addnews" data-form="{% url news_new project.id %}" href="">
 								<i class="icon-large icon-th"></i> Add news
 							</a>
 						</li>
@@ -131,7 +131,7 @@
 				<div class="accordion-inner">
 					<ul class="nav nav-list">
 						<li>
-							<a href="">
+							<a href="{% url calendar project.id %}">
 								<i class="icon-large icon-th"></i> Calendar
 							</a>
 						</li>
@@ -222,8 +222,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#new_chat').on('click', function(){
-			console.log('click new chat');
+		$('#new_chat').on('click', function(e){
+			e.preventDefault();
+			//console.log('click new chat');
 			var url = $(this).data("form");
 			$("#formModal").load(url, function() { // load the url into the modal
         		$(this).modal('show'); // display the modal on url load
@@ -232,5 +233,19 @@
     		});
     		return false;
 		});
+
+		$('#addnews').on('click', function(e){
+			e.preventDefault();
+			console.log('add news');
+			var url = $(this).data("form");
+			console.log(url);
+			
+			$("#formModal").load(url, function() {
+				$(this).modal('show'); // display the modal on url load
+        		$(this).removeClass('hide');
+        		form.init($("#formnewnews"), url, $(this), $('#newslist'), 'div');
+        		$('#id_content').wysihtml5();
+        	});
+		})
 	});
 </script>

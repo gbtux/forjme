@@ -1,0 +1,18 @@
+<div class="comment_container span12" style="margin-left:auto;">
+	<div class="img_round">
+		<img width="60" height="60" src=""> <!-- TODO : AVATAR -->
+	</div>
+	<div style="margin-left:auto;" class="comment_content">
+		<p class="meta">
+			<a href="#">{{ new.title }}</a>
+			<span class="comment_date pull-right">{{ new.date }}</span>
+			
+		</p>
+		<p>
+			<a class="comment_author" href="#">{{ new.author }}</a> wrote: {{ new.content|slice:":155"|safe }}
+		</p>
+		<p>
+			<a href="{% url news_view project.id new.id %}" class="btn btn-tigasatu">Read more</a>
+		</p>
+	</div>
+</div>

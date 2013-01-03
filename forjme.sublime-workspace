@@ -4,20 +4,244 @@
 		"selected_items":
 		[
 			[
+				"dateE",
+				"dateEndTrunk"
+			],
+			[
+				"dateS",
+				"dateStartTrunk"
+			],
+			[
+				"get",
+				"getTime"
+			],
+			[
+				"date",
+				"dateSplitHours"
+			],
+			[
+				"pro",
+				"project_id"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"fu",
+				"fullcalendar"
+			],
+			[
+				"proj",
+				"project"
+			],
+			[
+				"crea",
+				"create"
+			],
+			[
+				"htt",
+				"Http404"
+			],
+			[
+				"r",
+				"raise"
+			],
+			[
+				"New",
+				"NewsEditForm"
+			],
+			[
+				"h",
+				"Http404"
+			],
+			[
+				"news",
+				"news_id"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"add",
+				"add_connected"
+			],
+			[
+				"m",
+				"message"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"wi",
+				"widget-chat"
+			],
+			[
+				"pa",
+				"panel-right"
+			],
+			[
+				"img",
+				"img_dir"
+			],
+			[
+				"im",
+				"img_dir"
+			],
+			[
+				"con",
+				"containter"
+			],
+			[
+				"scrol",
+				"scrollHeight"
+			],
+			[
+				"cont",
+				"container"
+			],
+			[
+				"scro",
+				"scrollHeight"
+			],
+			[
+				"sc",
+				"scrollTop"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"last",
+				"last_received"
+			],
+			[
+				"rece",
+				"receive_url"
+			],
+			[
+				"lo",
+				"login_required"
+			],
+			[
+				"Htt",
+				"Http404"
+			],
+			[
+				"lea",
+				"leave_url"
+			],
+			[
+				"chat_lea",
+				"chat_leave_url"
+			],
+			[
+				"chat_joi",
+				"chat_join_url"
+			],
+			[
+				"se",
+				"send_url"
+			],
+			[
+				"chat_s",
+				"chat_send_url"
+			],
+			[
+				"chat",
+				"chat_join"
+			],
+			[
+				"join",
+				"join_url"
+			],
+			[
+				"sync",
+				"sync_url"
+			],
+			[
+				"l",
+				"login_required"
+			],
+			[
+				"ty",
+				"typeAddTo"
+			],
+			[
+				"render",
+				"rendered"
+			],
+			[
+				"project",
+				"project"
+			],
+			[
+				"cea",
+				"create"
+			],
+			[
+				"proje",
+				"project"
+			],
+			[
+				"a",
+				"application"
+			],
+			[
+				"e",
+				"errors"
+			],
+			[
+				"Ch",
+				"CharField"
+			],
+			[
+				"R",
+				"RequestContext"
+			],
+			[
+				"creat",
+				"creator"
+			],
+			[
+				"o",
+				"order_by"
+			],
+			[
+				"afe",
+				"after_date"
+			],
+			[
+				"af",
+				"after_date"
+			],
+			[
+				"pk",
+				"pk__gt"
+			],
+			[
+				"after",
+				"after_date"
+			],
+			[
+				"__",
+				"__add_message"
+			],
+			[
 				"bac",
 				"background-color"
 			],
 			[
-				"pro",
-				"projectId"
-			],
-			[
 				"T",
 				"TYPE_TASK_STATUS"
-			],
-			[
-				"re",
-				"rejected"
 			],
 			[
 				"F",
@@ -88,10 +312,6 @@
 				"width"
 			],
 			[
-				"con",
-				"contentSelector"
-			],
-			[
 				"t",
 				"this"
 			],
@@ -102,10 +322,6 @@
 			[
 				"co",
 				"columns"
-			],
-			[
-				"wi",
-				"widgetSelector"
 			],
 			[
 				"s",
@@ -174,10 +390,6 @@
 			[
 				"ret",
 				"return"
-			],
-			[
-				"pa",
-				"pathThumbs"
 			],
 			[
 				"req",
@@ -250,15 +462,67 @@
 			[
 				"la",
 				"lat"
-			],
-			[
-				"lo",
-				"longitude"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "dashboard/models.py",
+			"settings":
+			{
+				"buffer_size": 6421,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/views.py",
+			"settings":
+			{
+				"buffer_size": 9137,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "forjme/urls.py",
+			"settings":
+			{
+				"buffer_size": 2596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/news/news.html",
+			"settings":
+			{
+				"buffer_size": 823,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/calendar/calendar.html",
+			"settings":
+			{
+				"buffer_size": 3432,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/project/project_menu.html",
+			"settings":
+			{
+				"buffer_size": 6862,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/admin.py",
+			"settings":
+			{
+				"buffer_size": 282,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -288,21 +552,39 @@
 	},
 	"file_history":
 	[
-		"/home/gbtux/Projets/Django/forjme/dashboard/models.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/chat.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/show_chat.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/new.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/news.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/newnews.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/show_news.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/project_menu.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/chats.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/newchat.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/newproject.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/show_project.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/projects.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/jchat.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/general_menu.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/chat.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/unicorn.chat.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/unicorn-chat.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/jchat.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/demo.js",
 		"/home/gbtux/Projets/Django/forjme/forjme/urls.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/models.py",
 		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/views.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/show_project.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project_menu.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/projects.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/general_menu.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
-		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/newproject.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/login.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/home.html",
 		"/home/gbtux/Projets/RoR/BlackForge/app/assets/stylesheets/dark.css",
@@ -381,6 +663,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"join",
 			"url",
 			"									\n",
 			"navbar_as_heading",
@@ -407,8 +690,197 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "dashboard/models.py",
+					"settings":
+					{
+						"buffer_size": 6421,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6418,
+								6418
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2210.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dashboard/views.py",
+					"settings":
+					{
+						"buffer_size": 9137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5664,
+								5664
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2167.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "forjme/urls.py",
+					"settings":
+					{
+						"buffer_size": 2596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2109,
+								2109
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 199.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dashboard/templates/dashboard/news/news.html",
+					"settings":
+					{
+						"buffer_size": 823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								383,
+								383
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dashboard/templates/dashboard/calendar/calendar.html",
+					"settings":
+					{
+						"buffer_size": 3432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3240,
+								3240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1156.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "dashboard/templates/dashboard/project/project_menu.html",
+					"settings":
+					{
+						"buffer_size": 6862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3740,
+								3740
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2150.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dashboard/admin.py",
+					"settings":
+					{
+						"buffer_size": 282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								282,
+								282
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -468,6 +940,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 295.0,
+	"side_bar_width": 273.0,
 	"status_bar_visible": true
 }

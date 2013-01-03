@@ -17,10 +17,12 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'dashboard.views.home', name='home'), #HomeView.as_view()
 
+    #projects
     url(r'^projects/', projects, name='projects'),
     url(r'^project/new', project_new, name="project_new"),
     url(r'^project/(?P<project_id>\d+)/$', project_edit, name="project_edit"),
 
+    #chat
     url(r'^project/(?P<project_id>\d+)/chats', chats, name="chat_list"),
     url(r'^project/(?P<project_id>\d+)/chat/new', chat_new, name="chat_new"),
     url(r'^project/(?P<project_id>\d+)/chat/(?P<chat_id>\d+)/sync', sync_chat, name="sync_chat"),
@@ -29,7 +31,20 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/chat/(?P<chat_id>\d+)/join', join_chat, name="join_chat"),
     url(r'^project/(?P<project_id>\d+)/chat/(?P<chat_id>\d+)/leave', leave_chat, name="leave_chat"),
     url(r'^project/(?P<project_id>\d+)/chat/(?P<chat_id>\d+)', show_chat, name="show_chat"),
-    
+
+    #news
+    url(r'^project/(?P<project_id>\d+)/news/new', news_new, name="news_new"),
+    url(r'^project/(?P<project_id>\d+)/news/(?P<news_id>\d+)', news_view, name="news_view"),
+    url(r'^project/(?P<project_id>\d+)/news', news, name="news_list"),
+    #url(r'^project/(?P<project_id>\d+)/news/edit/(?P<news_id>\d+)', news_edit, name="news_edit"),
+
+    #calendar
+    url(r'^project/(?P<project_id>\d+)/calendar/events', calendar_events, name="calendar_events"),
+    url(r'^project/(?P<project_id>\d+)/calendar', calendar, name="calendar"),
+
+
+
+    #security
     url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/login.html'}),
 
     #for django-git

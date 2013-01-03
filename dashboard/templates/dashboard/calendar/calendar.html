@@ -1,0 +1,88 @@
+{% extends "dashboard/base.html" %}
+{% load i18n staticfiles %}
+{% block menu %}
+	{% include "dashboard/project/project_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+	<li><a href="#">{{ project.name }}</a></li>
+	<li><a>Calendar</a></li>
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'dashboard/css/fullcalendar.css' %}" rel="stylesheet" />
+
+<script type="text/javascript" src="{% static 'dashboard/js/fullcalendar.min.js' %}"></script>
+
+<div class="row-fluid sortable ui-sortable">
+				<div class="box span12">
+				  <div class="box-header" data-original-title="">
+					  <h2><i class="icon-calendar"></i><span class="break"></span>Calendar</h2>
+				  </div>
+				  <div class="box-content">
+					<!--<div id="external-events" class="span3 hidden-phone hidden-tablet"> -->
+						<!--
+						<h4>Draggable Events</h4>
+						<div style="position: relative;" class="external-event badge ui-draggable">Default</div>
+						<div style="position: relative; z-index: auto; left: 0px; top: 0px;" class="external-event badge badge-success ui-draggable">Completed</div>
+						<div style="position: relative; z-index: auto; left: 0px; top: 0px;" class="external-event badge badge-warning ui-draggable">Warning</div>
+						<div style="position: relative;" class="external-event badge badge-important ui-draggable">Important</div>
+						<div style="position: relative;" class="external-event badge badge-info ui-draggable">Info</div>
+						<div style="position: relative;" class="external-event badge badge-inverse ui-draggable">Other</div>
+						<p>
+						<label for="drop-remove"><div id="uniform-drop-remove" class="checker"><span><input style="opacity: 0;" id="drop-remove" type="checkbox"></span></div> remove after drop</label>
+						</p>
+						</div> -->
+						<div id="divcalendar" class="span12 fc"></div>
+						<div class="clearfix"></div>
+
+					<!-- </div> -->
+				</div>
+			</div><!--/row-->
+
+<!-- <div id="divcalendar" class="span11" style="margin-top:50px; background-color: #FFF;"></div> -->
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#divcalendar').fullCalendar({
+			header: {
+				left: 'title',
+				right: 'prev,next today,month,agendaWeek,agendaDay'
+			},
+			editable: true,
+			selectable: true,
+			events:function(start, end, callback) {
+		        $.ajax({
+		            url: "{% url calendar_events project.id %}",
+		            dataType: 'json',
+		            data: {
+		                // our hypothetical feed requires UNIX timestamps
+		                start: Math.round(start.getTime() / 1000),
+		                end: Math.round(end.getTime() / 1000)
+		            },
+		            success: function(doc) {
+		            	var events = [];
+		            	$(doc).each(function(key, value){
+		            		//'2010-01-09 12:30:00',
+		            		var dateStartOrigin = value.date_start;
+		            		var dateStartTrunk = dateStartOrigin.split('+');
+		            		var dateEndOrigin = value.date_end;
+		            		var dateEndTrunk = dateEndOrigin.split('+');
+		            		events.push({
+		                        title: value.title,
+		                        start: dateStartTrunk[0],
+		                        end: dateEndTrunk[0]
+		                    });
+		            	});
+						callback(events);
+		            }
+		        });
+		    }
+		});
+	});
+</script>
+
+
+{% endblock %}

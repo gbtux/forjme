@@ -1,4 +1,5 @@
 # Django settings for forjme project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -130,6 +131,8 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -143,13 +146,24 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+	# I always add this handler to facilitate separating loggings
+        'log_file':{
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(SITE_ROOT, 'logs/django.log'),
+            'maxBytes': '16777216' # 16megabytes
         }
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['mail_admins','log_file'],
+            'level': 'DEBUG',
             'propagate': True,
+        },
+	'dashboard': {
+            'handlers': ['log_file'],
+            'level': 'DEBUG',
         },
     }
 }

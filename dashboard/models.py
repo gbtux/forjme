@@ -102,7 +102,7 @@ class Room(models.Model):
 		return self.connected
 
 	def __unicode__(self):
-		return 'Chat for %s %d' % (self.id, self.title)
+		return 'Chat for %d %s' % (self.id, self.title)
 
 MESSAGE_TYPE_CHOICES = (
     ('s','system'),
@@ -117,7 +117,7 @@ class Message(models.Model):
     '''A message that belongs to a chat room'''
     room = models.ForeignKey(Room)
     type = models.CharField(max_length=1, choices=MESSAGE_TYPE_CHOICES)
-    author = models.ForeignKey(User, related_name='author', blank=True, null=True)
+    author = models.ForeignKey(User, related_name='message_author', blank=True, null=True)
     message = models.CharField(max_length=255, blank=True, null=True)
     timestamp = models.DateTimeField(auto_now=True)
 
@@ -137,5 +137,16 @@ class Message(models.Model):
         return self.message
 
 
+class News(models.Model):
+	author = models.ForeignKey(User, related_name='author')
+	date = models.DateTimeField(_(u'date'), auto_now=True)
+	title = models.CharField(_(u'title'), max_length=255)
+	content = models.TextField(_(u'content'))
+	project = models.ForeignKey(Project, related_name="project_news")
 
-
+class Event(models.Model):
+	title = models.CharField(_(u'title'), max_length=255)
+	date_start = models.DateTimeField(_(u'Date start'), blank=True, null=True,)
+	date_end = models.DateTimeField(_(u'Date end'), blank=True, null=True,)
+	color = models.CharField(_(u'color'), max_length=7) #in hexa
+	project = models.ForeignKey(Project, related_name="project_event")

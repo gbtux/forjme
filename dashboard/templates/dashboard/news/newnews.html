@@ -1,0 +1,27 @@
+
+<form class="well project-form" method="post" id="formnewnews" action="{% url news_new project.id %}">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Add News</h3>
+  </div>
+  <div class="modal-body">
+      {% csrf_token %}
+      <!--<form class="form-horizontal">-->
+        <div class="control-group">
+          <label class="control-label" for="id_title">Title</label>
+          <div class="controls">
+            <input type="text" id="id_title" name="title" style="width: 100%" placeholder="Title of the news">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="id_content">Content</label>
+          <div class="controls">
+            <textarea rows="12" id="id_content" name="content" style="width: 100%"></textarea>        
+          </div>
+        </div>
+  </div>
+  <div class="modal-footer">
+       <input class="btn btn-primary" type="submit" value="Save" />
+       <input name="cancel" class="btn" type="submit" data-dismiss="modal" value="Cancel"/>
+  </div>
+</form>
