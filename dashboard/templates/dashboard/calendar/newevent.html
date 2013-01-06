@@ -1,0 +1,87 @@
+{% load i18n staticfiles %}
+<link href="{% static 'dashboard/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet" />
+<script type="text/javascript" src="{% static 'dashboard/plugins/datetimepicker/js/bootstrap-datetimepicker.js' %}"></script>
+<form class="well project-form" method="post" id="formnewevent" action="{% url calendar_newevent project.id %}">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Add Event</h3>
+  </div>
+  <div class="modal-body">
+      {% csrf_token %}
+      
+      <!--<form class="form-horizontal">-->
+        <div class="control-group">
+          <label class="control-label" for="id_title">Title</label>
+          <div class="controls">
+            <input type="text" id="id_title" name="title" style="width: 100%" placeholder="Title of the event">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="id_datestart">Date and time start</label>
+          <div id="evtstart" class="controls input-append date">
+            <input id="id_date_start" name="date_start" data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+            <span class="add-on">
+              <i data-time-icon="icon-clock-2" data-date-icon="icon-calendar"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="id_dateend">Date and time end</label>
+          <div id="evtend" class="controls input-append date">
+            <input id="id_date_end" name="date_end" data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+            <span class="add-on">
+              <i data-time-icon="icon-clock-2" data-date-icon="icon-calendar"></i>
+            </span>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input id="id_all_day" name="all_day" type="checkbox"> All day ?
+            </label>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="id_color">Color</label>
+          <div id="eventcolor" class="controls input-append input-prepend color" data-color-format="hexa" data-color="rgb(255,0,0)">
+            <span class="add-on"><i id="colorchoosen" style="background-color: cornflowerblue"></i></span>
+            <input type="text" readonly="" id="id_color" name="color" value="cornflowerblue" style="width: 120px">
+            <span class="add-on" data-color="cadetblue"><i style="background-color: cadetblue"></i></span>
+            <span class="add-on" data-color="cornflowerblue"><i style="background-color: cornflowerblue"></i></span>
+            <span class="add-on" data-color="aquamarine"><i style="background-color: aquamarine"></i></span>
+            <span class="add-on" data-color="greenyellow"><i style="background-color: greenyellow"></i></span>
+            <span class="add-on" data-color="lightgreen"><i style="background-color: lightgreen"></i></span>
+            <span class="add-on" data-color="gold"><i style="background-color: gold"></i></span>
+            <span class="add-on" data-color="darkorange"><i style="background-color: darkorange"></i></span>
+            <span class="add-on" data-color="darksalmon"><i style="background-color: darksalmon"></i></span>
+            <span class="add-on" data-color="crimson"><i style="background-color: crimson"></i></span>
+            <span class="add-on" data-color="plum"><i style="background-color: plum"></i></span>
+            <span class="add-on" data-color="silver"><i style="background-color: silver"></i></span>
+          </div>
+        </div>
+        
+  </div>
+  <div class="modal-footer">
+       <input class="btn btn-primary" type="submit" value="Save" />
+       <input name="cancel" class="btn" type="submit" data-dismiss="modal" value="Cancel"/>
+  </div>
+</form>
+<script type="text/javascript">
+$(function() {
+    $('#eventcolor .add-on').on('click', function(e){
+      e.preventDefault();
+      $('#colorchoosen').css('background-color',$(this).children('i').css('background-color'));
+      $('#id_color').val($(this).data('color'));
+      $('#id_color').attr('value',$(this).data('color'));
+    });
+    $('#evtstart').datetimepicker({
+      language: 'en'
+    });
+  
+    $('#evtend').datetimepicker({
+      language: 'en'
+    });
+  });
+</script>

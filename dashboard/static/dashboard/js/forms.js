@@ -27,10 +27,15 @@ var form = {
         e.preventDefault();
         var values = {};
         for (var v in form.fields) {
-            if(form.fields[v].value != ''){
-                values[v] = form.fields[v].value;    
+            console.log('#id'+ v + ' : ' + $('#id_'+v).val());
+            if($('#id_'+v).val() == undefined){
+                values[v] = form.fields[v].value;
             }else{
-                values[v] = $('#id_'+v).val();
+                if($('#id_'+v).attr('type') == 'checkbox'){
+                    values[v] = $('#id_'+v).is(':checked');
+                }else{
+                    values[v] = $('#id_'+v).val();
+                }
             }
         }
         $.post(form.url, values, form.success, 'json').error(form.error); // making ajax post
@@ -59,6 +64,31 @@ var form = {
             }
             if(form.typeAddTo == 'div'){
                 form.addTo.prepend(data['element']);
+            }
+            if(form.typeAddTo == 'calendar'){
+                var value = data['element'];
+                var dateStartOrigin = value.date_start;
+                var dateStartTrunk = dateStartOrigin.split('+');
+                var dateEndOrigin = value.date_end;
+                var dateEndTrunk = dateEndOrigin.split('+');
+                var theevent;
+                if(value.all_day == "True"){
+                    theevent = {
+                        title: value.title,
+                        start: dateStartTrunk[0],
+                        allDay: true,
+                        color: value.color.toLowerCase().toString()
+                    };
+                }else{
+                    theevent = {
+                        title: value.title,
+                        start: dateStartTrunk[0],
+                        end: dateEndTrunk[0],
+                        color: value.color.toLowerCase().toString(),
+                        allDay: false //(value.all_day.toLowerCase() === 'true')
+                    };
+                }
+                form.addTo.fullCalendar('renderEvent', theevent);
             }
         }
     },

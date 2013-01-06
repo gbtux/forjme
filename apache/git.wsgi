@@ -8,6 +8,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'forjme.settings'
 
 from django.contrib.auth.models import User
 from django import db
+from dashboard.models import Project
 
 def check_password(environ, user, password):
     db.reset_queries() 

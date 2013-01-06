@@ -18,23 +18,10 @@
 
 <div class="row-fluid sortable ui-sortable">
 				<div class="box span12">
-				  <div class="box-header" data-original-title="">
-					  <h2><i class="icon-calendar"></i><span class="break"></span>Calendar</h2>
+				  	<div class="box-header" data-original-title="">
+						<h2><i class="icon-calendar"></i><span class="break"></span>Calendar</h2>
 				  </div>
 				  <div class="box-content">
-					<!--<div id="external-events" class="span3 hidden-phone hidden-tablet"> -->
-						<!--
-						<h4>Draggable Events</h4>
-						<div style="position: relative;" class="external-event badge ui-draggable">Default</div>
-						<div style="position: relative; z-index: auto; left: 0px; top: 0px;" class="external-event badge badge-success ui-draggable">Completed</div>
-						<div style="position: relative; z-index: auto; left: 0px; top: 0px;" class="external-event badge badge-warning ui-draggable">Warning</div>
-						<div style="position: relative;" class="external-event badge badge-important ui-draggable">Important</div>
-						<div style="position: relative;" class="external-event badge badge-info ui-draggable">Info</div>
-						<div style="position: relative;" class="external-event badge badge-inverse ui-draggable">Other</div>
-						<p>
-						<label for="drop-remove"><div id="uniform-drop-remove" class="checker"><span><input style="opacity: 0;" id="drop-remove" type="checkbox"></span></div> remove after drop</label>
-						</p>
-						</div> -->
 						<div id="divcalendar" class="span12 fc"></div>
 						<div class="clearfix"></div>
 
@@ -53,6 +40,7 @@
 			},
 			editable: true,
 			selectable: true,
+			timeFormat: 'H(:mm)',
 			events:function(start, end, callback) {
 		        $.ajax({
 		            url: "{% url calendar_events project.id %}",
@@ -70,11 +58,23 @@
 		            		var dateStartTrunk = dateStartOrigin.split('+');
 		            		var dateEndOrigin = value.date_end;
 		            		var dateEndTrunk = dateEndOrigin.split('+');
-		            		events.push({
-		                        title: value.title,
-		                        start: dateStartTrunk[0],
-		                        end: dateEndTrunk[0]
-		                    });
+		      
+		            		if(value.all_day == "True"){
+		            			events.push({
+			                        title: value.title,
+			                        start: dateStartTrunk[0],
+			                        allDay: true,
+			                        color: value.color.toLowerCase().toString()
+			                    });
+		            		}else{
+			            		events.push({
+			                        title: value.title,
+			                        start: dateStartTrunk[0],
+			                        end: dateEndTrunk[0],
+			                        color: value.color.toLowerCase().toString(),
+			                        allDay: false //(value.all_day.toLowerCase() === 'true')
+			                    });
+			            	}
 		            	});
 						callback(events);
 		            }

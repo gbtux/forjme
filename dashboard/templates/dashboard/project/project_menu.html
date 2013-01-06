@@ -136,7 +136,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a id="newevent" data-form="{% url calendar_newevent project.id %}" href="">
 								<i class="icon-large icon-th"></i> New event
 							</a>
 						</li>
@@ -246,6 +246,22 @@
         		form.init($("#formnewnews"), url, $(this), $('#newslist'), 'div');
         		$('#id_content').wysihtml5();
         	});
+		})
+
+		$('#newevent').on('click', function(e){
+			e.preventDefault();
+			var url = $(this).data("form");
+			$("#formModal").load(url, function() {
+				$(this).modal('show'); // display the modal on url load
+        		$(this).removeClass('hide');
+        		form.init($("#formnewevent"), url, $(this), $('#divcalendar'), 'calendar');
+        		//$('#eventcolor').colorpicker({
+				//	format: 'hex'
+				//});
+				//$('#eventdateend').datetimepicker({
+				//	language: 'en'
+				//});
+        	});	
 		})
 	});
 </script>

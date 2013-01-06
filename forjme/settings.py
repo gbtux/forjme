@@ -1,8 +1,12 @@
 # Django settings for forjme project.
 import os
+import warnings
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+#FIXME
+warnings.filterwarnings('error', r"DateTimeField received a naive datetime",RuntimeWarning, r'django\.db\.models\.fields')
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

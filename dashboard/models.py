@@ -148,5 +148,6 @@ class Event(models.Model):
 	title = models.CharField(_(u'title'), max_length=255)
 	date_start = models.DateTimeField(_(u'Date start'), blank=True, null=True,)
 	date_end = models.DateTimeField(_(u'Date end'), blank=True, null=True,)
-	color = models.CharField(_(u'color'), max_length=7) #in hexa
+	color = models.CharField(_(u'color'), max_length=17) #the name like 'yellow'
+	all_day = models.BooleanField(_(u'all day'))
 	project = models.ForeignKey(Project, related_name="project_event")

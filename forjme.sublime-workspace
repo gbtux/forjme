@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"colorchoosen"
+			],
+			[
+				"a",
+				"add-on"
+			],
+			[
+				"fiel",
+				"fields"
+			],
+			[
+				"fie",
+				"fields"
+			],
+			[
+				"fi",
+				"fields"
+			],
+			[
+				"date",
+				"dateEnd"
+			],
+			[
+				"lo",
+				"logger"
+			],
+			[
+				"cl",
+				"cleaned_data"
+			],
+			[
+				"event",
+				"eventdateend"
+			],
+			[
+				"s",
+				"script	Tag"
+			],
+			[
 				"dateE",
 				"dateEndTrunk"
 			],
@@ -14,10 +54,6 @@
 			[
 				"get",
 				"getTime"
-			],
-			[
-				"date",
-				"dateSplitHours"
 			],
 			[
 				"pro",
@@ -128,10 +164,6 @@
 				"receive_url"
 			],
 			[
-				"lo",
-				"login_required"
-			],
-			[
 				"Htt",
 				"Http404"
 			],
@@ -190,10 +222,6 @@
 			[
 				"proje",
 				"project"
-			],
-			[
-				"a",
-				"application"
 			],
 			[
 				"e",
@@ -322,10 +350,6 @@
 			[
 				"co",
 				"columns"
-			],
-			[
-				"s",
-				"settings"
 			],
 			[
 				"wid",
@@ -471,7 +495,7 @@
 			"file": "dashboard/models.py",
 			"settings":
 			{
-				"buffer_size": 6421,
+				"buffer_size": 6422,
 				"line_ending": "Unix"
 			}
 		},
@@ -479,7 +503,15 @@
 			"file": "dashboard/views.py",
 			"settings":
 			{
-				"buffer_size": 9137,
+				"buffer_size": 10558,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/calendar/newevent.html",
+			"settings":
+			{
+				"buffer_size": 4167,
 				"line_ending": "Unix"
 			}
 		},
@@ -487,7 +519,7 @@
 			"file": "forjme/urls.py",
 			"settings":
 			{
-				"buffer_size": 2596,
+				"buffer_size": 2696,
 				"line_ending": "Unix"
 			}
 		},
@@ -503,7 +535,7 @@
 			"file": "dashboard/templates/dashboard/calendar/calendar.html",
 			"settings":
 			{
-				"buffer_size": 3432,
+				"buffer_size": 2490,
 				"line_ending": "Unix"
 			}
 		},
@@ -511,7 +543,7 @@
 			"file": "dashboard/templates/dashboard/project/project_menu.html",
 			"settings":
 			{
-				"buffer_size": 6862,
+				"buffer_size": 7422,
 				"line_ending": "Unix"
 			}
 		},
@@ -520,6 +552,22 @@
 			"settings":
 			{
 				"buffer_size": 282,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/base.html",
+			"settings":
+			{
+				"buffer_size": 7561,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/static/dashboard/js/forms.js",
+			"settings":
+			{
+				"buffer_size": 3213,
 				"line_ending": "Unix"
 			}
 		}
@@ -552,6 +600,12 @@
 	},
 	"file_history":
 	[
+		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/js/bootstrap-datetimepicker.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/combine_fonts.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/bootstrap-datetimepicker.fr-FR.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/chat.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/show_chat.html",
@@ -563,7 +617,6 @@
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/project_menu.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/chats.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/newchat.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/newproject.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
@@ -663,6 +716,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'));",
+			"timepicker-hour",
+			"up",
+			"chevron",
+			"console",
+			"time",
 			"join",
 			"url",
 			"									\n",
@@ -690,7 +749,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -698,15 +757,15 @@
 					"file": "dashboard/models.py",
 					"settings":
 					{
-						"buffer_size": 6421,
+						"buffer_size": 6422,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6418,
-								6418
+								6342,
+								6342
 							]
 						],
 						"settings":
@@ -724,15 +783,15 @@
 					"file": "dashboard/views.py",
 					"settings":
 					{
-						"buffer_size": 9137,
+						"buffer_size": 10558,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5664,
-								5664
+								10447,
+								10447
 							]
 						],
 						"settings":
@@ -741,25 +800,54 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2167.0,
+						"translation.y": 4166.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "forjme/urls.py",
+					"file": "dashboard/templates/dashboard/calendar/newevent.html",
 					"settings":
 					{
-						"buffer_size": 2596,
+						"buffer_size": 4167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2109,
-								2109
+								2201,
+								2201
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "forjme/urls.py",
+					"settings":
+					{
+						"buffer_size": 2696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2181,
+								2181
 							]
 						],
 						"settings":
@@ -775,7 +863,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "dashboard/templates/dashboard/news/news.html",
 					"settings":
 					{
@@ -802,19 +890,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "dashboard/templates/dashboard/calendar/calendar.html",
 					"settings":
 					{
-						"buffer_size": 3432,
+						"buffer_size": 2490,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3240,
-								3240
+								550,
+								550
 							]
 						],
 						"settings":
@@ -823,40 +911,40 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1156.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "dashboard/templates/dashboard/project/project_menu.html",
-					"settings":
-					{
-						"buffer_size": 6862,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3740,
-								3740
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2150.0,
+						"translation.y": 127.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
+					"file": "dashboard/templates/dashboard/project/project_menu.html",
+					"settings":
+					{
+						"buffer_size": 7422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7385,
+								7385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4090.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "dashboard/admin.py",
 					"settings":
 					{
@@ -877,6 +965,61 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "dashboard/templates/dashboard/base.html",
+					"settings":
+					{
+						"buffer_size": 7561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								379,
+								379
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "dashboard/static/dashboard/js/forms.js",
+					"settings":
+					{
+						"buffer_size": 3213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2947,
+								2947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 927.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -940,6 +1083,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 273.0,
+	"side_bar_width": 296.0,
 	"status_bar_visible": true
 }

@@ -40,6 +40,7 @@ urlpatterns = patterns('',
 
     #calendar
     url(r'^project/(?P<project_id>\d+)/calendar/events', calendar_events, name="calendar_events"),
+    url(r'^project/(?P<project_id>\d+)/calendar/new', calendar_newevent, name="calendar_newevent"),
     url(r'^project/(?P<project_id>\d+)/calendar', calendar, name="calendar"),
 
 
