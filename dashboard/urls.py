@@ -38,6 +38,7 @@ urlpatterns = patterns('',
 
     #wiki
     url(r'^project/(?P<project_id>\d+)/wiki/page/(?P<page>\w+)', wiki_page, name="wiki_page"),
+    url(r'^project/(?P<project_id>\d+)/wiki/list', wiki_list, name="wiki_list"),
     url(r'^project/(?P<project_id>\d+)/wiki', wiki, name="wiki"),
 
     #security

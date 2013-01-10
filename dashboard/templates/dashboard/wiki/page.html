@@ -1,0 +1,15 @@
+<tr>
+	<td><input type="checkbox" class="chkbck"></td>
+	<td>
+		<a class="post_title" href="#">#{{ page.name }}</a>
+	</td>
+	<td><span class="badge badge-warning">{{ page.creator }}</span></td>
+	<td>{{ page.date }}</td>
+	<td>{{ page.content|removetags:"b span a br p"|safe|slice:":100" }}</td>
+	<td>
+		<a class="btn btn-small" href="{% url wiki project.id %}#{{ page.name }}">
+			<i class="icon-eye-2"></i>
+			Read
+		</a>
+	</td>	
+</tr>

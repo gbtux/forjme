@@ -8,7 +8,7 @@
 	<li><a href="{% url home %}">Home</a></li>
 	<li><a href="{% url projects %}">Projects</a></li>
 	<li><a href="#">{{ project.name }}</a></li>
-	<li><a>Wiki</a></li>
+	<li><a href="{% url wiki project.id %}">Wiki</a></li>
 {% endblock %}
 
 {% block content %}

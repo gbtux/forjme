@@ -250,7 +250,13 @@ def wiki(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	return render_to_response('dashboard/wiki/wiki.html',{'project':project}, context_instance=RequestContext(request))	
 
-#@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
+def wiki_list(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	pages = Page.objects.filter(project=project)
+	return render_to_response('dashboard/wiki/pages.html',{'pages':pages, 'project':project}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
 def wiki_page(request, project_id = None, page=None):
 	project = Project.objects.get(pk=project_id)
 	if request.method == 'GET':
