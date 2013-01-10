@@ -151,3 +151,10 @@ class Event(models.Model):
 	color = models.CharField(_(u'color'), max_length=17) #the name like 'yellow'
 	all_day = models.BooleanField(_(u'all day'))
 	project = models.ForeignKey(Project, related_name="project_event")
+
+class Page(models.Model):
+	name = models.CharField(_(u'name'), max_length=255)
+	date = models.DateTimeField(_(u'date'), auto_now=True)
+	content = models.TextField(_(u'content'))
+	creator = models.ForeignKey(User, related_name='page_creator', blank=True, null=True)
+	project = models.ForeignKey(Project, related_name="project_page")

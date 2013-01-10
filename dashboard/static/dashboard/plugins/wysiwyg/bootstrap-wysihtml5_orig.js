@@ -48,26 +48,6 @@
 
 					+ "</li>",
 
-		"internallink": 	"<li>" 
-						
-						+ "<div class='bootstrap-wysihtml5-insert-internal-link-modal modal hide fade'>"
-							+ "<div class='modal-header'>"
-							+ "<a class='close' data-dismiss='modal'>&times;</a>"
-							  + "<h3>Insert Internal Link</h3>"
-							+ "</div>"
-							+ "<div class='modal-body'>"
-							  + "<input value='#' class='bootstrap-wysihtml5-insert-internal-link-url input-xlarge'>"
-							+ "</div>"
-							+ "<div class='modal-footer'>"
-							  + "<a href='#' class='btn' data-dismiss='modal'>Cancel</a>"
-							  + "<a href='#' class='btn btn-primary' data-dismiss='modal'>Insert link</a>"
-							+ "</div>"
-						+ "</div>"
-
-				    	+ "<a class='btn' data-wysihtml5-command='createInternalLink' title='Internal Link'><i class='icon-hash'></i></a>" 
-
-					+ "</li>",			
-
 			"image": "<li>" 
 						
 						+ "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>"
@@ -102,7 +82,6 @@
 		"lists": true,
 		"html": false,
 		"link": true,
-		"internallink": true,
 		"image": true,
 		events: {},
 		parserRules: {
@@ -124,9 +103,6 @@
 			            "height": "numbers"
 			        }
 				},
-				"a": {}
-				/*
-				,
 				"a":  {
 					set_attributes: {
 						target: "_blank",
@@ -135,7 +111,7 @@
 					check_attributes: {
 						href:   "url" // important to avoid XSS
 					}
-				}*/
+				}
 			}
 		},
 		stylesheets: []
@@ -217,10 +193,6 @@
 						this.initInsertLink(toolbar);
 					}
 
-					if(key == "internallink") {
-						this.initInsertInternalLink(toolbar);
-					}
-
 					if(key == "image") {
 						this.initInsertImage(toolbar);
 					}
@@ -292,13 +264,11 @@
 			var insertLink = function() { 
 				var url = urlInput.val();
 				urlInput.val(initialValue);
-				self.editor.composer.commands.exec("insertHTML", '<a href="' + url + '" target="_blank" rel="nofollow">'+ url + '</a>');
-				/*
 				self.editor.composer.commands.exec("createLink", { 
 					href: url, 
 					target: "_blank", 
 					rel: "nofollow" 
-				});*/
+				});
 			};
 			var pressedEnter = false;
 
@@ -320,43 +290,6 @@
 			});
 
 			toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
-				insertLinkModal.modal('show');
-				return false;
-			});
-		},
-
-		initInsertInternalLink: function(toolbar) {
-			var self = this;
-			var insertLinkModal = toolbar.find('.bootstrap-wysihtml5-insert-internal-link-modal');
-			var urlInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-internal-link-url');
-			var insertButton = insertLinkModal.find('a.btn-primary');
-			var initialValue = urlInput.val();
-
-			var insertLink = function() { 
-				var url = urlInput.val();
-				urlInput.val(initialValue);
-				self.editor.composer.commands.exec("insertHTML", '<a href="' + url + '">'+ url + '</a>');
-			};
-			var pressedEnter = false;
-
-			urlInput.keypress(function(e) {
-				if(e.which == 13) {
-					insertLink();
-					insertLinkModal.modal('hide');
-				}
-			});
-
-			insertButton.click(insertLink);
-
-			insertLinkModal.on('shown', function() {
-				urlInput.focus();
-			});
-
-			insertLinkModal.on('hide', function() { 
-				self.editor.currentView.element.focus();
-			});
-
-			toolbar.find('a[data-wysihtml5-command=createInternalLink]').click(function() {
 				insertLinkModal.modal('show');
 				return false;
 			});

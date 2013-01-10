@@ -106,8 +106,8 @@
 				<div class="accordion-inner">
 					<ul class="nav nav-list">
 						<li>
-							<a href="">
-								<i class="icon-large icon-th"></i> Pages
+							<a href="{% url wiki project.id %}">
+								<i class="icon-large icon-th"></i> Home
 							</a>
 						</li>
 						<li>
@@ -238,7 +238,7 @@
 			e.preventDefault();
 			console.log('add news');
 			var url = $(this).data("form");
-			console.log(url);
+			//console.log(url);
 			
 			$("#formModal").load(url, function() {
 				$(this).modal('show'); // display the modal on url load
@@ -255,12 +255,6 @@
 				$(this).modal('show'); // display the modal on url load
         		$(this).removeClass('hide');
         		form.init($("#formnewevent"), url, $(this), $('#divcalendar'), 'calendar');
-        		//$('#eventcolor').colorpicker({
-				//	format: 'hex'
-				//});
-				//$('#eventdateend').datetimepicker({
-				//	language: 'en'
-				//});
         	});	
 		})
 	});

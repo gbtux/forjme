@@ -4,7 +4,7 @@
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
-from dashboard.models import Project, Room, News, Event
+from dashboard.models import Project, Room, News, Event, Page
 from dashboard.forms import ProjectForm, ChatForm, NewsForm, EventForm
 import django.utils.simplejson as json
 from datetime import datetime
@@ -242,6 +242,38 @@ def calendar_newevent(request, project_id = None):
 	else:
 		form = EventForm(request)
 	return render_to_response('dashboard/calendar/newevent.html', {'form': form, 'project': project}, context_instance=RequestContext(request))
+
+
+############################################## WIKI ########################################
+@login_required(login_url='/accounts/login/')
+def wiki(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	return render_to_response('dashboard/wiki/wiki.html',{'project':project}, context_instance=RequestContext(request))	
+
+#@login_required(login_url='/accounts/login/')
+def wiki_page(request, project_id = None, page=None):
+	project = Project.objects.get(pk=project_id)
+	if request.method == 'GET':
+		try:
+			page = Page.objects.get(project=project, name=page)
+			#page = Page.objects.get(pk=page_id)
+			thedate = page.date.strftime("%s %s" % ("%Y-%m-%d", "%H:%M:%S"))
+			return HttpResponse(content=json.dumps({'success' : 'success', 'date': thedate, 'creator': page.creator.username, 'content':page.content}), mimetype='application/json')
+		except:
+			return HttpResponse(content=json.dumps({'success' : 'nopage'}), mimetype='application/json')
+	
+	if request.method == 'PUT':
+		json_data = json.loads(request.raw_post_data)
+		if(json_data['isNew']):
+			thepage = Page.objects.create(name=page, creator=request.user, project=project)
+			thepage.save()
+		else:
+			thepage = Page.objects.get(project=project, name=page)
+			#logger.debug(request.raw_post_data)
+			#json_data = json.loads(request.raw_post_data)
+        	thepage.content = json_data['content'] 
+        	thepage.save()
+        return HttpResponse(content=json.dumps({'success' : 'success'}), mimetype='application/json')	
 
 
 
