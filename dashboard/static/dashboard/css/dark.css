@@ -418,3 +418,16 @@ body {
 	   -moz-box-shadow: 0 1px 0px rgba(255, 255, 255, .6);
 			box-shadow: 0 1px 0px rgba(255, 255, 255, .6);
 }
+
+.branches .dropdown-header {
+    color: #999999;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 3px 15px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+

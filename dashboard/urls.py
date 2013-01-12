@@ -41,6 +41,9 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/wiki/list', wiki_list, name="wiki_list"),
     url(r'^project/(?P<project_id>\d+)/wiki', wiki, name="wiki"),
 
+    #sources
+    url(r'^project/(?P<project_id>\d+)/sources', sources, name="sources"),    
+
     #security
     url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/login.html'}),
 

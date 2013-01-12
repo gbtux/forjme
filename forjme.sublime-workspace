@@ -4,6 +4,114 @@
 		"selected_items":
 		[
 			[
+				"Htt",
+				"HttpResponse"
+			],
+			[
+				"pro",
+				"project_id"
+			],
+			[
+				"html",
+				"htmlParsed"
+			],
+			[
+				"c",
+				"checkurl"
+			],
+			[
+				"vie",
+				"viewPage"
+			],
+			[
+				"Page",
+				"PageCreate"
+			],
+			[
+				"json",
+				"json_data"
+			],
+			[
+				"P",
+				"PageView"
+			],
+			[
+				"p",
+				"page"
+			],
+			[
+				"fo",
+				"forjme_baseurl"
+			],
+			[
+				"pa",
+				"page_id"
+			],
+			[
+				"v",
+				"val"
+			],
+			[
+				"fi",
+				"firstCall"
+			],
+			[
+				"data",
+				"dataType"
+			],
+			[
+				"sa",
+				"savewiki"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"co",
+				"content"
+			],
+			[
+				"j",
+				"jsonifyO"
+			],
+			[
+				"crea",
+				"creator"
+			],
+			[
+				"da",
+				"dataType"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"wiki",
+				"wikicreate"
+			],
+			[
+				"the",
+				"theevent"
+			],
+			[
+				"all",
+				"all_day"
+			],
+			[
+				"to",
+				"toLowerCase"
+			],
+			[
+				"dat",
+				"dateStart"
+			],
+			[
+				"date",
+				"date_end"
+			],
+			[
 				"col",
 				"colorchoosen"
 			],
@@ -18,14 +126,6 @@
 			[
 				"fie",
 				"fields"
-			],
-			[
-				"fi",
-				"fields"
-			],
-			[
-				"date",
-				"dateEnd"
 			],
 			[
 				"lo",
@@ -56,10 +156,6 @@
 				"getTime"
 			],
 			[
-				"pro",
-				"project_id"
-			],
-			[
 				"re",
 				"request"
 			],
@@ -70,10 +166,6 @@
 			[
 				"proj",
 				"project"
-			],
-			[
-				"crea",
-				"create"
 			],
 			[
 				"htt",
@@ -120,20 +212,12 @@
 				"widget-chat"
 			],
 			[
-				"pa",
-				"panel-right"
-			],
-			[
 				"img",
 				"img_dir"
 			],
 			[
 				"im",
 				"img_dir"
-			],
-			[
-				"con",
-				"containter"
 			],
 			[
 				"scrol",
@@ -162,10 +246,6 @@
 			[
 				"rece",
 				"receive_url"
-			],
-			[
-				"Htt",
-				"Http404"
 			],
 			[
 				"lea",
@@ -284,10 +364,6 @@
 				"creation_date"
 			],
 			[
-				"fo",
-				"forjme"
-			],
-			[
 				"input",
 				"inputs"
 			],
@@ -316,10 +392,6 @@
 				"verbose_name"
 			],
 			[
-				"p",
-				"progress"
-			],
-			[
 				"diffc",
 				"difficulty"
 			],
@@ -346,10 +418,6 @@
 			[
 				"handl",
 				"handleSelector"
-			],
-			[
-				"co",
-				"columns"
 			],
 			[
 				"wid",
@@ -446,46 +514,6 @@
 			[
 				"g",
 				"gallery"
-			],
-			[
-				"th",
-				"th	Tag"
-			],
-			[
-				"RO",
-				"rootDir"
-			],
-			[
-				"ro",
-				"rootDir"
-			],
-			[
-				"margin-",
-				"margin-top"
-			],
-			[
-				"margi",
-				"margin-right"
-			],
-			[
-				"ge",
-				"geometries"
-			],
-			[
-				"ne",
-				"newPoint"
-			],
-			[
-				"ma",
-				"markerLocation"
-			],
-			[
-				"addPo",
-				"addPopupMarker"
-			],
-			[
-				"la",
-				"lat"
 			]
 		]
 	},
@@ -495,7 +523,7 @@
 			"file": "dashboard/models.py",
 			"settings":
 			{
-				"buffer_size": 6422,
+				"buffer_size": 6816,
 				"line_ending": "Unix"
 			}
 		},
@@ -503,71 +531,64 @@
 			"file": "dashboard/views.py",
 			"settings":
 			{
-				"buffer_size": 10558,
+				"buffer_size": 12942,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/calendar/newevent.html",
+			"file": "dashboard/urls.py",
 			"settings":
 			{
-				"buffer_size": 4167,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "forjme/urls.py",
-			"settings":
-			{
-				"buffer_size": 2696,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dashboard/templates/dashboard/news/news.html",
-			"settings":
-			{
-				"buffer_size": 823,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dashboard/templates/dashboard/calendar/calendar.html",
-			"settings":
-			{
-				"buffer_size": 2490,
-				"line_ending": "Unix"
+				"buffer_size": 2617,
+				"line_ending": "Unix",
+				"name": "from django.conf.urls import patterns, include, ur"
 			}
 		},
 		{
 			"file": "dashboard/templates/dashboard/project/project_menu.html",
 			"settings":
 			{
-				"buffer_size": 7422,
+				"buffer_size": 7332,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/admin.py",
+			"file": "dashboard/templates/dashboard/wiki/page.html",
 			"settings":
 			{
-				"buffer_size": 282,
+				"buffer_size": 432,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/base.html",
+			"file": "dashboard/templates/dashboard/wiki/pages.html",
 			"settings":
 			{
-				"buffer_size": 7561,
+				"buffer_size": 1027,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/static/dashboard/js/forms.js",
+			"file": "dashboard/templates/dashboard/general_menu.html",
 			"settings":
 			{
-				"buffer_size": 3213,
+				"buffer_size": 1945,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/git/git_client.py",
+			"settings":
+			{
+				"buffer_size": 678,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/git/git_repository.py",
+			"settings":
+			{
+				"buffer_size": 143,
 				"line_ending": "Unix"
 			}
 		}
@@ -600,26 +621,37 @@
 	},
 	"file_history":
 	[
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/wiki/pages.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/wiki/wiki.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/wiki2.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/wysiwyg/bootstrap-wysihtml5.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/wiki/wiki_jquery.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/wiki.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/jquery.gritter.css",
+		"/home/gbtux/Projets/Django/forjme/forjme/urls.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/calendar/calendar.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/calendar/newevent.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/news.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/login.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/js/bootstrap-datetimepicker.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/combine_fonts.css",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/plugins/datetimepicker/bootstrap-datetimepicker.fr-FR.js",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/chat.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/show_chat.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/new.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/news.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/newnews.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/show_news.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/project_menu.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/forms.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/chats.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/chat/newchat.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/newproject.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/show_project.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/projects.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/jchat.css",
@@ -629,7 +661,6 @@
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/unicorn-chat.css",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/jchat.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/demo.js",
-		"/home/gbtux/Projets/Django/forjme/forjme/urls.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/models.py",
 		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/views.py",
@@ -638,7 +669,6 @@
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/projects.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/newproject.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/login.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/home.html",
 		"/home/gbtux/Projets/RoR/BlackForge/app/assets/stylesheets/dark.css",
 		"/home/gbtux/Projets/RoR/BlackForge/app/assets/stylesheets/assets/combine_fonts.css",
@@ -713,9 +743,12 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"    		\n",
+			"notifyChange",
+			"this.element",
 			"'));",
 			"timepicker-hour",
 			"up",
@@ -749,7 +782,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -757,15 +790,15 @@
 					"file": "dashboard/models.py",
 					"settings":
 					{
-						"buffer_size": 6422,
+						"buffer_size": 6816,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6342,
-								6342
+								6816,
+								6816
 							]
 						],
 						"settings":
@@ -773,7 +806,7 @@
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2210.0,
+						"translation.y": 2285.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -783,15 +816,15 @@
 					"file": "dashboard/views.py",
 					"settings":
 					{
-						"buffer_size": 10558,
+						"buffer_size": 12942,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10447,
-								10447
+								11927,
+								11927
 							]
 						],
 						"settings":
@@ -800,82 +833,81 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4166.0,
+						"translation.y": 4521.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "dashboard/templates/dashboard/calendar/newevent.html",
+					"file": "dashboard/urls.py",
 					"settings":
 					{
-						"buffer_size": 4167,
+						"buffer_size": 2617,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2201,
-								2201
+								2251,
+								2251
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
+							"auto_name": "from django.conf.urls import patterns, include, ur",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 469.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "forjme/urls.py",
+					"file": "dashboard/templates/dashboard/project/project_menu.html",
 					"settings":
 					{
-						"buffer_size": 2696,
+						"buffer_size": 7332,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2181,
-								2181
+								3282,
+								3282
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 199.0,
+						"translation.y": 1570.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "dashboard/templates/dashboard/news/news.html",
+					"file": "dashboard/templates/dashboard/wiki/page.html",
 					"settings":
 					{
-						"buffer_size": 823,
+						"buffer_size": 432,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								383,
-								383
+								263,
+								263
 							]
 						],
 						"settings":
@@ -891,18 +923,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "dashboard/templates/dashboard/calendar/calendar.html",
+					"file": "dashboard/templates/dashboard/wiki/pages.html",
 					"settings":
 					{
-						"buffer_size": 2490,
+						"buffer_size": 1027,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								550,
-								550
+								551,
+								551
 							]
 						],
 						"settings":
@@ -911,25 +943,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 127.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "dashboard/templates/dashboard/project/project_menu.html",
+					"file": "dashboard/templates/dashboard/general_menu.html",
 					"settings":
 					{
-						"buffer_size": 7422,
+						"buffer_size": 1945,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7385,
-								7385
+								567,
+								567
 							]
 						],
 						"settings":
@@ -938,25 +970,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4090.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "dashboard/admin.py",
+					"file": "dashboard/git/git_client.py",
 					"settings":
 					{
-						"buffer_size": 282,
+						"buffer_size": 678,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								282,
-								282
+								69,
+								69
 							]
 						],
 						"settings":
@@ -971,55 +1003,27 @@
 				},
 				{
 					"buffer": 8,
-					"file": "dashboard/templates/dashboard/base.html",
+					"file": "dashboard/git/git_repository.py",
 					"settings":
 					{
-						"buffer_size": 7561,
+						"buffer_size": 143,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								379,
-								379
+								143,
+								143
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "dashboard/static/dashboard/js/forms.js",
-					"settings":
-					{
-						"buffer_size": 3213,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2947,
-								2947
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 927.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

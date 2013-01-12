@@ -13,7 +13,8 @@ from django.template import loader, Context
 from django.http import Http404
 import logging
 from datetime import datetime
-#from django.core import serializers
+
+from dashboard.git.git_client import GitClient 
 
 logger = logging.getLogger('dashboard')
 
@@ -280,6 +281,28 @@ def wiki_page(request, project_id = None, page=None):
         	thepage.content = json_data['content'] 
         	thepage.save()
         return HttpResponse(content=json.dumps({'success' : 'success'}), mimetype='application/json')	
+
+
+################################# SOURCES ###############################################
+@login_required(login_url='/accounts/login/')
+def sources(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	branch = repository.get_current_branch()
+	#logger.debug('branche courante : %s' % branch)
+	#branchTree = {'branch','tree'}
+	#ranchTree = repository.extract_ref(branch)
+	repo = 'test.git'
+	path = ''
+	parent = ''
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	files = repository.get_tree(branch)
+
+
+	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+
 
 
 

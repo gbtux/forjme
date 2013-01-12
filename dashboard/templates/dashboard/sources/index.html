@@ -1,0 +1,64 @@
+{% extends "dashboard/base.html" %}
+
+{% block menu %}
+	{% include "dashboard/project/project_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+	<li><a href="#">{{ project.name }}</a></li>
+	<li><a href="">Sources</a></li>
+{% endblock %}
+
+{% block content %}
+	<div class="widget-container">
+		<div class="well">				
+			<div class="navbar navbar-static navbar_as_heading">
+				<div class="navbar-inner">
+					<div style="width: auto;" class="container">
+						{% if branches %}
+		                    {% include 'dashboard/sources/branch_menu.html' %}
+		                {% endif %}		
+
+		                <form method="POST" action="" class="form-search pull-right">
+		                    <input type="text" placeholder="Search tree..." class="input-medium search-query" name="query">
+		                </form>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				{% include 'dashboard/sources/menu.html' %}
+				<table class="table">
+        			<thead>
+            			<tr>
+			                <th width="80%">name</th>
+			                <th width="80%">mode</th>
+			                <th width="80%">size</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	{% for file in files %}
+			        		<tr>
+				                <td>
+				                	{% if file.type == 'folder' or file.type == 'symlink' %}
+				                		<i class="icon-folder-open icon-spaced"></i>
+				                	{% else %}
+				                		<i class="icon-file icon-spaced"></i>
+				                	{% endif %}
+				                	<a href="">{{ file.name }}</a>
+				                </td>
+				                <td>{{ file.mode }}</td>
+				                <td>
+				                	{% if file.size %}
+				                		{{ file.size }}
+				                	{% endif %}
+				                </td>
+            				</tr>
+			        	{% endfor %}
+			        </tbody>
+			    </table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
