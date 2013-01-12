@@ -2,8 +2,8 @@
 
 class GitBlob(object):
 
-	def __init__(self, branch, repository):
-		self.branch = branch
+	def __init__(self, hash, repository):
+		self.hash = hash
 		self.repository = repository
 
 	def output(self):
@@ -15,11 +15,11 @@ class GitBlob(object):
 	def get_mode(self):
 		return self.mode
 
-	def set_branch(self, branch):
-		self.branch = branch
+	def set_hash(self, hash):
+		self.hash = hash
 
-	def get_branch(self):
-		return self.branch
+	def get_hash(self):
+		return self.hash
 
 	def set_name(self, name):
 		self.name = name

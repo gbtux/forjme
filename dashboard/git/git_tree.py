@@ -18,8 +18,8 @@ class GitTree(object):
 		lines = ''.join(data)
 		lines = lines.split("\n")
 
-        	files = [] 
-        	root = []
+		files = [] 
+		root = []
 		for line in lines:
 			files.append(re.split("/[\s]+/", line, 5))
 
@@ -35,62 +35,60 @@ class GitTree(object):
 			if thefile[0] == '120000':
 				show = sel.repository().get_client().run(self.repository, 'show ' + thefile[2])
 				atree = GitSymlink()
-                		atree.set_mode(thefile[0])
-                		atree.set_name(thefile[4])
-		                atree.set_path(show)
-                		root.append(atree)
-                		continue
-
-            		if thefile[1] == 'blob':
+				atree.set_mode(thefile[0])
+				atree.set_name(thefile[4])
+				atree.set_path(show)
+				root.append(atree)
+				continue
+			if thefile[1] == 'blob':
 				blob = GitBlob(thefile[2], self.repository)
 				blob.set_mode(thefile[0])
-                		blob.set_name(thefile[4])
-                		blob.set_size(thefile[3])
-                		root.append(blob)
-                		continue;
+				blob.set_name(thefile[4])
+				blob.set_size(thefile[3])
+				root.append(blob)
+				continue;
 
-            		antree = GitTree(thefile[2], self.repository)
-            		antree.set_mode(thefile[0])
-            		antree.set_name(thefile[4])
-            		root.append(antree)
+			antree = GitTree(thefile[2], self.repository)
+			antree.set_mode(thefile[0])
+			antree.set_name(thefile[4])
+			root.append(antree)
 
-        	self.data = root
+		self.data = root
 
 	def output(self):
 		files = []
 		folders = []
-    		for node in self.data:
-    			if isinstance(node, GitBlob):
-    				afile = {}
+		for node in self.data:
+			if isinstance(node, GitBlob):
+				afile = {}
 				afile['type'] = 'blob';
-                		afile['name'] = node.get_name()
-                		afile['size'] = node.get_size()
-                		afile['mode'] = node.get_mode()
-                		afile['hash'] = node.get_branch()
-                		files.append(afile)
-                		continue
+				afile['name'] = node.get_name()
+				afile['size'] = node.get_size()
+				afile['mode'] = node.get_mode()
+				afile['hash'] = node.get_hash()
+				files.append(afile)
+				continue
 
-            		if isinstance(node, GitTree):
-            			afolder['type'] = 'folder'
-                		afolder['name'] = node.get_name()
-                		afolder['size'] = ''
-                		afolder['mode'] = node.get_mode()
-                		afolder['hash'] = node.get_branch()
-                		folders.append(afolder)
-                		continue
+			if isinstance(node, GitTree):
+				afolder['type'] = 'folder'
+				afolder['name'] = node.get_name()
+				afolder['size'] = ''
+				afolder['mode'] = node.get_mode()
+				afolder['hash'] = node.get_hash()
+				folders.append(afolder)
+				continue
 
-            		if isinstance(node, GitSymlink):
-            			afolder['type'] = 'symlink';
-                		afolder['name'] = node.get_name();
-                		afolder['size'] = '';
-               			afolder['mode'] = node.get_mode();
-                		afolder['hash'] = '';
-                		afolder['path'] = node.get_path()
-                		folders.append(afolder)
+			if isinstance(node, GitSymlink):
+				afolder['type'] = 'symlink'
+				afolder['name'] = node.get_name()
+				afolder['size'] = ''
+				afolder['mode'] = node.get_mode()
+				afolder['hash'] = ''
+				afolder['path'] = node.get_path()
+				folders.append(afolder)
 
-        	#result = dict(folders, **files)
 		result = folders + files
-        	return result
+		return result
 
 	def set_mode(self, mode):
 		self.mode = mode
