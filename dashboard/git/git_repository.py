@@ -1,7 +1,10 @@
 import re
 import os.path
 import logging
+import xml.dom.minidom
+from datetime import datetime
 from dashboard.git.git_tree import GitTree
+from dashboard.git.git_commit import GitCommit
 
 
 class GitRepository(object):
@@ -78,7 +81,7 @@ class GitRepository(object):
 		items = self.client.run(self, "tag")
 		tags = ''.join(items)
 		tags = tags.split("\n")
-		self.logger.debug(tags)
+		#self.logger.debug(tags)
 		return tags
 
 	def get_client(self):
@@ -89,3 +92,40 @@ class GitRepository(object):
 		#self.logger.debug(atree)
 		atree.parse()
 		return atree
+
+	def get_commits(self, branch = None):
+		command = "log --pretty=format:'<item><hash>%H</hash><short_hash>%h</short_hash><tree>%T</tree><parents>%P</parents><author>%an</author><author_email>%ae</author_email><date>%at</date><commiter>%cn</commiter><commiter_email>%ce</commiter_email><commiter_date>%ct</commiter_date><message><![CDATA[%s]]></message></item>'"
+		if branch:
+			command += " " + branch 
+		#logs = self.get_pretty_format(command)
+		output = self.client.run(self, command)
+		output = "<result>" + output + "</result>"
+		#self.logger.debug(output)
+		dom = xml.dom.minidom.parseString(output)
+		items = dom.getElementsByTagName("item")
+		commits = []
+		for item in items:
+			commit = GitCommit()
+			commit.set_hash(item.getElementsByTagName("hash")[0].firstChild.nodeValue)
+			commit.set_short_hash(item.getElementsByTagName("short_hash")[0].firstChild.nodeValue)
+			commit.set_tree(item.getElementsByTagName("tree")[0].firstChild.nodeValue)
+			if item.getElementsByTagName("parents")[0].firstChild:
+				commit.set_parents(item.getElementsByTagName("parents")[0].firstChild.nodeValue)
+			else:
+				commit.set_parents('')
+			commit.set_author(item.getElementsByTagName("author")[0].firstChild.nodeValue)
+			commit.set_author_email(item.getElementsByTagName("author_email")[0].firstChild.nodeValue)
+			timestamp = item.getElementsByTagName("date")[0].firstChild.nodeValue
+			date = datetime.fromtimestamp(float(timestamp))
+			thedate = date.strftime("%s" % ("%m/%d/%Y"))
+			commit.set_date(thedate)
+			#self.logger.debug('date %s' % item.getElementsByTagName("date")[0].firstChild.nodeValue)
+			commit.set_commiter(item.getElementsByTagName("commiter")[0].firstChild.nodeValue)
+			commit.set_commiter_email(item.getElementsByTagName("commiter_email")[0].firstChild.nodeValue)
+			commit.set_commiter_date(item.getElementsByTagName("commiter_date")[0].firstChild.nodeValue)
+			commit.set_message(item.getElementsByTagName("message")[0].firstChild.nodeValue)
+			commits.append(commit)
+
+		return commits 
+
+		

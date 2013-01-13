@@ -42,6 +42,7 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/wiki', wiki, name="wiki"),
 
     #sources
+    url(r'^project/(?P<project_id>\d+)/sources/commits/(?P<branch>\w+)', sources_commits, name="sources_commits"),    
     url(r'^project/(?P<project_id>\d+)/sources', sources, name="sources"),    
 
     #security

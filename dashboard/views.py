@@ -13,6 +13,7 @@ from django.template import loader, Context
 from django.http import Http404
 import logging
 from datetime import datetime
+from collections import defaultdict
 
 from dashboard.git.git_client import GitClient 
 
@@ -290,10 +291,7 @@ def sources(request, project_id = None):
 	client = GitClient()
 	repository = client.get_repository('/var/www/git/test.git')
 	branch = repository.get_current_branch()
-	#logger.debug('branche courante : %s' % branch)
-	#branchTree = {'branch','tree'}
-	#ranchTree = repository.extract_ref(branch)
-	repo = 'test.git'
+	repo = 'test'
 	path = ''
 	parent = ''
 	branches = repository.get_branches()
@@ -304,6 +302,16 @@ def sources(request, project_id = None):
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
 
+def sources_commits(request, project_id = None, branch = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	repo = 'test'
+	branch = repository.get_current_branch()
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	commits = repository.get_commits(branch)
+	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project}, context_instance=RequestContext(request))	
 
 
 ################################# UTILS ###############################################

@@ -1,6 +1,6 @@
 import os.path
 import logging
-from subprocess import call, check_output, Popen
+#from subprocess import call, check_output, Popen
 from dashboard.git.git_repository import GitRepository
 import subprocess
 
@@ -39,8 +39,8 @@ class GitClient(object):
 
 	def run(self, repository, command):
 		os.chdir(repository.path)
-		self.logger.debug(check_output('git tag', shell=True))
+		#self.logger.debug(subprocess.check_output('git tag', shell=True))
 		#ret = check_output('git branch', shell=True)
 		#self.logger.debug('first return %s' % ret[0])
-		return check_output('git' + " " +  '-c "color.ui"=false' + " " + command, shell=True)
+		return subprocess.check_output('git' + " " +  '-c "color.ui"=false' + " " + command, shell=True)
 

@@ -12,9 +12,9 @@ class GitTree(object):
 		self.logger = logging.getLogger('dashboard')
 
 	def parse(self):
-		self.logger.debug(self.repository)
+		#self.logger.debug(self.repository)
 		data = self.repository.get_client().run(self.repository, 'ls-tree -l ' + self.branch)
-		self.logger.debug(data)
+		#self.logger.debug(data)
 		lines = ''.join(data)
 		lines = lines.split("\n")
 
@@ -31,7 +31,7 @@ class GitTree(object):
 			#self.logger.debug('afile : %s' % test[0])
 			#self.logger.debug('afile1 : %s' % test[1])
 			#self.logger.debug('afile2 : %s' % test[2])
-			self.logger.debug('thefile : %s' % thefile)
+			#self.logger.debug('thefile : %s' % thefile)
 			if thefile[0] == '120000':
 				show = sel.repository().get_client().run(self.repository, 'show ' + thefile[2])
 				atree = GitSymlink()
