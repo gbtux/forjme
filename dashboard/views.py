@@ -301,7 +301,7 @@ def sources(request, project_id = None):
 
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
-
+@login_required(login_url='/accounts/login/')
 def sources_commits(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -313,7 +313,18 @@ def sources_commits(request, project_id = None, branch = None):
 	commits = repository.get_commits(branch)
 	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project}, context_instance=RequestContext(request))	
 
-
+@login_required(login_url='/accounts/login/')
+def sources_stats(request, project_id = None, branch = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	repo = 'test'
+	branch = repository.get_current_branch()
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	stats = repository.get_statistics(branch);
+	authors = repository.get_author_statistics()
+	return render_to_response('dashboard/sources/stats.html',{'page':'stats', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'stats': stats, 'authors': authors, 'project': project}, context_instance=RequestContext(request))	
 ################################# UTILS ###############################################
 
 def jsonify(object, fields=None, to_dict=False):

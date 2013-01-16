@@ -1,11 +1,11 @@
 <ul class="nav nav-tabs">
     <li{% if page == 'files' %} class="active"{% endif %}>
-    	<a href="">Files</a>
+    	<a href="{% url sources project.id branch">Files</a>
     </li>
     <li{% if page == 'commits' or page == 'searchcommits' %} class="active"{% endif %}>
     	<a href="{% url sources_commits project.id branch %}">Commits</a>
     </li>
     <li{% if page == 'stats' %} class="active"{% endif %}>
-    	<a href="">Stats</a>
+    	<a href="{% url sources_stats project.id branch %}">Stats</a>
     </li>
 </ul>

@@ -128,4 +128,49 @@ class GitRepository(object):
 
 		return commits 
 
+	def get_statistics(self, branch):
+		data = self.client.run(self, 'ls-tree -r -l ' + branch)
+		#self.logger.debug(data)
+		lines = ''.join(data)
+		#self.logger.debug(lines)
+		lines = lines.split("\n")
+		data = {'extensions': dict(), 'size': 0, 'files': 0, 'nbext':0}
+		ext = dict()
+		for afile in lines:
+			thefile = re.findall(r'\w+', afile)
+			if len(thefile) == 0:
+				break 
+			if thefile[1] == 'blob':
+				data['files'] = data['files'] + 1
+			if thefile[3].isdigit():
+				data['size'] = data['size'] + int(thefile[3])
+
+			if thefile[5]:
+				extens = thefile[5]
+				if extens in ext:
+					ext[extens] = ext[extens] + 1
+				else:
+					ext[extens] = 1
+					data['nbext']  = data['nbext'] + 1
+		data['extensions'] = ext
+		return data
+
+	def get_author_statistics(self):
+		data = self.client.run(self, 'log --pretty=format:"%an||%ae" ' + self.get_head())
+		#self.logger.debug(data)
+		lines = ''.join(data)
+		lines = lines.split("\n")
+		entries = []
+		for alog in lines:
+			hashed = alog.split("||")
+			found = False
+			for entry in entries:
+				if entry['name'] == hashed[0]:
+					entry['nbcommits'] = entry['nbcommits'] + 1
+					found = True
+			if not found:
+				entries.append({'name': hashed[0], 'email': hashed[1], 'nbcommits':1})
+
+		return entries
+
 		
