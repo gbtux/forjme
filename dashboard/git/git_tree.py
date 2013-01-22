@@ -10,6 +10,7 @@ class GitTree(object):
 		self.branch = branch
 		self.repository = repository
 		self.logger = logging.getLogger('dashboard')
+		self.hash = branch #FIXME
 
 	def parse(self):
 		#self.logger.debug(self.repository)
@@ -26,6 +27,7 @@ class GitTree(object):
 		for afile in lines:
 			#if afile[1] == 'commit' :FIXME
 			thefile = re.findall(r'\w+', afile)
+			#self.logger.debug(thefile)
 			if len(thefile) == 0:
 				break 
 			#self.logger.debug('afile : %s' % test[0])
@@ -43,14 +45,14 @@ class GitTree(object):
 			if thefile[1] == 'blob':
 				blob = GitBlob(thefile[2], self.repository)
 				blob.set_mode(thefile[0])
-				blob.set_name(thefile[4])
+				blob.set_name(thefile[4]+'.'+thefile[5])
 				blob.set_size(thefile[3])
 				root.append(blob)
-				continue;
+				continue
 
 			antree = GitTree(thefile[2], self.repository)
 			antree.set_mode(thefile[0])
-			antree.set_name(thefile[4])
+			antree.set_name(thefile[3])
 			root.append(antree)
 
 		self.data = root
@@ -70,6 +72,7 @@ class GitTree(object):
 				continue
 
 			if isinstance(node, GitTree):
+				afolder = {}
 				afolder['type'] = 'folder'
 				afolder['name'] = node.get_name()
 				afolder['size'] = ''
@@ -79,6 +82,7 @@ class GitTree(object):
 				continue
 
 			if isinstance(node, GitSymlink):
+				afolder = {}
 				afolder['type'] = 'symlink'
 				afolder['name'] = node.get_name()
 				afolder['size'] = ''
@@ -107,4 +111,10 @@ class GitTree(object):
 		
 	def get_branch(self):
 		return self.branch
+
+	def get_hash(self):
+		return self.hash
+
+	def set_hash(self, hash):
+		self.hash = hash
 		

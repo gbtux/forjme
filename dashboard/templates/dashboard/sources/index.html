@@ -27,6 +27,7 @@
 					</div>
 				</div>
 			</div>
+			{% include 'dashboard/sources/breadcrumbs.html' %}
 			<div class="row-fluid">
 				{% include 'dashboard/sources/menu.html' %}
 				<table class="table">
@@ -43,10 +44,23 @@
 				                <td>
 				                	{% if file.type == 'folder' or file.type == 'symlink' %}
 				                		<i class="icon-folder-open icon-spaced"></i>
+				                		{% if path != '' %}
+				                			<a href="{% url sources_tree project.id branch path|add:'/'|add:file.name %}">{{ file.name }}</a>
+				                		{% else %}
+				                			<a href="{% url sources_tree project.id branch file.name %}">{{ file.name }}</a>
+				                		{% endif %}
 				                	{% else %}
 				                		<i class="icon-file icon-spaced"></i>
+				                		{% if path != '' %}
+				                			<a href="{% url sources_file project.id branch path|add:'/'|add:file.name %}">
+				                				{{ file.name }}
+				                			</a>
+				                		{% else %}
+				                			<a href="{% url sources_file project.id branch file.name %}">
+				                				{{ file.name }}
+				                			</a>
+				                		{% endif %}
 				                	{% endif %}
-				                	<a href="">{{ file.name }}</a>
 				                </td>
 				                <td>{{ file.mode }}</td>
 				                <td>

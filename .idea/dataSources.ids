@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="16b0860e-cffa-4747-bea1-f899d24ffcf2">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql:///forjme</jdbc-url>
+    <user-name>forjme</user-name>
+    <user-password>dfccdfc5dfd8dfc0dfc7dfcf</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/mysql-connector-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/mysql-connector-java-5.1.18-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

@@ -5,10 +5,63 @@ import xml.dom.minidom
 from datetime import datetime
 from dashboard.git.git_tree import GitTree
 from dashboard.git.git_commit import GitCommit
+from dashboard.git.git_blob import GitBlob
 
 
 class GitRepository(object):
 	"""Repository class for git"""
+
+	#extension: lexer class
+	defaultTypes = { \
+		'croc':'croc','dg':'dg','factor':'factor','fy':'fancy','fancypack':'fancy',\
+		'io':'io','lua':'lua','wlua':'lua','md':'minid','moon':'moon','pl':'perl','pm':'perl',\
+		'py3tb':'py3tb','py':'python', 'pyw':'python', 'sc':'python', 'SConstruct':'python', \
+		'SConscript':'python', 'tac':'python', 'sage':'python','pytb':'pytb','tcl':'tcl',\
+		'rb':'ruby', 'rbw':'ruby', 'Rakefile':'ruby', 'rake':'ruby', 'gemspec':'ruby', \
+		'rbx':'ruby', 'duby':'ruby','c-objdump':'c-objdump','s':'ca65','cpp-objdump':'cpp-objdump',\
+		'c++-objdump':'cpp-objdump', 'cxx-objdump':'cpp-objdump','d-objdump':'d-objdump','S':'gas',\
+		'll':'llvm', 'asm':'nasm', 'ASM':'nasm','objdump':'objdump', 'adb':'ada', 'ads':'ada', \
+		'ada':'ada', 'bmx':'blitzmax','c':'c', 'h':'c','idc':'c','cbl':'cobolfree', 'CBL':'cobolfree', \
+		'cob':'cobol', 'COB':'cobol', 'cpy':'cobol', 'CPY':'cobol', 'cpp':'cpp', 'hpp':'cpp', 'c++':'cpp', \
+		'h++':'cpp', 'cc':'cpp', 'hh':'cpp', 'cxx':'cpp', 'hxx':'cpp', 'C':'cpp', 'H':'cpp', 'cp':'cpp', 'CPP':'cpp', \
+		'cu':'cuda', 'cuh':'cuda', 'pyx':'pyx', 'pxd':'pyx', 'pxi':'pyx','d':'d', 'di':'d', \
+		'pas':'pascal','dylan':'dylan', 'dyl':'dylan', 'intr':'dylan', 'lid':'dylan-lid', 'hdp':'dylan-lid', \
+		'ec':'ec', 'eh':'ec', 'fan':'fan', 'flx':'felix', 'flxh':'felix', 'f':'fortran', 'f90':'fortran', \
+		'F':'fortran', 'F90':'fortran', 'vert':'glsl', 'frag':'glsl', 'geo':'glsl', 'go':'go', 'def':'modula2', \
+		'mod':'modula2', 'monkey':'monkey', 'nim':'nim', 'nimrod':'nim', 'mm':'objective-c,', 'hh':'objective-c', \
+		'ooc':'ooc', 'prolog':'prolog', 'pro':'prolog', 'rs':'rust', 'rc':'rust', 'vala':'vala', 'vapi':'vala', \
+		'smali':'smali', 'boo':'boo', 'aspx':'aspx-cs', 'asax':'aspx-cs', 'ascx':'aspx-cs', 'ashx':'aspx-cs', \
+		'asmx':'aspx-cs', 'axd':'aspx-cs', 'cs':'csharp', 'fs':'fsharp', 'fsi':'fsharp', 'n':'nemerle', 'vb':'vbnet', 'bas':'vbnet', \
+		'prg':'Clipper', 'PRG':'Clipper', 'cl':'cl', 'lisp':'common-lisp', 'el':'cl', 'v':'coq', 'ex':'elixir', 'exs':'elixir', \
+		'erl':'erlang', 'hrl':'erlang', 'es':'erlang', 'escript':'erlang', 'erl-sh':'erl', 'hs':'haskell', \
+		'kk':'koka', 'kki':'koka', 'lhs':'lhs', 'lsp':'newlisp', 'nl':'newlisp', 'ml':'ocaml', 'mli':'ocaml', \
+		'mll':'ocaml', 'mly':'ocaml', 'opa':'opa', 'rkt':'racket', 'rktl':'racket', 'sml':'sml', 'sig':'sml', 'fun':'sml', \
+		'scm':'scheme', 'ss':'scheme', 'sv':'sv', 'svh':'sv', 'vhdl':'vhdl','vhd':'vhdl', 'aj':'aspectj', 'ceylon':'ceylon', \
+		'clj':'clojure', 'gs':'gosu', 'gsx':'gosu', 'gsp':'gosu', 'vark':'gosu','gst':'gst', 'groovy':'groovy', \
+		'ik':'ioke', 'java':'java', 'kt':'kotlin', 'scala':'scala', 'xtend':'xtend', 'bug':'bugs', 'pro':'idl', \
+		'jag':'jags', 'jl':'julia', 'm':'matlab', 'mu':'mupad', 'Rout':'rconsole', 'Rd':'rd', 'sci':'scilab', \
+		'sce':'scilab', 'tst':'scilab', 'stan': 'stan', 'abap':'abap', 'applescript':'applescript', 'asy':'asy', \
+		'au3':'autoit', 'ahk':'ahk', 'ahkl':'ahk', 'awk':'awk', 'befunge':'befunge', 'bf':'brainfuck', 'b':'brainfuck', \
+		'bro':'bro', 'cf':'cfengine3', 'ecl':'ecl', 'feature':'Cucumber', 'plot':'gnuplot', 'plt':'gnuplot', \
+		'gdc':'gooddata-cl', 'hy':'hybris', 'hyb':'hybris', 'Kconfig':'kconfig', 'lgt':'logtalk', 'moo':'moocode', \
+		'maql':'maql', 'mo':'modelica', 'msc':'mscgen', 'nsi':'nsis', 'nsh':'nsis', 'ns2':'newspeak', 'p':'openedge', \
+		'cls':'openedge', 'ps':'postscript', 'eps':'postscript', 'pov':'pov', 'proto':'protobuf', 'pp':'puppet', \
+		'spec':'spec', 'r':'rebol', 'r3':'rebol', 'cw':'redcode', 'st':'smalltalk', 'snobol':'snobol', 'sp':'sp', \
+		'u':'urbiscript', 'rpf':'vgl', 'g':'antlr-as', 'G':'antlr-as', 'rl':'ragel-c', 'treetop':'treetop', \
+		'sh':'bash', 'ksh':'bash', 'bash':'bash', 'ebuild':'bash', 'eclass':'bash', 'bashrc':'bash', 'bashrc':'bash', \
+		'sh-session':'console', 'bat':'bat', 'cmd':'bat','ps1':'powershell','tcsh':'tcsh','csh':'csh', \
+		'txt':'php', 'sql':'sql', 'sqlite3-console':'sqlite3', 'cfm':'cfm', 'cfml':'cfm', 'cfc':'cfm', \
+		'jsp':'jsp', 'mao':'mako', 'rhtml':'rhtml', 'tpl':'smarty', 'ssp':'ssp', 'tea':'tea', 'htaccess':'apache', \
+		'cmake':'cmake', 'html':'html', 'dpatch':'dpatch', 'control':'control', 'diff':'diff', 'patch':'diff', \
+		'man':'man', 'ini':'ini','cfg':'cfg', 'properties':'properties', 'pypylog':'pypylog', 'rst':'rst', 'rest':'rst', \
+		'tex':'tex', 'aux':'tex', 'toc':'tex', 'vim':'vim', 'vimrc':'vim', 'exrc':'vim', 'gvimrc':'vim', 'vimrc':'vim', \
+		'exrc':'vim', 'gvimrc':'vim', 'vimrc':'vim', 'gvimrc':'vim', 'yaml':'yaml', 'yml':'yaml', 'as':'as', \
+		'coffee':'coffee-script', 'css':'css', 'dart':'dart', 'dtd':'dtd', 'duel':'duel', 'jbst':'duel', \
+		'hx':'hx', 'htm':'html', 'xhtml':'html', 'xslt':'html', 'jade':'jade', 'js':'js', 'json':'json', \
+		'lasso':'lasso', 'ls':'livescript', 'mxml':'mxml', 'j':'objective-j', 'php':'php','php3':'php', 'php4':'php', 'php5':'php', \
+		'qml':'qml', 'sass':'sass', 'scaml':'scaml', 'scss':'scss', 'ts':'ts', 'xqy':'xqy', 'xquery':'xquery', 'xq':'xq', \
+		'xql':'xql', 'xqm':'xqm', 'xml':'xml', 'xsl':'xml', 'rss':'xml', 'xslt':'xml', 'xsd':'xml', 'wsdl':'xml' \
+	}
 
 	def __init__(self, path, client):
 		self.path = path
@@ -172,5 +225,32 @@ class GitRepository(object):
 				entries.append({'name': hashed[0], 'email': hashed[1], 'nbcommits':1})
 
 		return entries
+
+	def get_blob(self, file):
+		return GitBlob(file, self)
+
+	def get_file_type(self, file):
+		#self.logger.debug(file)
+		if file.rindex('.') != -1:
+			pos = file.rindex('.')
+			ext = file[pos+1:]
+			#self.logger.debug('ext : %s' % ext)
+			#self.logger.debug(self.defaultTypes)
+			if ext in self.defaultTypes:
+				return self.defaultTypes[ext] 
+		return 'php'
+
+	def get_breadcrumbs(self, dir):
+		#self.logger.debug('dir : %s' % dir) 
+		paths = dir.split('/')
+		breadcrumbs = []
+		oldpath = ''
+		for path in paths:
+			if oldpath != '':
+				oldpath = oldpath + '/' + path
+			else:
+				oldpath = path
+			breadcrumbs.append({'dir': path, 'path': oldpath})
+		return breadcrumbs
 
 		

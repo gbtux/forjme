@@ -7,7 +7,7 @@ class GitBlob(object):
 		self.repository = repository
 
 	def output(self):
-		return self.repository.get_client().run(self.repository, 'show ' + self.get_branch())
+		return self.repository.get_client().run(self.repository, 'show ' + self.get_hash())
 
 	def set_mode(self, mode):
 		self.mode = mode

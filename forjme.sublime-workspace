@@ -4,6 +4,62 @@
 		"selected_items":
 		[
 			[
+				"en",
+				"entries"
+			],
+			[
+				"h",
+				"hashed"
+			],
+			[
+				"line",
+				"lines"
+			],
+			[
+				"de",
+				"debug"
+			],
+			[
+				"get",
+				"get_head"
+			],
+			[
+				"c",
+				"client"
+			],
+			[
+				"auth",
+				"authors"
+			],
+			[
+				"ex",
+				"extensions"
+			],
+			[
+				"ext",
+				"extens"
+			],
+			[
+				"set",
+				"set_parents"
+			],
+			[
+				"p",
+				"parents"
+			],
+			[
+				"pr",
+				"project"
+			],
+			[
+				"br",
+				"branches"
+			],
+			[
+				"comm",
+				"commit"
+			],
+			[
 				"Gi",
 				"GitSymlink"
 			],
@@ -30,10 +86,6 @@
 			[
 				"re",
 				"repository"
-			],
-			[
-				"c",
-				"check_output"
 			],
 			[
 				"logg",
@@ -86,10 +138,6 @@
 			[
 				"P",
 				"PageView"
-			],
-			[
-				"p",
-				"page"
 			],
 			[
 				"fo",
@@ -192,10 +240,6 @@
 				"dateStartTrunk"
 			],
 			[
-				"get",
-				"getTime"
-			],
-			[
 				"fu",
 				"fullcalendar"
 			],
@@ -214,10 +258,6 @@
 			[
 				"New",
 				"NewsEditForm"
-			],
-			[
-				"h",
-				"Http404"
 			],
 			[
 				"news",
@@ -388,10 +428,6 @@
 				"ForeignKey"
 			],
 			[
-				"de",
-				"delivered"
-			],
-			[
 				"cre",
 				"creation_date"
 			],
@@ -402,10 +438,6 @@
 			[
 				"for",
 				"form"
-			],
-			[
-				"pr",
-				"projects"
 			],
 			[
 				"i",
@@ -480,40 +512,8 @@
 				"text-decoration"
 			],
 			[
-				"ex",
-				"exposure"
-			],
-			[
 				"res",
 				"resolution"
-			],
-			[
-				"W",
-				"weight"
-			],
-			[
-				"si",
-				"size"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"pu",
-				"public"
-			],
-			[
-				"thu",
-				"thumb"
-			],
-			[
-				"ga",
-				"galeries"
-			],
-			[
-				"ret",
-				"return"
 			]
 		]
 	},
@@ -528,18 +528,26 @@
 			}
 		},
 		{
-			"file": "dashboard/views.py",
+			"file": "dashboard/templates/dashboard/sources/commits.html",
 			"settings":
 			{
-				"buffer_size": 13556,
+				"buffer_size": 1900,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/sources/index.html",
+			"file": "dashboard/views.py",
 			"settings":
 			{
-				"buffer_size": 2031,
+				"buffer_size": 14791,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/sources/stats.html",
+			"settings":
+			{
+				"buffer_size": 2584,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,7 +555,7 @@
 			"file": "dashboard/templates/dashboard/sources/menu.html",
 			"settings":
 			{
-				"buffer_size": 314,
+				"buffer_size": 463,
 				"line_ending": "Unix",
 				"name": "<ul class=\"nav nav-tabs\">"
 			}
@@ -556,7 +564,7 @@
 			"file": "dashboard/urls.py",
 			"settings":
 			{
-				"buffer_size": 2617,
+				"buffer_size": 2849,
 				"line_ending": "Unix",
 				"name": "from django.conf.urls import patterns, include, ur"
 			}
@@ -597,23 +605,7 @@
 			"file": "dashboard/git/git_client.py",
 			"settings":
 			{
-				"buffer_size": 1119,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dashboard/git/git_blob.py",
-			"settings":
-			{
-				"buffer_size": 595,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dashboard/git/git_symlink.py",
-			"settings":
-			{
-				"buffer_size": 290,
+				"buffer_size": 1761,
 				"line_ending": "Unix"
 			}
 		},
@@ -621,7 +613,7 @@
 			"file": "dashboard/git/git_repository.py",
 			"settings":
 			{
-				"buffer_size": 2261,
+				"buffer_size": 5629,
 				"line_ending": "Unix"
 			}
 		},
@@ -629,7 +621,7 @@
 			"file": "dashboard/git/git_tree.py",
 			"settings":
 			{
-				"buffer_size": 3303,
+				"buffer_size": 2737,
 				"line_ending": "Unix"
 			}
 		}
@@ -662,8 +654,14 @@
 	},
 	"file_history":
 	[
-		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
+		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_commit.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_tree.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_blob.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/project.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/sources/index.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/views.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_symlink.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/dark.css",
 		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_repository.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/sources/branch_menu.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/news/news.html",
@@ -707,7 +705,6 @@
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/demo.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/models.py",
 		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
-		"/home/gbtux/Projets/Django/forjme/dashboard/views.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/show_project.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project_menu.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project.html",
@@ -790,6 +787,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"				",
 			"item",
 			"    		\n",
 			"notifyChange",
@@ -827,7 +825,7 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -858,18 +856,45 @@
 				},
 				{
 					"buffer": 1,
-					"file": "dashboard/views.py",
+					"file": "dashboard/templates/dashboard/sources/commits.html",
 					"settings":
 					{
-						"buffer_size": 13556,
+						"buffer_size": 1900,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12309,
-								12309
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dashboard/views.py",
+					"settings":
+					{
+						"buffer_size": 14791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13568,
+								13568
 							]
 						],
 						"settings":
@@ -878,51 +903,53 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4775.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "dashboard/templates/dashboard/sources/index.html",
-					"settings":
-					{
-						"buffer_size": 2031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1035,
-								1035
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 332.0,
+						"translation.y": 4985.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "dashboard/templates/dashboard/sources/menu.html",
+					"file": "dashboard/templates/dashboard/sources/stats.html",
 					"settings":
 					{
-						"buffer_size": 314,
+						"buffer_size": 2584,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								167,
-								167
+								2417,
+								2417
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 519.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dashboard/templates/dashboard/sources/menu.html",
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								131,
+								131
 							]
 						],
 						"settings":
@@ -937,19 +964,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "dashboard/urls.py",
 					"settings":
 					{
-						"buffer_size": 2617,
+						"buffer_size": 2849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2251,
-								2251
+								2188,
+								2188
 							]
 						],
 						"settings":
@@ -960,13 +987,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 469.0,
+						"translation.y": 304.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "dashboard/templates/dashboard/project/project_menu.html",
 					"settings":
 					{
@@ -987,13 +1014,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3051.0,
+						"translation.y": 2949.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "dashboard/templates/dashboard/wiki/page.html",
 					"settings":
 					{
@@ -1020,7 +1047,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "dashboard/templates/dashboard/wiki/pages.html",
 					"settings":
 					{
@@ -1047,7 +1074,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "dashboard/templates/dashboard/general_menu.html",
 					"settings":
 					{
@@ -1074,19 +1101,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "dashboard/git/git_client.py",
 					"settings":
 					{
-						"buffer_size": 1119,
+						"buffer_size": 1761,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								137
+								1498,
+								1498
 							]
 						],
 						"settings":
@@ -1095,79 +1122,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "dashboard/git/git_blob.py",
-					"settings":
-					{
-						"buffer_size": 595,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								416,
-								416
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 457.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 11,
-					"file": "dashboard/git/git_symlink.py",
-					"settings":
-					{
-						"buffer_size": 290,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								202,
-								202
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
 					"file": "dashboard/git/git_repository.py",
 					"settings":
 					{
-						"buffer_size": 2261,
+						"buffer_size": 5629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2260,
-								2260
+								5094,
+								5094
 							]
 						],
 						"settings":
@@ -1176,33 +1149,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1088.0,
+						"translation.y": 2210.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "dashboard/git/git_tree.py",
 					"settings":
 					{
-						"buffer_size": 3303,
+						"buffer_size": 2737,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								366,
-								366
+								1238,
+								1238
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 331.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

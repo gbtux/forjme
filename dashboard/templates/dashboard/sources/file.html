@@ -1,0 +1,46 @@
+{% extends "dashboard/base.html" %}
+{% load pygmentize %}
+{% load i18n staticfiles %}
+{% block menu %}
+	{% include "dashboard/project/project_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+	<li><a href="#">{{ project.name }}</a></li>
+	<li><a href="">Sources</a></li>
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'dashboard/css/pigments.css' %}" rel="stylesheet" />
+	<div class="widget-container">
+		<div class="well">				
+			<div class="navbar navbar-static navbar_as_heading">
+				<div class="navbar-inner">
+					<div style="width: auto;" class="container">
+						{% if branches %}
+		                    {% include 'dashboard/sources/branch_menu.html' %}
+		                {% endif %}		
+
+		                <form method="POST" action="" class="form-search pull-right">
+		                    <input type="text" placeholder="Search tree..." class="input-medium search-query" name="query">
+		                </form>
+					</div>
+				</div>
+			</div>
+			{% include 'dashboard/sources/breadcrumbs.html' %}
+			<div class="row-fluid">
+				{% include 'dashboard/sources/menu.html' %}
+				<div class="source-view">
+        			<div class="source-header">
+            			<div class="meta"></div>
+            				
+            				{{ blob|pygmentize:fileType }}
+            				
+            		</div>
+            	</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

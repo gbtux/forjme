@@ -1,0 +1,14 @@
+<ul class="breadcrumb">
+    <li><a href="{% url sources project.id %}">{{ repo }}</a></li>
+    {% for breadcrumb in breadcrumbs %}
+        <span class="divider">/</span>
+        <li {% if forloop.last %} class="active"{% endif %}>
+        	{% if forloop.last %}
+        		{{ breadcrumb.dir }}
+        	{% else %}
+        		<a href="{% url sources_tree project.id branch breadcrumb.path %}">{{ breadcrumb.dir }}</a>
+        	{% endif %}
+        
+        
+    {% endfor %}
+</ul>
