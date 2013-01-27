@@ -27,6 +27,7 @@
 					</div>
 				</div>
 			</div>
+			{% include 'dashboard/sources/breadcrumbs.html' %}
 			<div class="row-fluid">
 				{% include 'dashboard/sources/menu.html' %}
 				
@@ -43,7 +44,11 @@
 					        <tr>
 					            <td width="5%"><img src=""/></td>
 					            <td width="95%">
-					                <span class="pull-right"><a class="btn btn-small" href=""><i class="icon-list-alt"></i> View {{ item.short_hash }}</a></span>
+					                <span class="pull-right">
+					                	<a class="btn btn-small" href="{% url sources_commit project.id item.short_hash %}">
+					                		<i class="icon-list-alt"></i> View {{ item.short_hash }}
+					                	</a>
+					                </span>
 					                <h4>{{ item.message }}</h4>
 					                <span><a href="">{{ item.author }}</a> authored in {{ item.date }}</span>
 					            </td>

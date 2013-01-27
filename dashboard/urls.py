@@ -45,7 +45,10 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/sources/tree/(?P<branch>\w+)/(?P<dir>\w.+)', sources_tree, name="sources_tree"),
     url(r'^project/(?P<project_id>\d+)/sources/blob/(?P<branch>\w+)/(?P<file>\w.+)', sources_file, name="sources_file"),
     url(r'^project/(?P<project_id>\d+)/sources/stats/(?P<branch>\w+)', sources_stats, name="sources_stats"),    
-    url(r'^project/(?P<project_id>\d+)/sources/commits/(?P<branch>\w+)', sources_commits, name="sources_commits"),    
+    url(r'^project/(?P<project_id>\d+)/sources/commits/(?P<branch>\w+)', sources_commits, name="sources_commits"),
+    url(r'^project/(?P<project_id>\d+)/sources/commits/(?P<branch>\w+)/(?P<file>\w.+)', sources_commit_history, name="sources_commit_history"),
+    url(r'^project/(?P<project_id>\d+)/sources/commit/(?P<commit>\w+)', sources_commit, name="sources_commit"),
+    url(r'^project/(?P<project_id>\d+)/sources/(?P<commit>\w+)', sources_forcommit, name="sources_forcommit"),    
     url(r'^project/(?P<project_id>\d+)/sources', sources, name="sources"),    
 
     #security

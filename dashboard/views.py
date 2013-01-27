@@ -297,8 +297,22 @@ def sources(request, project_id = None):
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	files = repository.get_tree(branch)
-
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
+def sources_forcommit(request, project_id = None, commit=None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	#branch = repository.get_current_branch()
+	repo = 'test.git'
+	path = ''
+	parent = ''
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	files = repository.get_tree(commit)
+	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': commit, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+
 
 @login_required(login_url='/accounts/login/')
 def sources_commits(request, project_id = None, branch = None):
@@ -306,11 +320,37 @@ def sources_commits(request, project_id = None, branch = None):
 	client = GitClient()
 	repository = client.get_repository('/var/www/git/test.git')
 	repo = 'test.git'
-	branch = repository.get_current_branch()
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	commits = repository.get_commits(branch)
-	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project}, context_instance=RequestContext(request))	
+	breadcrumbs = [{'dir': 'Commit history', 'path':''}]
+	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
+def sources_commit_history(request, project_id = None, branch = None, file = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	repo = 'test.git'
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	if file:
+		branch = branch + ' -- "' + file + '"' 
+	commits = repository.get_commits(branch)
+	breadcrumbs = [{'dir': 'Commit history', 'path':''}]
+	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
+
+
+@login_required(login_url='/accounts/login/')
+def sources_commit(request, project_id = None, commit = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	repo = 'test.git'
+	thecommit = repository.get_commit(commit)
+	breadcrumbs = [{'dir': 'Commit #' + thecommit.hash, 'path':''}]
+	return render_to_response('dashboard/sources/commit.html',{'page':'commits', 'repo':repo, 'commit':thecommit, 'project':project, 'breadcrumbs': breadcrumbs},context_instance=RequestContext(request))
+
 
 @login_required(login_url='/accounts/login/')
 def sources_stats(request, project_id = None, branch = None):
@@ -323,7 +363,8 @@ def sources_stats(request, project_id = None, branch = None):
 	tags = repository.get_tags()
 	stats = repository.get_statistics(branch);
 	authors = repository.get_author_statistics()
-	return render_to_response('dashboard/sources/stats.html',{'page':'stats', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'stats': stats, 'authors': authors, 'project': project}, context_instance=RequestContext(request))	
+	breadcrumbs = [{'dir': 'Statistics', 'path':''}]
+	return render_to_response('dashboard/sources/stats.html',{'page':'stats', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'stats': stats, 'authors': authors, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
 
 
 @login_required(login_url='/accounts/login/')

@@ -6,6 +6,8 @@ from datetime import datetime
 from dashboard.git.git_tree import GitTree
 from dashboard.git.git_commit import GitCommit
 from dashboard.git.git_blob import GitBlob
+from dashboard.git.git_diff import GitDiff
+from dashboard.git.switch import switch
 
 
 class GitRepository(object):
@@ -253,4 +255,109 @@ class GitRepository(object):
 			breadcrumbs.append({'dir': path, 'path': oldpath})
 		return breadcrumbs
 
+	def get_commit(self, commit):
+		logs = self.client.run(self, 'show --pretty=format:"<item><hash>%H</hash><short_hash>%h</short_hash><tree>%T</tree><parents>%P</parents><author>%an</author><author_email>%ae</author_email><date>%at</date><commiter>%cn</commiter><commiter_email>%ce</commiter_email><commiter_date>%ct</commiter_date><message><![CDATA[%s]]></message></item>"' + commit)
+		#self.logger.debug(data)	
+		lines = ''.join(logs)
+		lines = lines.split("\n")
+		#self.logger.debug(lines[0])
+		thexml = lines[0].strip(commit)
+		output = "<result>" + thexml + "</result>"
+		#self.logger.debug(output)
+		dom = xml.dom.minidom.parseString(output)
+		items = dom.getElementsByTagName("item")
+		item = items[0]
+		#self.logger.debug(items[0])
+		thecommit = GitCommit()
+		thecommit.set_hash(item.getElementsByTagName("hash")[0].firstChild.nodeValue)
+		thecommit.set_short_hash(item.getElementsByTagName("short_hash")[0].firstChild.nodeValue)
+		thecommit.set_tree(item.getElementsByTagName("tree")[0].firstChild.nodeValue)
+		if item.getElementsByTagName("parents")[0].firstChild:
+			thecommit.set_parents(item.getElementsByTagName("parents")[0].firstChild.nodeValue)
+		else:
+			thecommit.set_parents('')
+		thecommit.set_author(item.getElementsByTagName("author")[0].firstChild.nodeValue)
+		thecommit.set_author_email(item.getElementsByTagName("author_email")[0].firstChild.nodeValue)
+		timestamp = item.getElementsByTagName("date")[0].firstChild.nodeValue
+		date = datetime.fromtimestamp(float(timestamp))
+		thedate = date.strftime("%s" % ("%m/%d/%Y"))
+		thecommit.set_date(thedate)
+		#self.logger.debug('date %s' % item.getElementsByTagName("date")[0].firstChild.nodeValue)
+		thecommit.set_commiter(item.getElementsByTagName("commiter")[0].firstChild.nodeValue)
+		thecommit.set_commiter_email(item.getElementsByTagName("commiter_email")[0].firstChild.nodeValue)
+		thecommit.set_commiter_date(item.getElementsByTagName("commiter_date")[0].firstChild.nodeValue)
+		thecommit.set_message(item.getElementsByTagName("message")[0].firstChild.nodeValue)
 		
+		diff = self.client.run(self, 'diff ' + commit + '~1..' + commit)
+		#self.logger.debug(diff)
+		difflines = ''.join(diff)
+		difflines = difflines.split('\n')
+		thecommit.set_diffs(self.read_diff_lines(difflines))
+		#self.logger.debug(thecommit.get_diffs()[0].get_lines())
+		return(thecommit)
+
+	def read_diff_lines(self, difflines):
+		diffs = []
+		lineNumOld = 0
+		lineNumNew = 0
+		diff = None
+		#self.logger.debug(difflines)
+		for diffline in difflines:
+			if diffline[0:4] == 'diff':
+				if diff:
+					#self.logger.debug('ajout de diff dans diffs')
+					diffs.append(diff)
+				diff = GitDiff()
+				#self.logger.debug('diffline : %s' % diffline)
+				matches = re.search('^diff --[\S]+ a/?(.+) b/?', diffline)
+				#matches = re.search('^diff[\s].*[\s].*[\s](?:.*\/)*(.*)', diffline)
+				#self.logger.debug('matches %s' % matches.group(1))
+				if matches:
+					diff.set_file(matches.group(1))
+				continue
+			if diffline[0:5] == 'index':
+				diff.set_index(diffline)
+				continue
+			if diffline[0:3] == '---':
+				diff.set_old(diffline)
+				continue
+			if diffline[0:3] == '+++':
+				diff.set_new(diffline)
+				continue
+			if diffline[0:6] == 'Binary':
+				m = re.search('Binary files (.+) and (.+) differ')
+				if m:
+					diff.set_old(m.group(1))
+					diff.set_new("    {" + m.group(2) + "}")
+			if len(diffline) > 0:
+				for case in switch(diffline[0]):
+					if case('@'):
+						m2 = re.search('@@ -([0-9]+)', diffline)
+						if m2:
+							#self.logger.debug('m2 : %s' % m2.group(1))
+							lineNumOld = int(m2.group(1)) -1
+							lineNumNew = int(m2.group(1)) -1
+						break
+					if case('-'):
+						lineNumOld = lineNumOld + 1
+						break
+					if case('+'):
+						lineNumNew = lineNumNew + 1
+						break
+					if case():
+						lineNumNew = lineNumNew + 1
+						lineNumOld = lineNumOld + 1
+			else:
+				lineNumNew = lineNumNew + 1
+				lineNumOld = lineNumOld + 1
+			#self.logger.debug('ajout de ligne')
+			diff.add_line(diffline, lineNumOld, lineNumNew)
+
+		if diff:
+			#self.logger.debug('ajout de diff dans diffs 2')
+			diffs.append(diff)
+		return diffs
+
+
+
+

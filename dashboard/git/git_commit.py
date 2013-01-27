@@ -67,3 +67,10 @@ class GitCommit(object):
 	def get_message(self):
 		return self.message
 
+	def set_diffs(self, diffs):
+		self.diffs = diffs
+
+	def get_diffs(self):
+		return self.diffs
+
+
