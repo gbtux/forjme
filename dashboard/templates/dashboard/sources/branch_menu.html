@@ -3,7 +3,9 @@
     <ul class="dropdown-menu">
         <li class="dropdown-header">Branches</li>
         {% for item in branches %}
-            <li><a href="">{{ item }}</a></li>
+            {% spaceless %}
+            <li><a href="{% url sources_branch project.id item %}">{{ item }}</a></li>
+            {% endspaceless %}
         {% endfor %}
         
         {% if tags %}

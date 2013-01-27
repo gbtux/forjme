@@ -120,9 +120,14 @@ class GitRepository(object):
 		items = self.client.run(self, "branch")
 		branches = ''.join(items)
 		branches = branches.split("\n")
+		thebranches = []
 		for branch in branches:
-			branch.replace('/[\*\s]/', '')
-		return filter(None, branches)
+			if branch != '':
+				#self.logger.debug('branch0 : %s' % branch[0])
+				if branch[0] == "*":
+					branch = branch[2:]
+				thebranches.append(branch.strip())
+		return filter(None, thebranches)
 
 	def get_current_branch(self):
 		items = self.client.run(self, "branch")

@@ -402,6 +402,21 @@ def sources_tree(request, project_id = None, branch = None, dir = None):
 	breadcrumbs = repository.get_breadcrumbs(dir)
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags, 'breadcrumbs': breadcrumbs, 'project':project}, context_instance=RequestContext(request))	
 
+
+@login_required(login_url='/accounts/login/')
+def sources_branch(request, project_id = None, branch = None):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	#branch = repository.get_current_branch()
+	repo = 'test.git'
+	path = ''
+	parent = ''
+	branches = repository.get_branches()
+	tags = repository.get_tags()
+	files = repository.get_tree(branch)
+	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+
 ################################# UTILS ###############################################
 
 def jsonify(object, fields=None, to_dict=False):
