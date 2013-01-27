@@ -14,8 +14,10 @@ from django.http import Http404
 import logging
 from datetime import datetime
 from collections import defaultdict
-
+from django.conf import settings
+from django.core.servers.basehttp import FileWrapper
 from dashboard.git.git_client import GitClient 
+import os
 
 logger = logging.getLogger('dashboard')
 
@@ -416,6 +418,19 @@ def sources_branch(request, project_id = None, branch = None):
 	tags = repository.get_tags()
 	files = repository.get_tree(branch)
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+
+@login_required(login_url='/accounts/login/')
+def sources_archive(request, project_id = None, branch = None, format = 'zip'):
+	project = Project.objects.get(pk=project_id)
+	client = GitClient()
+	repository = client.get_repository('/var/www/git/test.git')
+	tree = repository.get_branch_tree(branch)
+	archive_dir = settings.FORJME_ARCHIVE_DIR
+	file_ouput = repository.create_archive(archive_dir, tree,format)
+	response = HttpResponse(FileWrapper(file(file_ouput)), content_type='application/zip')
+	response['Content-Length'] = os.path.getsize(file_ouput)
+	response['Content-Disposition'] = 'attachment; filename=' + 'test.' + format
+	return response
 
 ################################# UTILS ###############################################
 

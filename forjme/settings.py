@@ -171,3 +171,7 @@ LOGGING = {
         },
     }
 }
+
+#FORJME
+FORJME_ARCHIVE_DIR='/tmp/'
+

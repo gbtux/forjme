@@ -8,7 +8,13 @@
         	{% else %}
         		<a href="{% url sources_tree project.id branch breadcrumb.path %}">{{ breadcrumb.dir }}</a>
         	{% endif %}
-        
+        </li>
         
     {% endfor %}
+    <div class="pull-right">
+        <div class="btn-group">
+            <a title="Download '{{branch}}' as a ZIP archive" class="btn btn-mini" href="{% url sources_archive project.id branch 'zip' %}">ZIP</a>
+            <a title="Download '{{ branch }}' as a TAR archive" class="btn btn-mini" href="{% url sources_archive project.id branch 'tar' %}">TAR</a>
+        </div>
+    </div>
 </ul>

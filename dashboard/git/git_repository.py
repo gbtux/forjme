@@ -8,6 +8,7 @@ from dashboard.git.git_commit import GitCommit
 from dashboard.git.git_blob import GitBlob
 from dashboard.git.git_diff import GitDiff
 from dashboard.git.switch import switch
+import time
 
 
 class GitRepository(object):
@@ -363,6 +364,21 @@ class GitRepository(object):
 			diffs.append(diff)
 		return diffs
 
+	def get_branch_tree(self, branch):
+		hash = self.client.run(self, 'log --pretty=\"%T\" --max-count=1 ' + branch)
+		#self.logger.debug(hash)
+		return hash.strip()
+
+	def create_archive(self, dir, hash, format):
+		file_output = dir + hash + '_'+ self.timestamp() + '.' + format
+		self.client.run(self, 'archive --format=' + format + ' --output=' + file_output + ' ' + hash)
+		return file_output
+
+	def timestamp(self):
+		now = time.time()
+		localtime = time.localtime(now)
+		milliseconds = '%03d' % int((now - int(now)) * 1000)
+		return time.strftime('%Y%m%d%H%M%S', localtime) + milliseconds
 
 
 
