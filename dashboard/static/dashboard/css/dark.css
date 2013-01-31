@@ -202,6 +202,8 @@ body {
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 10px;
+	font-size: 12px;
+    font-weight: bold;
   	-webkit-border-radius: 50em;
        -moz-border-radius: 50em;
           	border-radius: 50em;
@@ -536,3 +538,59 @@ body {
 	max-width:600px;
 }
 
+.accordion .widget-box {
+    border-radius: 0 0 0 0;
+    margin-bottom: 0;
+    margin-top: -2px;
+}
+.widget-box {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-left: 1px solid #CDCDCD;
+    border-right: 1px solid #CDCDCD;
+    border-top: 1px solid #CDCDCD;
+    clear: both;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    position: relative;
+}
+.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
+    background-color: #EFEFEF;
+    background-image: -moz-linear-gradient(center top , #FDFDFD 0%, #EAEAEA 100%);
+    border-bottom: 1px solid #CDCDCD;
+    height: 36px;
+}
+.widget-title span.icon {
+    border-right: 1px solid #CDCDCD;
+    float: left;
+    opacity: 0.7;
+    padding: 9px 10px 7px 11px;
+    color: #666666;
+}
+.widget-title h5 {
+    color: #666666;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    margin: 0;
+    padding: 12px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.widget-content {
+    /*border-bottom: 1px solid #CDCDCD;*/
+    padding: 12px 15px;
+}
+.widget-content .overview {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width: 100px;
+}
+
+.widget-content .overview .main-detail {
+    color: #F89406;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    margin-bottom: 0;
+}

@@ -1,0 +1,129 @@
+{% extends "dashboard/base.html" %}
+
+{% block menu %}
+	{% include "dashboard/project/project_menu.html" %}
+{% endblock %}
+
+{% block breadcrumb %}
+	<li><a href="{% url home %}">Home</a></li>
+	<li><a href="{% url projects %}">Projects</a></li>
+	<li><a href="#">{{ project.name }}</a></li>
+	<li><a href="{% url backlog project.id %}">Backlog</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<a class="quick-button-small span2 "  data-toggle="button">
+				<i class="icon-login"></i>
+				<p>New</p>
+				<span class="notification yellow">7</span>
+			</a>
+			<a class="quick-button-small span2">
+				<i class="icon-check"></i>
+				<p>Accepted</p>
+				<span class="notification blue">7</span>
+			</a>
+			<a class="quick-button-small span2">
+				<i class="icon-cancel-3"></i>
+				<p>Rejected</p>
+				<span class="notification red">7</span>
+			</a>
+			<a class="quick-button-small span2">
+				<i class="icon-ok-3"></i>
+				<p>Realized</p>
+				<span class="notification green">7</span>
+			</a>
+			<a class="quick-button-small span2">
+				<i class="icon-install"></i>
+				<p>Delivered</p>
+				<span class="notification green">7</span>
+			</a>
+			<a class="quick-button-small span2" style="color:#FA603D; font-weight:bold;">
+				<i class="icon-layers-alt"></i>
+				<p>All</p>
+				<span class="notification green">7</span>
+			</a>
+
+		</div>
+		<div class="span12" style="margin-left: 0; margin-top: 15px;">
+			<div id="collapse-group" class="accordion">
+                <div class="accordion-group widget-box">
+                    <div class="accordion-heading">
+                        <div class="widget-title">
+                            <a data-toggle="collapse" href="#collapseGOne" data-parent="#collapse-group" class="">
+                                <span class="icon">
+                                	<i class="icon-magnet"></i>
+                                </span>
+                                <h5>#1 : First Use Case</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="collapseGOne" class="accordion-body in collapse" style="height: auto;">
+                        <div class="widget-content">
+                            <div class="overview">
+								<p class="main-detail">xledanois</p>
+								<p class="sub-detail">April 14th</p>
+								<span class="label label-success">Active</span>
+								<span class="label label-info">New</span>
+							</div>
+							<div class="info">
+                        		<p>Trust fund photo letterpress, keytar raw skydiving denim grape keffiyeh etsy art base apple party ball before they.</p>
+                        		<a href="#" class="btn btn-mini">Show Tasks</a>
+                    		</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="accordion-group widget-box">
+                    <div class="accordion-heading">
+                        <div class="widget-title">
+                            <a data-toggle="collapse" href="#collapseGTwo" data-parent="#collapse-group">
+                                <span class="icon">
+                                	<i class="icon-magnet"></i>
+                                </span>
+                                <h5>#2 : Second Use Case</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="collapseGTwo" class="accordion-body collapse" style="height: 0px;">
+                        <div class="widget-content">
+                            Another is open
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group widget-box">
+                    <div class="accordion-heading">
+                        <div class="widget-title">
+                            <a data-toggle="collapse" href="#collapseGThree" data-parent="#collapse-group">
+                                <span class="icon">
+                                	<i class="icon-magnet"></i>
+                                </span>
+                                <h5>#3 : Third Use Case</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="collapseGThree" class="accordion-body collapse" style="height: 0px;">
+                        <div class="widget-content">
+                            Another is open
+                        </div>
+                    </div>
+                </div> 
+            </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		//#FA603D
+		$('.quick-button-small').on('click', function(){
+			//$(this).css('border','2px solid');
+			//$(this).css('border-color','#FA603D');
+			$(this).css('color','#FA603D');
+			$(this).css('font-weight','bold');
+			$(this).siblings().css('font-weight','normal');
+			$(this).siblings().css('color','#646464');
+		});
+	});
+</script>
+{% endblock %}

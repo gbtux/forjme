@@ -432,6 +432,12 @@ def sources_archive(request, project_id = None, branch = None, format = 'zip'):
 	response['Content-Disposition'] = 'attachment; filename=' + 'test.' + format
 	return response
 
+
+@login_required(login_url='/accounts/login/')
+def backlog(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	return render_to_response('dashboard/backlog/backlog.html',{'project':project}, context_instance=RequestContext(request))
+
 ################################# UTILS ###############################################
 
 def jsonify(object, fields=None, to_dict=False):

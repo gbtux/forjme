@@ -53,6 +53,8 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/sources/(?P<commit>\w+)', sources_forcommit, name="sources_forcommit"),    
     url(r'^project/(?P<project_id>\d+)/sources', sources, name="sources"),    
 
+    #backlog
+    url(r'^project/(?P<project_id>\d+)/backlog', backlog, name="backlog"),
     #security
     url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/login.html'}),
 
