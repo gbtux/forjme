@@ -107,6 +107,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'forjme.urls'
 
+LOGIN_URL ='/accounts/login/'
+
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'forjme.wsgi.application'
 

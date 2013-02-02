@@ -21,17 +21,17 @@ import os
 
 logger = logging.getLogger('dashboard')
 
-@login_required(login_url='/accounts/login/')
+@login_required() #login_url='/accounts/login/'
 def home(request):
 	return render_to_response('dashboard/home.html',context_instance=RequestContext(request))
 
 ###################################### PROJECTS ################################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def projects(request):
 	projects = Project.objects.all()
 	return render_to_response('dashboard/project/projects.html',{'projects':projects}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def project_edit(request, project_id = None):
 	try:
 		project = Project.objects.get(pk=project_id)
@@ -40,7 +40,7 @@ def project_edit(request, project_id = None):
 		raise Http404	
 	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def project_new(request):
 	if request.method == 'POST':
 		form = ProjectForm(request.POST)
@@ -62,13 +62,13 @@ def project_new(request):
 	return render_to_response('dashboard/project/newproject.html', {'form':form}, context_instance=RequestContext(request))
 
 #################################### CHAT ###################################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def chats(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	rooms = Room.objects.filter(project=project)
 	return render_to_response('dashboard/chat/chats.html',{'rooms':rooms, 'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def chat_new(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	if request.method == 'POST':
@@ -89,13 +89,13 @@ def chat_new(request, project_id = None):
 
 	return render_to_response('dashboard/chat/newchat.html', {'form': form, 'project': project}, context_instance=RequestContext(request))
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def show_chat(request, project_id, chat_id):
 	project = Project.objects.get(pk=project_id)
 	room = Room.objects.get(pk=chat_id)
 	return render_to_response('dashboard/chat/show_chat.html', {'room': room, 'project':project}, context_instance=RequestContext(request)) 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sync_chat(request, project_id, chat_id):
 	if request.method != 'POST':
 		raise Http404
@@ -107,14 +107,14 @@ def sync_chat(request, project_id, chat_id):
 	lmid = r.last_message_id()
 	return HttpResponse(jsonify({'last_message_id':lmid}))
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def send_chat(request, project_id, chat_id):
 	p = request.POST
 	r = Room.objects.get(id=int(p['chat_room_id']))
 	r.say(request.user, p['message'])
 	return HttpResponse('')
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def receive_chat(request, project_id, chat_id):
 	if request.method != 'POST':
 		raise Http404
@@ -133,14 +133,14 @@ def receive_chat(request, project_id, chat_id):
 	return HttpResponse(jsonify(m, ['id','author','message','type']))
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def join_chat(request, project_id, chat_id):
 	p = request.POST
 	r = Room.objects.get(id=int(p['chat_room_id']))
 	r.join(request.user)
 	return HttpResponse('')
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def leave_chat(request, project_id, chat_id):
 	p = request.POST
 	r = Room.objects.get(id=int(p['chat_room_id']))
@@ -150,14 +150,14 @@ def leave_chat(request, project_id, chat_id):
 ####################################### END CHAT #######################################
 
 ####################################### NEWS ###########################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def news(request, project_id = None):
 	logger.debug('les news')
 	project = Project.objects.get(pk=project_id)
 	news = News.objects.filter(project=project).order_by('-date')
 	return render_to_response('dashboard/news/news.html',{'news':news, 'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def news_new(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	#logger.debug('ceci est un test !!!')
@@ -179,13 +179,13 @@ def news_new(request, project_id = None):
 		form = NewsForm(request)
 	return render_to_response('dashboard/news/newnews.html', {'form': form, 'project': project}, context_instance=RequestContext(request))
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def news_view(request, project_id=None, news_id=None):
 	project = Project.objects.get(pk=project_id)
 	news = News.objects.get(pk=news_id)
 	return render_to_response('dashboard/news/show_news.html',{'news':news, 'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def news_edit(request, project_id=None, news_id=None):
 	logger.debug('FIXME : news edit')
 	#project = Project.objects.get(pk=project_id)
@@ -205,7 +205,7 @@ def news_edit(request, project_id=None, news_id=None):
 
 
 ############################################## CALENDAR ########################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def calendar(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	return render_to_response('dashboard/calendar/calendar.html',{'project':project}, context_instance=RequestContext(request))	
@@ -249,18 +249,18 @@ def calendar_newevent(request, project_id = None):
 
 
 ############################################## WIKI ########################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def wiki(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	return render_to_response('dashboard/wiki/wiki.html',{'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def wiki_list(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	pages = Page.objects.filter(project=project)
 	return render_to_response('dashboard/wiki/pages.html',{'pages':pages, 'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def wiki_page(request, project_id = None, page=None):
 	project = Project.objects.get(pk=project_id)
 	if request.method == 'GET':
@@ -287,7 +287,7 @@ def wiki_page(request, project_id = None, page=None):
 
 
 ################################# SOURCES ###############################################
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -301,7 +301,7 @@ def sources(request, project_id = None):
 	files = repository.get_tree(branch)
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_forcommit(request, project_id = None, commit=None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -316,7 +316,7 @@ def sources_forcommit(request, project_id = None, commit=None):
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': commit, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_commits(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -328,7 +328,7 @@ def sources_commits(request, project_id = None, branch = None):
 	breadcrumbs = [{'dir': 'Commit history', 'path':''}]
 	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_commit_history(request, project_id = None, branch = None, file = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -343,7 +343,7 @@ def sources_commit_history(request, project_id = None, branch = None, file = Non
 	return render_to_response('dashboard/sources/commits.html',{'page':'commits', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'commits': commits, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_commit(request, project_id = None, commit = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -354,7 +354,7 @@ def sources_commit(request, project_id = None, commit = None):
 	return render_to_response('dashboard/sources/commit.html',{'page':'commits', 'repo':repo, 'commit':thecommit, 'project':project, 'breadcrumbs': breadcrumbs},context_instance=RequestContext(request))
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_stats(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -369,7 +369,7 @@ def sources_stats(request, project_id = None, branch = None):
 	return render_to_response('dashboard/sources/stats.html',{'page':'stats', 'repo': repo, 'branch': branch, 'branches': branches, 'tags': tags, 'stats': stats, 'authors': authors, 'project': project, 'breadcrumbs': breadcrumbs}, context_instance=RequestContext(request))	
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_file(request, project_id = None, branch = None, file = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -384,7 +384,7 @@ def sources_file(request, project_id = None, branch = None, file = None):
 	breadcrumbs = repository.get_breadcrumbs(file)
 	return render_to_response('dashboard/sources/file.html',{'file':file, 'fileType':fileType, 'blob': output, 'repo': repo, 'breadcrumbs':breadcrumbs, 'branch':branch, 'branches':branches,'tags': tags, 'project': project}, context_instance=RequestContext(request))
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_tree(request, project_id = None, branch = None, dir = None):
 	#logger.debug('directory : %s' % dir)
 	project = Project.objects.get(pk=project_id)
@@ -405,7 +405,7 @@ def sources_tree(request, project_id = None, branch = None, dir = None):
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags, 'breadcrumbs': breadcrumbs, 'project':project}, context_instance=RequestContext(request))	
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_branch(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -419,7 +419,7 @@ def sources_branch(request, project_id = None, branch = None):
 	files = repository.get_tree(branch)
 	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def sources_archive(request, project_id = None, branch = None, format = 'zip'):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
@@ -433,7 +433,7 @@ def sources_archive(request, project_id = None, branch = None, format = 'zip'):
 	return response
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def backlog(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	return render_to_response('dashboard/backlog/backlog.html',{'project':project}, context_instance=RequestContext(request))
