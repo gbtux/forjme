@@ -1,0 +1,29 @@
+<div class="accordion-group widget-box">
+    <div class="accordion-heading">
+        <div class="widget-title">
+            <a data-toggle="collapse" href="#collapseG{{usecase.id}}" data-parent="#collapse-group" class="">
+                <span class="icon">
+                	<i class="icon-magnet"></i>
+                </span>
+                <h5>#{{usecase.id}} : {{usecase.title}}</h5>
+            </a>
+        </div>
+    </div>
+    <div id="collapseG{{usecase.id}}" class="accordion-body in collapse" style="height: auto;">
+        <div class="widget-content">
+            <div class="overview">
+				<p class="main-detail">{{usecase.created_by}}</p>
+				<p class="sub-detail">{{usecase.creation_date}}</p>
+				<span class="label label-success">{{usecase.status}}</span>
+				<span class="label label-info">{{usecase.typeCase}}</span>
+				<span class="label label-danger">{{usecase.difficulty}}</span>
+			</div>
+			<div class="info">
+        		<p>{{usecase.description}}</p>
+        		<a href="#" class="btn btn-mini">Show Tasks</a>
+        		<a href="#" class="btn btn-mini edit-uc" data-form="{% url backlog_usecase_edit project.id usecase.id %}" >Edit</a>
+        		<a href="#" class="btn btn-mini btn-danger remove-uc">Remove</a>
+    		</div>
+        </div>
+    </div>
+</div>

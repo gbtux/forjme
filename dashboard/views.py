@@ -4,8 +4,8 @@
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
-from dashboard.models import Project, Room, News, Event, Page
-from dashboard.forms import ProjectForm, ChatForm, NewsForm, EventForm
+from dashboard.models import Project, Room, News, Event, Page, UseCase
+from dashboard.forms import ProjectForm, ChatForm, NewsForm, EventForm, UsecaseForm
 import django.utils.simplejson as json
 from datetime import datetime
 from django.http import HttpResponse
@@ -223,7 +223,7 @@ def calendar_newevent(request, project_id = None):
 		if form.is_valid():
 			title = form.cleaned_data['title']
 			date_start = form.cleaned_data['date_start']
-			logger.debug('date start :  %s' % date_start)
+			#logger.debug('date start :  %s' % date_start)
 			date_end = form.cleaned_data['date_end']
 			if date_start != '':
 				dateStart = datetime.strptime(date_start, "%d/%m/%Y %H:%M:%S") #04/01/2013 11:11:45
@@ -234,7 +234,7 @@ def calendar_newevent(request, project_id = None):
 			else:
 				dateEnd = None
 			color = form.cleaned_data['color']
-			logger.debug('all day %s' % form.cleaned_data['all_day'])
+			#logger.debug('all day %s' % form.cleaned_data['all_day'])
 			allday = True if form.cleaned_data['all_day'] == 'true' else False
 			#allday = form.cleaned_data['all_day']
 			event = Event.objects.create(title=title, date_start=dateStart, date_end=dateEnd, color=color, all_day=allday, project=project)
@@ -436,7 +436,60 @@ def sources_archive(request, project_id = None, branch = None, format = 'zip'):
 @login_required()
 def backlog(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
-	return render_to_response('dashboard/backlog/backlog.html',{'project':project}, context_instance=RequestContext(request))
+	backlog = UseCase.objects.filter(project=project)
+	return render_to_response('dashboard/backlog/backlog.html',{'project':project, 'backlog':backlog}, context_instance=RequestContext(request))
+
+@login_required()
+def backlog_new_usecase(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	if request.method == 'POST':
+		form = UsecaseForm(request.POST)
+		if form.is_valid():
+			title = form.cleaned_data['title']
+			description = form.cleaned_data['description']
+			estimation_days = form.cleaned_data['estimation_days']
+			difficulty = form.cleaned_data['difficulty']
+			typeCase = form.cleaned_data['typeCase']
+			status = form.cleaned_data['status']
+			usecase = UseCase.objects.create(project=project, title=title, description=description, estimation_days=estimation_days, difficulty=difficulty,typeCase=typeCase,status=status, creation_date=datetime.now(), created_by=request.user)
+			usecase.save()
+			tmpl = loader.get_template('dashboard/backlog/usecase.html')
+			ctx = Context({'usecase':usecase, 'project': project})
+			rendered = tmpl.render(ctx)
+			return HttpResponse(content=json.dumps({'success' : 'success', 'element': rendered}), mimetype='application/json')
+		else:
+			errors = json.dumps(form.errors)
+			return HttpResponse(errors, mimetype='application/json')
+	else:
+		form = UsecaseForm()
+	return render_to_response('dashboard/backlog/new_usecase.html', {'form': form, 'project': project, 'edit': 'false'}, context_instance=RequestContext(request))
+
+@login_required()
+def backlog_usecase_edit(request, project_id = None, case_id = None):
+	project = Project.objects.get(pk=project_id)
+	usecase = UseCase.objects.get(pk=case_id)
+	if request.method == 'POST':
+		form = UsecaseForm(request.POST)
+		if form.is_valid():
+			usecase.title = form.cleaned_data['title']
+			usecase.description = form.cleaned_data['description']
+			usecase.estimation_days = form.cleaned_data['estimation_days']
+			usecase.difficulty = form.cleaned_data['difficulty']
+			usecase.typeCase = form.cleaned_data['typeCase']
+			usecase.status = form.cleaned_data['status']
+			usecase.save()
+			tmpl = loader.get_template('dashboard/backlog/usecase.html')
+			ctx = Context({'usecase':usecase, 'project': project})
+			rendered = tmpl.render(ctx)
+			return HttpResponse(content=json.dumps({'success' : 'success', 'element': rendered}), mimetype='application/json')		
+		else:
+			errors = json.dumps(form.errors)
+			return HttpResponse(errors, mimetype='application/json')	
+	else:
+		form = UsecaseForm(instance=usecase)
+	return render_to_response('dashboard/backlog/new_usecase.html', {'form': form, 'project': project, 'edit': 'true', 'caseid': usecase.id}, context_instance=RequestContext(request))
+
+
 
 ################################# UTILS ###############################################
 

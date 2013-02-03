@@ -27,7 +27,7 @@ var form = {
         e.preventDefault();
         var values = {};
         for (var v in form.fields) {
-            console.log('#id'+ v + ' : ' + $('#id_'+v).val());
+            //console.log('#id'+ v + ' : ' + $('#id_'+v).val());
             if($('#id_'+v).val() == undefined){
                 values[v] = form.fields[v].value;
             }else{
@@ -64,6 +64,9 @@ var form = {
             }
             if(form.typeAddTo == 'div'){
                 form.addTo.prepend(data['element']);
+            }
+            if(form.typeAddTo == 'replacement'){
+                form.addTo.replaceWith(data['element']);
             }
             if(form.typeAddTo == 'calendar'){
                 var value = data['element'];

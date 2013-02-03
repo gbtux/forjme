@@ -1,6 +1,6 @@
 from django import forms
-from django.forms import ModelForm
-from dashboard.models import News
+from django.forms import ModelForm, Textarea
+from dashboard.models import News, UseCase
 
 class ProjectForm(forms.Form):
 	name = forms.CharField()
@@ -20,7 +20,13 @@ class EventForm(forms.Form):
 	date_end = forms.CharField(required=False)
 	color = forms.CharField()
 	all_day = forms.CharField()
+
+class UsecaseForm(ModelForm):
 	
-#class NewsEditForm(ModelForm):
-#	class Meta:
-#		model = News
+	class Meta:
+		model = UseCase
+		exclude = ('created_by','creation_date', 'project',)
+		widgets = {
+            'description': Textarea(attrs={'cols': 40, 'rows': 5}),
+        }
+

@@ -585,7 +585,7 @@ body {
     float: left;
     margin-right: 1em;
     margin-bottom: 1em;
-    width: 100px;
+    width: 150px;
 }
 
 .widget-content .overview .main-detail {
@@ -593,4 +593,7 @@ body {
     font-size: 1.5em;
     line-height: 1.2em;
     margin-bottom: 0;
+}
+.ui-button-text .ui-icon{
+	cursor: pointer;
 }

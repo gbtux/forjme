@@ -54,74 +54,18 @@
 						<div class="navbar-inner">
 							<div style="width: auto;" class="container">
 								<a class="brand">Backlog</a>
+								<a id="add-uc" data-form="{% url backlog_new_usecase project.id %}" class="btn btn-tigasatu pull-right">
+									<i class="icon-plus-2"></i>
+								</a>
 							</div>
 						</div>
 					</div>
 									
-					<div class="row-fluid" id="newslist">
+					<div class="row-fluid" id="usecaselist">
 						<div id="collapse-group" class="accordion">
-			                <div class="accordion-group widget-box">
-			                    <div class="accordion-heading">
-			                        <div class="widget-title">
-			                            <a data-toggle="collapse" href="#collapseGOne" data-parent="#collapse-group" class="">
-			                                <span class="icon">
-			                                	<i class="icon-magnet"></i>
-			                                </span>
-			                                <h5>#1 : First Use Case</h5>
-			                            </a>
-			                        </div>
-			                    </div>
-			                    <div id="collapseGOne" class="accordion-body in collapse" style="height: auto;">
-			                        <div class="widget-content">
-			                            <div class="overview">
-											<p class="main-detail">xledanois</p>
-											<p class="sub-detail">April 14th</p>
-											<span class="label label-success">Active</span>
-											<span class="label label-info">New</span>
-										</div>
-										<div class="info">
-			                        		<p>Trust fund photo letterpress, keytar raw skydiving denim grape keffiyeh etsy art base apple party ball before they.</p>
-			                        		<a href="#" class="btn btn-mini">Show Tasks</a>
-			                        		<a href="#" class="btn btn-mini">Edit</a>
-			                        		<a href="#" class="btn btn-mini btn-danger remove-uc">Remove</a>
-			                    		</div>
-			                        </div>
-			                    </div>
-			                </div> 
-			                <div class="accordion-group widget-box">
-			                    <div class="accordion-heading">
-			                        <div class="widget-title">
-			                            <a data-toggle="collapse" href="#collapseGTwo" data-parent="#collapse-group">
-			                                <span class="icon">
-			                                	<i class="icon-magnet"></i>
-			                                </span>
-			                                <h5>#2 : Second Use Case</h5>
-			                            </a>
-			                        </div>
-			                    </div>
-			                    <div id="collapseGTwo" class="accordion-body collapse" style="height: 0px;">
-			                        <div class="widget-content">
-			                            Another is open
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="accordion-group widget-box">
-			                    <div class="accordion-heading">
-			                        <div class="widget-title">
-			                            <a data-toggle="collapse" href="#collapseGThree" data-parent="#collapse-group">
-			                                <span class="icon">
-			                                	<i class="icon-magnet"></i>
-			                                </span>
-			                                <h5>#3 : Third Use Case</h5>
-			                            </a>
-			                        </div>
-			                    </div>
-			                    <div id="collapseGThree" class="accordion-body collapse" style="height: 0px;">
-			                        <div class="widget-content">
-			                            Another is open
-			                        </div>
-			                    </div>
-			                </div> 
+							{% for usecase in backlog %}
+								{% include "dashboard/backlog/usecase.html" %}
+							{% endfor %} 
 			            </div>
 					</div>
 				</div>
@@ -140,7 +84,7 @@
 		});
 
 		$('#collapse-group').sortable();
-		$('.remove-uc').on('click', function(){
+		$(document).on( 'click', '.remove-uc', function(){
 			$.Zebra_Dialog('Remove this Use Case ?', {
 			    'type':     'question',
 			    'title':    'Removing use case',
@@ -154,6 +98,29 @@
 			                ]
 			});
 		});
+
+		$('#add-uc').on('click', function(e){
+			e.preventDefault();
+			var url = $(this).data("form");
+			$("#formModal").load(url, function() {
+				$(this).modal('show'); // display the modal on url load
+				$('#id_estimation_days').spinner();
+        		$(this).removeClass('hide');
+        		form.init($("#formnewusecase"), url, $(this), $('#usecaselist .accordion'), 'div');
+        	});	
+		});
+
+		$(document).on('click', '.edit-uc', function(e){
+			e.preventDefault();
+			var self = $(this).parents('.accordion-group');
+			var url = $(this).data("form");
+			$("#formModal").load(url, function() {
+				$(this).modal('show'); // display the modal on url load
+				$('#id_estimation_days').spinner();
+        		$(this).removeClass('hide');
+        		form.init($("#formnewusecase"), url, $(this), self, 'replacement');
+        	});
+		})
 	});
 </script>
 {% endblock %}

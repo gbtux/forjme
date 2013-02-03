@@ -29,6 +29,7 @@ class UseCase(models.Model):
 	STATUS_CHOICES = (('new','new'),('accepted','accepted'),('rejected','rejected'),('realized','realized'),('delivered','delivered'))
 	status = models.CharField(_(u'status'), max_length=8, choices=STATUS_CHOICES, default="new")
 	created_by = models.ForeignKey(User, related_name="creator")
+	project = models.ForeignKey(Project, related_name="project_usecase")
 
 	def __unicode__(self):
 		return u'UseCase %d : %s' % (self.id, self.title)
