@@ -114,6 +114,7 @@
 			e.preventDefault();
 			var self = $(this).parents('.accordion-group');
 			var url = $(this).data("form");
+			$('#usecaselist .collapse').collapse('toggle');
 			$("#formModal").load(url, function() {
 				$(this).modal('show'); // display the modal on url load
 				$('#id_estimation_days').spinner();
