@@ -1,0 +1,50 @@
+{% load i18n staticfiles %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Forjme!</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="" name="description">
+		<meta content="" name="author">
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="{% static 'dashboard/assets/css/bootstrap.css' %}">	
+		<link rel="stylesheet" href="{% static 'dashboard/css/combine_fonts.css' %}">	
+		<link rel="stylesheet" href="{% static 'dashboard/css/buttons.css' %}">
+		<link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+
+		<!-- color style -->
+		<link rel="stylesheet" href="{% static 'dashboard/css/dark.css' %}">
+
+		<link rel="stylesheet" href="{% static 'dashboard/assets/css/bootstrap-responsive.css' %}">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="{% static 'dashboard/plugins/html5.js' %}"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div style="width:40%;margin:auto auto;" class="well">
+					<div class="navbar navbar-static navbar_as_heading">
+						<div class="navbar-inner">
+							<div style="width: auto;" class="container">
+								<a class="brand">Forjme!</a>
+							</div>
+						</div>
+					</div>
+					<p>Logout is done</p>
+					<p>Note that Forjme! is Open Source on AGPL. </p>
+					<p>If you find a bug, please mail @ openlvb.project at gmail dot com</p>
+					<p>
+						<a href="{% url django.contrib.auth.views.login %}" class="btn btn-large btn-tigasatu">Login</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script src="{% static 'dashboard/assets/js/jquery.js' %}"></script>
+		<script src="{% static 'dashboard/assets/js/bootstrap.js' %}"></script>	
+	
+	</body>
+</html>

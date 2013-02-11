@@ -13,7 +13,8 @@
 
 {% block content %}
 	<div class="widget-container">
-		<div class="well">				
+		<div class="well">	
+			{% if branch %}			
 			<div class="navbar navbar-static navbar_as_heading">
 				<div class="navbar-inner">
 					<div style="width: auto;" class="container">
@@ -73,6 +74,9 @@
 			        </tbody>
 			    </table>
 			</div>
-		</div>
+			{% else %}
+				<p> This project is empty !</p>
+			{% endif %}
+		</div> <!-- /well -->
 	</div>
 {% endblock %}

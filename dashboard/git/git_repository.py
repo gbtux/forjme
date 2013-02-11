@@ -1,5 +1,6 @@
 import re
 import os.path
+import os
 import logging
 import xml.dom.minidom
 from datetime import datetime
@@ -132,11 +133,17 @@ class GitRepository(object):
 
 	def get_current_branch(self):
 		items = self.client.run(self, "branch")
+		self.logger.debug('items : %s' % items)
 		branches = ''.join(items)
 		branches = branches.split("\n")
-		for branch in branches:
-			if branch[0] == '*':
-				return branch[2:2 + len(branch)]
+		#self.logger.debug('branches : ' %branches)
+		if len(branches) > 0 :
+			for branch in branches:
+				if len(branch) > 0:
+					if branch[0] == '*':
+						return branch[2:2 + len(branch)]
+		
+		return None
 
 	def get_tags(self):
 		items = self.client.run(self, "tag")
@@ -379,6 +386,13 @@ class GitRepository(object):
 		localtime = time.localtime(now)
 		milliseconds = '%03d' % int((now - int(now)) * 1000)
 		return time.strftime('%Y%m%d%H%M%S', localtime) + milliseconds
+
+	def create(self, bare):
+		os.mkdir(self.path)
+		command = 'init'
+		if bare:
+			command = command + ' --bare'
+		self.client.run(self, command)
 
 
 

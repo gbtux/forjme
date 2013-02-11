@@ -22,7 +22,7 @@
         		<p>{{usecase.description}}</p>
         		<a href="#" class="btn btn-mini">Show Tasks</a>
         		<a href="#" class="btn btn-mini edit-uc" data-form="{% url backlog_usecase_edit project.id usecase.id %}" >Edit</a>
-        		<a href="#" class="btn btn-mini btn-danger remove-uc">Remove</a>
+        		<a href="#" class="btn btn-mini btn-danger remove-uc" data-remove="{% url backlog_usecase_remove project.id usecase.id %}">Remove</a>
     		</div>
         </div>
     </div>

@@ -120,18 +120,18 @@
 							<li class="sub">
 								<ul>
 									<li>
-										<a href="#">
-											<i class="icon-large icon-cog-2"></i> Profile
+										<a href="{% url django.contrib.auth.views.password_change %}">
+											<i class="icon-large icon-cog-2"></i> Password
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<i class="icon-large icon-key"></i> Privacy Settings
+											<i class="icon-large icon-camera-alt"></i> Avatar
 										</a>
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a href="#">
+										<a href="{% url django.contrib.auth.views.logout %}">
 											<i class="icon-large icon-logout-1"></i> Logout
 										</a>
 									</li>

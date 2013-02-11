@@ -108,6 +108,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'forjme.urls'
 
 LOGIN_URL ='/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'forjme.wsgi.application'
@@ -174,6 +175,16 @@ LOGGING = {
     }
 }
 
+#MAIL
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'openlvb.project@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+
 #FORJME
 FORJME_ARCHIVE_DIR='/tmp/'
+FORJME_GIT_ROOT='/var/www/git/'
+
+
 

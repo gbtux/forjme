@@ -46,15 +46,23 @@ def project_new(request):
 		form = ProjectForm(request.POST)
 		if form.is_valid():
 			name = form.cleaned_data['name']
-			description = form.cleaned_data['description']
-			project = Project.objects.create(name=name, description=description, is_archived = False, creation_date=datetime.now(), creator=request.user)
-			project.save()
-			tmpl = loader.get_template('dashboard/project/project.html')
-			ctx = Context({ 'project': project })
-			rendered = tmpl.render(ctx)
-			return HttpResponse(content=json.dumps({'success' : 'success', 'element': rendered}), mimetype='application/json')
+			gitpath = settings.FORJME_GIT_ROOT + name + '.git'
+			if not os.path.exists(gitpath):
+				description = form.cleaned_data['description']
+				project = Project.objects.create(name=name, description=description, is_archived = False, creation_date=datetime.now(), creator=request.user)
+				project.save()
+				#create a git project
+				client = GitClient()
+				client.create_repository(gitpath, True)
+				tmpl = loader.get_template('dashboard/project/project.html')
+				ctx = Context({ 'project': project })
+				rendered = tmpl.render(ctx)
+				return HttpResponse(content=json.dumps({'success' : 'success', 'element': rendered}), mimetype='application/json')
+			else:
+				return HttpResponse(json.dumps({"name": ["nom de projet non disponible"]}), mimetype='application/json')
 		else:
 			errors = json.dumps(form.errors)
+			logger.debug(errors)
 			return HttpResponse(errors, mimetype='application/json')
 	else:
 		form = ProjectForm(request)
@@ -291,23 +299,31 @@ def wiki_page(request, project_id = None, page=None):
 def sources(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath) #'/var/www/git/test.git'
 	branch = repository.get_current_branch()
-	repo = 'test.git'
+	repo = project.name + '.git' #'test.git'
 	path = ''
 	parent = ''
 	branches = repository.get_branches()
 	tags = repository.get_tags()
-	files = repository.get_tree(branch)
-	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': files.output(), 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
+	if branch:
+		files = repository.get_tree(branch)
+		output = files.output()
+	else:
+		output = None
+	return render_to_response('dashboard/sources/index.html',{'page':'files', 'files': output, 'repo':repo, 'path': path, 'parent': parent, 'branch': branch, 'branches': branches, 'tags': tags,'project':project}, context_instance=RequestContext(request))	
 
 @login_required()
 def sources_forcommit(request, project_id = None, commit=None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
+	#repository = client.get_repository('/var/www/git/test.git')
 	#branch = repository.get_current_branch()
-	repo = 'test.git'
+	#repo = 'test.git'
 	path = ''
 	parent = ''
 	branches = repository.get_branches()
@@ -320,8 +336,9 @@ def sources_forcommit(request, project_id = None, commit=None):
 def sources_commits(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
-	repo = 'test.git'
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	commits = repository.get_commits(branch)
@@ -332,8 +349,9 @@ def sources_commits(request, project_id = None, branch = None):
 def sources_commit_history(request, project_id = None, branch = None, file = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
-	repo = 'test.git'
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	if file:
@@ -347,8 +365,9 @@ def sources_commit_history(request, project_id = None, branch = None, file = Non
 def sources_commit(request, project_id = None, commit = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
-	repo = 'test.git'
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	thecommit = repository.get_commit(commit)
 	breadcrumbs = [{'dir': 'Commit #' + thecommit.hash, 'path':''}]
 	return render_to_response('dashboard/sources/commit.html',{'page':'commits', 'repo':repo, 'commit':thecommit, 'project':project, 'breadcrumbs': breadcrumbs},context_instance=RequestContext(request))
@@ -358,8 +377,9 @@ def sources_commit(request, project_id = None, commit = None):
 def sources_stats(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
-	repo = 'test.git'
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	branch = repository.get_current_branch()
 	branches = repository.get_branches()
 	tags = repository.get_tags()
@@ -373,11 +393,13 @@ def sources_stats(request, project_id = None, branch = None):
 def sources_file(request, project_id = None, branch = None, file = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	fileType = repository.get_file_type(file)
 	blob = repository.get_blob(branch+':"'+file+'"')
 	#logger.debug('blob content : %s' % blob.output())
-	repo = 'test.git'
+	#repo = 'test.git'
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	output = blob.output()
@@ -389,8 +411,9 @@ def sources_tree(request, project_id = None, branch = None, dir = None):
 	#logger.debug('directory : %s' % dir)
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
-	repo = 'test.git'
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	branches = repository.get_branches()
 	tags = repository.get_tags()
 	commits = repository.get_commits(branch)
@@ -409,9 +432,11 @@ def sources_tree(request, project_id = None, branch = None, dir = None):
 def sources_branch(request, project_id = None, branch = None):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
+	repo = project.name + '.git'
 	#branch = repository.get_current_branch()
-	repo = 'test.git'
+	#repo = 'test.git'
 	path = ''
 	parent = ''
 	branches = repository.get_branches()
@@ -423,16 +448,17 @@ def sources_branch(request, project_id = None, branch = None):
 def sources_archive(request, project_id = None, branch = None, format = 'zip'):
 	project = Project.objects.get(pk=project_id)
 	client = GitClient()
-	repository = client.get_repository('/var/www/git/test.git')
+	gitpath = settings.FORJME_GIT_ROOT + project.name + '.git'
+	repository = client.get_repository(gitpath)
 	tree = repository.get_branch_tree(branch)
 	archive_dir = settings.FORJME_ARCHIVE_DIR
 	file_ouput = repository.create_archive(archive_dir, tree,format)
 	response = HttpResponse(FileWrapper(file(file_ouput)), content_type='application/zip')
 	response['Content-Length'] = os.path.getsize(file_ouput)
-	response['Content-Disposition'] = 'attachment; filename=' + 'test.' + format
+	response['Content-Disposition'] = 'attachment; filename=' + project.name + format
 	return response
 
-
+############################################ BACKLOG #################################################
 @login_required()
 def backlog(request, project_id = None):
 	project = Project.objects.get(pk=project_id)
@@ -490,6 +516,12 @@ def backlog_usecase_edit(request, project_id = None, case_id = None):
 	return render_to_response('dashboard/backlog/new_usecase.html', {'form': form, 'project': project, 'edit': 'true', 'caseid': usecase.id}, context_instance=RequestContext(request))
 
 
+@login_required
+def backlog_usecase_remove(request, project_id = None, case_id = None):
+	#project = Project.objects.get(pk=project_id)
+	usecase = UseCase.objects.get(pk=case_id)
+	usecase.delete()
+	return HttpResponse(content=json.dumps({'success' : 'success'}), mimetype='application/json')
 
 ################################# UTILS ###############################################
 

@@ -25,11 +25,11 @@ class GitClient(object):
 	def __init__(self):
 		self.logger = logging.getLogger('dashboard')
 
-	def create_repository(thepath, bare=None):
-		if os.path.exists(thepath + '/.git/HEAD') and not os.path.exists(thepath + '/HEAD'):
+	def create_repository(self, thepath, bare=None):
+		if os.path.exists(thepath + '/.git/HEAD') or os.path.exists(thepath + '/HEAD'):
 			raise Exception('A GIT repository already exists at ' + thepath)
 
-		repository = GitRepository(path, self)
+		repository = GitRepository(thepath, self)
 		return repository.create(bare)
 		
 	def get_repository(self, thepath):

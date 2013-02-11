@@ -54,13 +54,22 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/sources', sources, name="sources"),    
 
     #backlog
+    url(r'^project/(?P<project_id>\d+)/backlog/usecase/(?P<case_id>\d+)/remove', backlog_usecase_remove, name="backlog_usecase_remove"),
     url(r'^project/(?P<project_id>\d+)/backlog/usecase/(?P<case_id>\d+)/edit', backlog_usecase_edit, name="backlog_usecase_edit"),
     url(r'^project/(?P<project_id>\d+)/backlog/usecase/new', backlog_new_usecase, name="backlog_new_usecase"),
     url(r'^project/(?P<project_id>\d+)/backlog', backlog, name="backlog"),
 
     #security
-    url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/login.html'}),
+    url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/account/login.html'}),
+    url(r'^accounts/logout', 'django.contrib.auth.views.logout', {'template_name': 'dashboard/account/logout.html'}),
+    url(r'^accounts/password_reset_confirm/(?P<uidb36>\d+)/(?P<token>[\d\w-]+)$', 'django.contrib.auth.views.password_reset_confirm', {'template_name':'dashboard/account/password_reset_confirm.html'}), #dashboard/account,'post_reset_redirect': ''
+    url(r'^accounts/password_reset_done', 'django.contrib.auth.views.password_reset_done', {'template_name':'dashboard/account/password_reset_done.html'}, name='admin_password_reset_done'),
+    url(r'^accounts/password_reset_complete', 'django.contrib.auth.views.password_reset_complete', {'template_name':'dashboard/account/password_reset_complete.html'}),
+    url(r'^accounts/password_reset', 'django.contrib.auth.views.password_reset', {'template_name':'dashboard/account/password_reset.html'},name='admin_password_reset'),
+    url(r'^accounts/password_change_done', 'django.contrib.auth.views.password_change_done', {'template_name':'dashboard/account/password_change_done.html'}),
+    url(r'^accounts/password_change', 'django.contrib.auth.views.password_change', {'template_name':'dashboard/account/password_change.html'}),
 
+    
 )
 
 if settings.DEBUG:

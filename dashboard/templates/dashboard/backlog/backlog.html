@@ -85,15 +85,25 @@
 
 		$('#collapse-group').sortable();
 		$(document).on( 'click', '.remove-uc', function(){
+			var url = $(this).data("remove");
 			$.Zebra_Dialog('Remove this Use Case ?', {
 			    'type':     'question',
 			    'title':    'Removing use case',
 			    'buttons':  [
 			                    {caption: 'Yes', callback: function() { 
-			                    	alert('"Yes" was clicked')
+			                    	$.ajax({
+			                    		url: url,
+			                    		method: 'POST',
+			                    		success: function(data){
+			                    			console.log(data);
+			                    		},
+			                    		error: function(){
+			                    			alert('error');
+			                    		}
+			                    	});
 			                    }},
 			                    {caption: 'No', callback: function() { 
-			                    	alert('"No" was clicked')
+			                    	
 			                    }}
 			                ]
 			});

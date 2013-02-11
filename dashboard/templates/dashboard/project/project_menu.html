@@ -11,9 +11,14 @@
 			<div id="dashboardsb" class="accordion-body collapse in">
 				<div class="accordion-inner">
 					<ul class="nav nav-list">
-						<li class="active">
-							<a href="">
+						<li>
+							<a href="{% url project_edit project.id%}">
 								<i class="icon-large icon-th"></i> Dashboard
+							</a>
+						</li>
+						<li>
+							<a href="{% url projects %}">
+								<i class="icon-large icon-th"></i> List
 							</a>
 						</li>
 					</ul>
