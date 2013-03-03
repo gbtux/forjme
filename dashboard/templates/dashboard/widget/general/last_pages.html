@@ -1,0 +1,46 @@
+<li class="widget">
+	<div class="widget_container" id="popular_posts">
+		<div class="well">
+			<div class="navbar navbar-static navbar_as_heading">
+				<div class="navbar-inner">
+					<div style="width: auto;" class="container">
+						<a class="brand">Last Wiki pages</a>
+					</div>
+				</div>
+			</div>
+			<div class="widget-content">
+				<table class="table">
+					<thead>
+					
+						<tr>
+							<td>project</td>
+							<td>title</td>
+							<td>created by :</td>
+							<td>created at :</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for page in pages %}
+						<tr>
+							<td>
+								<a href="{% url project_edit page.project.id %}">
+									#{{ page.project.name }}
+								</a>
+							</td>
+							<td>
+								<a href="{% url wiki page.project.id %}#{{page.name}}">{{ page.name }}</a>
+							</td>
+							<td>
+								{{ page.creator.username }}
+							</td>
+							<td>
+								{{ page.date }}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</li>

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"objec",
+				"objects"
+			],
+			[
+				"lo",
+				"login_required"
+			],
+			[
+				"ne",
+				"news"
+			],
+			[
 				"acc",
 				"account"
 			],
@@ -42,10 +54,6 @@
 			[
 				"ty",
 				"typeAddTo"
-			],
-			[
-				"lo",
-				"logger"
 			],
 			[
 				"log",
@@ -506,32 +514,16 @@
 			[
 				"chat_lea",
 				"chat_leave_url"
-			],
-			[
-				"chat_joi",
-				"chat_join_url"
-			],
-			[
-				"chat_s",
-				"chat_send_url"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "forjme/settings.py",
-			"settings":
-			{
-				"buffer_size": 6358,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "dashboard/models.py",
 			"settings":
 			{
-				"buffer_size": 6886,
+				"buffer_size": 6938,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,7 +539,7 @@
 			"file": "dashboard/views.py",
 			"settings":
 			{
-				"buffer_size": 23609,
+				"buffer_size": 24182,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,32 +547,48 @@
 			"file": "dashboard/urls.py",
 			"settings":
 			{
-				"buffer_size": 5055,
+				"buffer_size": 5485,
 				"line_ending": "Unix",
 				"name": "from django.conf.urls import patterns, include, ur"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/account/password_reset_confirm.html",
+			"file": "dashboard/templates/dashboard/home.html",
 			"settings":
 			{
-				"buffer_size": 3081,
+				"buffer_size": 605,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/account/password_reset.html",
+			"file": "dashboard/templates/dashboard/widget/general/last_pages.html",
 			"settings":
 			{
-				"buffer_size": 2617,
+				"buffer_size": 1015,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dashboard/templates/dashboard/account/login.html",
+			"file": "dashboard/templates/dashboard/project/project.html",
 			"settings":
 			{
-				"buffer_size": 3049,
+				"buffer_size": 1087,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/project/projects.html",
+			"settings":
+			{
+				"buffer_size": 1440,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dashboard/templates/dashboard/project/project_menu.html",
+			"settings":
+			{
+				"buffer_size": 7028,
 				"line_ending": "Unix"
 			}
 		}
@@ -613,15 +621,25 @@
 	},
 	"file_history":
 	[
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/template_email.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/widget/general/last_news.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/widget/general/last_projects.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/assets/js/bootstrap.js",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_change.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/calendar/calendar.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_change_done.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_reset_confirm.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/login.html",
+		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_reset_done.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_reset.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/password_reset_complete.html",
+		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/account/template_email.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/password_reset.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/login.html",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/base.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/project/project_menu.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/profile.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/logout.html",
-		"/home/gbtux/Projets/Django/forjme/forjme/settings.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_client.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/sources/index.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/git/git_repository.py",
@@ -663,7 +681,6 @@
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/js/wiki.js",
 		"/home/gbtux/Projets/Django/forjme/dashboard/static/dashboard/css/jquery.gritter.css",
 		"/home/gbtux/Projets/Django/forjme/forjme/urls.py",
-		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/calendar/calendar.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/templates/dashboard/calendar/newevent.html",
 		"/home/gbtux/Projets/Django/forjme/dashboard/admin.py",
 		"/home/gbtux/Projets/Django/forjme/dashboard/forms.py",
@@ -731,16 +748,7 @@
 		"/var/www/MyGallery/src/OpenLvb/MyGalleryBundle/Resources/data/mygallery.xml",
 		"/var/www/ResponsiveImageGallery/js/gallery.js",
 		"/var/www/galerie/index.html",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Controller/DefaultController.php",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/template.html.twig",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/Default/index.html.twig",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/views/Default/monespace.html.twig",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/config/routing.yml",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/public/js/osmLeaflet.jquery.js",
-		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Resources/public/js/leaflet.js",
-		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/views/layout.html.twig",
-		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/public/js/osmLeaflet.jquery.js",
-		"/var/www/MaRoute/src/OpenLVB/MaRouteBundle/Resources/config/routing.yml"
+		"/var/www/MyDailyMove/src/OpenLVB/MaRouteBundle/Controller/DefaultController.php"
 	],
 	"find":
 	{
@@ -802,51 +810,23 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "forjme/settings.py",
-					"settings":
-					{
-						"buffer_size": 6358,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6330,
-								6330
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2846.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "dashboard/models.py",
 					"settings":
 					{
-						"buffer_size": 6886,
+						"buffer_size": 6938,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1832,
-								1832
+								3625,
+								3625
 							]
 						],
 						"settings":
@@ -854,13 +834,13 @@
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 212.0,
+						"translation.y": 757.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "dashboard/forms.py",
 					"settings":
 					{
@@ -887,19 +867,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "dashboard/views.py",
 					"settings":
 					{
-						"buffer_size": 23609,
+						"buffer_size": 24182,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12266,
-								12266
+								3844,
+								3844
 							]
 						],
 						"settings":
@@ -907,26 +887,26 @@
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 5134.0,
+						"translation.x": 96.0,
+						"translation.y": 1071.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "dashboard/urls.py",
 					"settings":
 					{
-						"buffer_size": 5055,
+						"buffer_size": 5485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4835,
-								4835
+								3926,
+								3926
 							]
 						],
 						"settings":
@@ -936,26 +916,52 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 395.0,
-						"translation.y": 639.0,
+						"translation.x": 0.0,
+						"translation.y": 677.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dashboard/templates/dashboard/home.html",
+					"settings":
+					{
+						"buffer_size": 605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								450,
+								450
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "dashboard/templates/dashboard/account/password_reset_confirm.html",
+					"file": "dashboard/templates/dashboard/widget/general/last_pages.html",
 					"settings":
 					{
-						"buffer_size": 3081,
+						"buffer_size": 1015,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1843,
-								1843
+								780,
+								780
 							]
 						],
 						"settings":
@@ -964,25 +970,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 782.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "dashboard/templates/dashboard/account/password_reset.html",
+					"file": "dashboard/templates/dashboard/project/project.html",
 					"settings":
 					{
-						"buffer_size": 2617,
+						"buffer_size": 1087,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2617,
-								2617
+								1022,
+								1022
 							]
 						],
 						"settings":
@@ -991,25 +997,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 689.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "dashboard/templates/dashboard/account/login.html",
+					"file": "dashboard/templates/dashboard/project/projects.html",
 					"settings":
 					{
-						"buffer_size": 3049,
+						"buffer_size": 1440,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								564,
+								564
 							]
 						],
 						"settings":
@@ -1018,7 +1024,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "dashboard/templates/dashboard/project/project_menu.html",
+					"settings":
+					{
+						"buffer_size": 7028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1231,
+								1231
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3421.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -10,10 +10,14 @@
 {% endblock %}
 
 {% block content %}
-#home
-	{% if user.is_authenticated %}
-		<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-	{% else %}
-	    <p>Welcome, new user. Please log in.</p>
-	{% endif %}
+
+<div class="row-fluid columns">
+	<ul id="column1" class="span6 column ui-sortable">
+		{% include "dashboard/widget/general/last_projects.html" %}
+		{% include "dashboard/widget/general/last_pages.html" %}
+	</ul>
+	<ul id="column2" class="span6 column ui-sortable">
+		{% include "dashboard/widget/general/last_news.html" %}
+	</ul>
+</div>
 {% endblock %}

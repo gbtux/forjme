@@ -4,10 +4,11 @@
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
-from dashboard.models import Project, Room, News, Event, Page, UseCase
+from dashboard.models import Project, Room, News, Event, Page, UseCase, Milestone
 from dashboard.forms import ProjectForm, ChatForm, NewsForm, EventForm, UsecaseForm
 import django.utils.simplejson as json
 from datetime import datetime
+from django.utils import timezone
 from django.http import HttpResponse
 from django.template import loader, Context
 from django.http import Http404
@@ -23,7 +24,10 @@ logger = logging.getLogger('dashboard')
 
 @login_required() #login_url='/accounts/login/'
 def home(request):
-	return render_to_response('dashboard/home.html',context_instance=RequestContext(request))
+	projects = Project.objects.all().order_by('-creation_date','-id')[:5]
+	news = News.objects.all().order_by('-date','-id')[:5]
+	pages = Page.objects.all().order_by('-date','-id')[:5]
+	return render_to_response('dashboard/home.html',{'projects':projects, 'news': news, 'pages':pages},context_instance=RequestContext(request))
 
 ###################################### PROJECTS ################################################
 @login_required()
@@ -83,7 +87,7 @@ def chat_new(request, project_id = None):
 		form = ChatForm(request.POST)
 		if form.is_valid():
 			title = form.cleaned_data['title']
-			room = Room.objects.create(title=title, creator=request.user, project=project) 
+			room = Room.objects.create(title=title, creator=request.user, project=project, created=timezone.now()) 
 			room.save()
 			tmpl = loader.get_template('dashboard/chat/chat.html')
 			ctx = Context({'room':room, 'project': project})
@@ -522,6 +526,13 @@ def backlog_usecase_remove(request, project_id = None, case_id = None):
 	usecase = UseCase.objects.get(pk=case_id)
 	usecase.delete()
 	return HttpResponse(content=json.dumps({'success' : 'success'}), mimetype='application/json')
+
+
+@login_required
+def milestones(request, project_id = None):
+	project = Project.objects.get(pk=project_id)
+	miles = Milestone.objects.filter(project=project)
+	return render_to_response('dashboard/backlog/milestones.html',{'project':project, 'milestones':miles}, context_instance=RequestContext(request))
 
 ################################# UTILS ###############################################
 

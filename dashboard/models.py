@@ -39,6 +39,9 @@ class Milestone(models.Model):
 	project = models.ForeignKey(Project, related_name="projectId")
 	usecases = models.ManyToManyField(UseCase, related_name="usecases", blank=True, null=True,)
 
+	def nbusecases(self):
+		return len(self.usecases)
+
 	def __unicode__(self):
 		return u'Milestone %d : %s' % (self.id, self.version)
 

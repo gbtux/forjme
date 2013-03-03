@@ -1,0 +1,35 @@
+<li class="widget">
+	<div class="widget_container" id="popular_posts">
+		<div class="well">
+			<div class="navbar navbar-static navbar_as_heading">
+				<div class="navbar-inner">
+					<div style="width: auto;" class="container">
+						<a class="brand">Last Projects</a>
+					</div>
+				</div>
+			</div>
+			<div class="widget-content">
+				<table class="table">
+					<tbody>
+						{% for project in projects %}
+						<tr>
+							<td>#{{ project.id }}</td>
+							<td>
+								<a href="{% url project_edit project.id %}"  title="{{ project.description }}">
+									{{ project.name }} <i class="icon-large icon-chat"></i>
+								</a>
+							</td>
+							<td>created by : {{ project.creator.username }}</td>
+							<td>
+								<a class="btn btn-mini btn-tigasatu" href="{% url project_edit project.id %}">view</a>
+								<a class="btn btn-mini btn-enam" href="{% url sources project.id %}">sources</a>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<a class="btn btn-duadua" href="{% url projects %}">Complete list</a>
+			</div>
+		</div>
+	</div>
+</li>

@@ -1,0 +1,46 @@
+<li class="widget">
+	<div class="widget_container" id="popular_posts">
+		<div class="well">
+			<div class="navbar navbar-static navbar_as_heading">
+				<div class="navbar-inner">
+					<div style="width: auto;" class="container">
+						<a class="brand">Last News</a>
+					</div>
+				</div>
+			</div>
+			<div class="widget-content">
+				<table class="table">
+					<thead>
+					
+						<tr>
+							<td>project</td>
+							<td>title</td>
+							<td>created by :</td>
+							<td>created at :</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for new in news %}
+						<tr>
+							<td>
+								<a href="{% url project_edit new.project.id %}">
+									#{{ new.project.name }}
+								</a>
+							</td>
+							<td>
+								<a href="{% url news_view new.project.id new.id %}">{{ new.title }}</a>
+							</td>
+							<td>
+								{{ new.author.username }}
+							</td>
+							<td>
+								{{ new.date }}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</li>

@@ -59,6 +59,9 @@ urlpatterns = patterns('',
     url(r'^project/(?P<project_id>\d+)/backlog/usecase/new', backlog_new_usecase, name="backlog_new_usecase"),
     url(r'^project/(?P<project_id>\d+)/backlog', backlog, name="backlog"),
 
+    #milestones
+    url(r'^project/(?P<project_id>\d+)/milestones', milestones, name="milestones"),    
+
     #security
     url(r'^accounts/login' , 'django.contrib.auth.views.login', {'template_name': 'dashboard/account/login.html'}),
     url(r'^accounts/logout', 'django.contrib.auth.views.logout', {'template_name': 'dashboard/account/logout.html'}),
